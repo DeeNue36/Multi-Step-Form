@@ -1,5 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+:root {
+    /** primary */
+    --dark-blue: hsl(213, 96%, 18%);
+    --purple-medium: hsl(243, 100%, 62%);
+    --light-blue: hsl(228, 100%, 84%);
+    --lighter-blue: hsl(206, 94%, 87%);
+    --bright-red: hsl(354, 84%, 57%);
+    /** neutrals */
+    --dark-grey: hsl(231, 11%, 63%);
+    --transparent-purple: hsl(229, 24%, 87%);
+    --transparent-blue: hsl(218, 100%, 97%);
+    --transparent-light-blue: hsl(231, 100%, 99%);
+    --white: hsl(0, 100%, 100%);
 }
