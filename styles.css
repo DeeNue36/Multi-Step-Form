@@ -20,3 +20,11 @@
     --transparent-light-blue: hsl(231, 100%, 99%);
     --white: hsl(0, 100%, 100%);
 }
+
+html, body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+    background-color: var(--transparent-blue);
+}
