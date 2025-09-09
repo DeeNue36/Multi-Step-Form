@@ -61,8 +61,8 @@ body {
     width: 68%;
     height: 688px;
     display: flex;
-    /* flex-direction: column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 32px; */
+    padding: 0 32px;
 }
