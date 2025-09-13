@@ -57,6 +57,14 @@ body {
     position: relative;
 }
 
+.progress-circle {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 0 32px;
+}
+
 .form-section {
     width: 68%;
     height: 688px;
