@@ -64,12 +64,16 @@ body {
     position: relative;
 }
 
+.progress-circle.active {
+    margin-top: 64px;
+}
+
 .progress-circle {
     display: flex;
-    /* flex-direction: row; */
     justify-content: start;
     align-items: center;
-    padding: 0 32px;
+    padding: 0 36px;
+    margin: 40px 0 0;
 }
 
 .step-number {
@@ -90,7 +94,6 @@ body {
     flex-direction: column;
     align-items: start;
     text-transform: uppercase;
-    /* margin: 16px 0 16px 8px; */
     color: var(--white);
 }
 
@@ -105,6 +108,8 @@ body {
     margin-bottom: 4px;
 }
 
+
+/** Form Section */
 .form-section {
     width: 68%;
     height: 688px;
