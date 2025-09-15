@@ -65,7 +65,7 @@ body {
     position: relative;
 }
 
-.progress-circle.active {
+.progress-circle.initial {
     margin-top: 64px;
 }
 
@@ -90,6 +90,11 @@ body {
     margin-right: 16px;
 }
 
+.step-number.active {
+    background-color: var(--lighter-blue);
+    color: var(--dark-blue);
+}
+
 .user-info-step {
     display: flex;
     flex-direction: column;
@@ -100,17 +105,16 @@ body {
 
 .step {
     color: var(--transparent-purple);
-    font-size: 12px;
-    /* font-weight: var(--font-weight-regular); */
+    font-size: 14px;
     font-weight: var(--font-weight-thin);
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
 
 .step-name {
     color: var(--white);
     font-weight: 700;
     letter-spacing: 2px;
-    margin-bottom: 4px;
+    vertical-align: baseline;
 }
 
 
