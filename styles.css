@@ -60,7 +60,7 @@ body {
 .progress-section {
     background: url('images/bg-sidebar-desktop.svg') no-repeat center center / cover;
     height: 688px;
-    width: 32%;
+    width: 30%;
     border-radius: 10px;
     position: relative;
 }
@@ -120,7 +120,7 @@ body {
 
 /** Form Section */
 .form-section {
-    width: 68%;
+    width: 70%;
     height: 688px;
     display: flex;
     flex-direction: column;
