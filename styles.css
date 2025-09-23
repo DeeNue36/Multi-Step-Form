@@ -124,7 +124,6 @@ body {
     height: 688px;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: start;
     padding: 0 32px;
 }
@@ -135,9 +134,14 @@ body {
 }
 
 .form-header h2 {
-    font-size: 48px;
+    font-size: 36px;
     color: var(--dark-blue);
-    margin-top: 16px;
+    margin: 48px 0 12px;
+}
+
+.form-header p {
+    font-size: var(--font-size);
+    color: var(--dark-grey);
 }
 
 .input-container {
