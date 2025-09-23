@@ -134,6 +134,12 @@ body {
     height: 100%;
 }
 
+.form-header h2 {
+    font-size: 48px;
+    color: var(--dark-blue);
+    margin-top: 16px;
+}
+
 .input-container {
     display: flex;
     flex-direction: column;
@@ -148,17 +154,17 @@ body {
 }
 
 .input-container input {
+    font-family: inherit;
     width: 100%;
     height: 48px;
     border-radius: 5px;
     border: 1px solid var(--transparent-purple);
     padding: 0 12px;
     font-size: 16px;
-    font-weight: var(--font-weight-thin);
 }
 
 .input-container input::placeholder {
     color: var(--dark-grey);
     font-size: var(--font-size);
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-medium);
 }
