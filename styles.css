@@ -129,14 +129,15 @@ body {
 }
 
 .personal-info-form {
-    width: 100%;
+    width: 80%;
     height: 100%;
+    margin: 0 auto;
 }
 
 .form-header h2 {
     font-size: 36px;
     color: var(--dark-blue);
-    margin: 48px 0 12px;
+    margin: 48px 0 16px;
 }
 
 .form-header p {
@@ -144,10 +145,14 @@ body {
     color: var(--dark-grey);
 }
 
+.form-body {
+    margin-top: 64px;
+}
+
 .input-container {
     display: flex;
     flex-direction: column;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
 }
 
 .input-container label {
