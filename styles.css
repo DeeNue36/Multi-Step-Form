@@ -159,7 +159,7 @@ body {
     text-transform: capitalize;
     color: var(--dark-blue);
     font-size: 14px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
 .input-container input {
@@ -176,4 +176,27 @@ body {
     color: var(--dark-grey);
     font-size: var(--font-size);
     font-weight: var(--font-weight-medium);
+}
+
+
+/** Submit Form Button  */
+.submit-form {
+    height: 160px;
+    display: flex;
+    justify-content: end;
+    margin-top: 32px;
+}
+
+.next-button {
+    width: 128px;
+    height: 48px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    font-family: inherit;
+    font-size: var(--font-size);
+    cursor: pointer;
+    align-self: flex-end;
 }
