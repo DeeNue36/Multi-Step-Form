@@ -11,6 +11,24 @@ const phoneField = document.querySelector('#phone');
 const nextButton = document.querySelector('.next-button');
 
 
+
+nextButton.addEventListener('click', () => {
+    validateName();
+    validateEmail();
+    validatePhoneNo();
+    //* Hide Step 1
+    // personalInfoForm.classList.add('hidden');
+    
+    // * Show Step 2
+    // steps[0].classList.remove('active');
+    // steps[1].classList.add('active');
+    
+    // * Move to Step 2
+    // personalInfoForm.submit();
+});
+
+
+
 //* Validate Form Input Fields
 
 //! Validate Name Input Field
@@ -30,7 +48,9 @@ function validateName() {
 
 //! Validate Email Input Field
 function validateEmail() {
-    if (emailField.value === '') {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (emailField.value === '' || !emailRegex.test(emailField.value)) {
         emailField.style.border = '1px solid var(--bright-red)';
         emailField.classList.add('error-vibrate');
         setTimeout(() => {
@@ -44,7 +64,7 @@ function validateEmail() {
 
 
 //! Validate Phone Input Field
-function validatePhone() {
+function validatePhoneNo() {
     if (phoneField.value === '') {
         phoneField.style.border = '1px solid var(--bright-red)';
         phoneField.classList.add('error-vibrate');
@@ -56,16 +76,3 @@ function validatePhone() {
         phoneField.style.border = '1px solid var(--transparent-purple)';
     }
 }
-
-nextButton.addEventListener('click', () => {
-    validateName();
-    //* Hide Step 1
-    // personalInfoForm.classList.add('hidden');
-
-    // * Show Step 2
-    // steps[0].classList.remove('active');
-    // steps[1].classList.add('active');
-
-    // * Move to Step 2
-    // personalInfoForm.submit();
-});
