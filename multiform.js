@@ -38,7 +38,7 @@ function validateName() {
 
     if (nameField.value === '' || !fullNameRegex.test(nameField.value)) {
         errorMessage[0].innerText = 'This field is required';
-        nameField.style.border = '1px solid var(--bright-red)';
+        nameField.classList.add('error');
         nameField.classList.add('error-vibrate');
         setTimeout(() => {
             nameField.classList.remove('error-vibrate');
@@ -59,7 +59,7 @@ function validateEmail() {
 
     if (emailField.value === '' || !emailRegex.test(emailField.value)) {
         errorMessage[1].innerText = 'This field is required';
-        emailField.style.border = '1px solid var(--bright-red)';
+        emailField.classList.add('error');
         emailField.classList.add('error-vibrate');
         setTimeout(() => {
             emailField.classList.remove('error-vibrate');
@@ -81,7 +81,7 @@ function validatePhoneNo() {
 
     if (phoneField.value === '' || !phoneNoRegex.test(phoneField.value)) {
         errorMessage[2].innerText = 'This field is required';
-        phoneField.style.border = '1px solid var(--bright-red)';
+        phoneField.classList.add('error');
         phoneField.classList.add('error-vibrate');
         setTimeout(() => {
             phoneField.classList.remove('error-vibrate');
