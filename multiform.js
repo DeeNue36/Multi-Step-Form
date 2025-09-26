@@ -10,7 +10,8 @@ const emailField = document.querySelector('#email');
 const phoneField = document.querySelector('#phone');
 const nextButton = document.querySelector('.next-button');
 
-
+//* Error Messages
+const errorMessage = document.querySelectorAll('.error-message');
 
 nextButton.addEventListener('click', () => {
     validateName();
@@ -45,6 +46,8 @@ function validateName() {
     else {
         nameField.style.border = '1px solid var(--transparent-purple)';
     }
+
+    return fullNameRegex.test(nameField.value); // Returns true or false if the name provided is valid or not
 }
 
 
@@ -62,12 +65,17 @@ function validateEmail() {
     else {
         emailField.style.border = '1px solid var(--transparent-purple)';
     }
+
+    return emailRegex.test(emailField.value); // Returns true or false if the email provided is valid or not
 }
 
 
 //! Validate Phone Input Field
 function validatePhoneNo() {
-    if (phoneField.value === '') {
+    // const phoneNoRegex = /^\+?\d{1,3} ?\d{3} ?\d{3} ?\d{3,4}$/;
+    const phoneNoRegex = /^\+?\d{1,3} ?\d{3} ?\d{3} ?\d{3,4}$|^\d{3} ?\d{3} ?\d{4}$/;
+
+    if (phoneField.value === '' || !phoneNoRegex.test(phoneField.value)) {
         phoneField.style.border = '1px solid var(--bright-red)';
         phoneField.classList.add('error-vibrate');
         setTimeout(() => {
@@ -77,4 +85,41 @@ function validatePhoneNo() {
     else {
         phoneField.style.border = '1px solid var(--transparent-purple)';
     }
+
+    return phoneNoRegex.test(phoneField.value); // Returns true or false if the phone number provided is valid or not
 }
+
+
+//! Display Error Messages
+
+// * Name Field Error Message
+nameField.addEventListener('input', () => {
+    if (!validateName()) {
+        errorMessage[0].innerText = 'Please enter your full name';
+    }
+    else {
+        errorMessage[0].innerText = '';
+    }
+});
+
+
+// * Email Field Error Message
+emailField.addEventListener('input', () => {
+    if (!validateEmail()) {
+        errorMessage[1].innerText = 'Please enter a valid email address';
+    }
+    else {
+        errorMessage[1].innerText = '';
+    }
+});
+
+
+// * Phone Field Error Message
+phoneField.addEventListener('input', () => {
+    if (!validatePhoneNo()) {
+        errorMessage[2].innerText = 'Please enter your phone number';
+    }
+    else {
+        errorMessage[2].innerText = '';
+    }
+});
