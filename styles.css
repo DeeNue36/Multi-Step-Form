@@ -162,7 +162,8 @@ body {
     margin-bottom: 8px;
 }
 
-.input-container input {
+#name, #email, #phone {
+    /* color: var(--dark-blue); */
     font-family: inherit;
     width: 100%;
     height: 48px;
@@ -199,4 +200,32 @@ body {
     font-size: var(--font-size);
     cursor: pointer;
     align-self: flex-end;
+}
+
+
+/** Utilities */
+.hidden {
+    display: none;
+}
+
+
+/**  Error Displays & Animations */
+.error-mode {
+    border: 1px solid var(--bright-red);
+}
+
+.error-vibrate {
+    animation: shake .12s 5;
+}
+
+@keyframes shake {
+    0% { 
+        transform: translateX(0);
+    }
+    40% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(-10px);
+    }
 }
