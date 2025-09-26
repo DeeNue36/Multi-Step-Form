@@ -37,6 +37,7 @@ function validateName() {
     const fullNameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
 
     if (nameField.value === '' || !fullNameRegex.test(nameField.value)) {
+        errorMessage[0].innerText = 'This field is required';
         nameField.style.border = '1px solid var(--bright-red)';
         nameField.classList.add('error-vibrate');
         setTimeout(() => {
@@ -47,7 +48,8 @@ function validateName() {
         nameField.style.border = '1px solid var(--transparent-purple)';
     }
 
-    return fullNameRegex.test(nameField.value); // Returns true or false if the name provided is valid or not
+    return fullNameRegex.test(nameField.value); 
+    //? Returns true or false if the name provided is valid or not
 }
 
 
@@ -56,6 +58,7 @@ function validateEmail() {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (emailField.value === '' || !emailRegex.test(emailField.value)) {
+        errorMessage[1].innerText = 'This field is required';
         emailField.style.border = '1px solid var(--bright-red)';
         emailField.classList.add('error-vibrate');
         setTimeout(() => {
@@ -66,16 +69,18 @@ function validateEmail() {
         emailField.style.border = '1px solid var(--transparent-purple)';
     }
 
-    return emailRegex.test(emailField.value); // Returns true or false if the email provided is valid or not
+    return emailRegex.test(emailField.value); 
+    //? Returns true or false if the email provided is valid or not
 }
 
 
 //! Validate Phone Input Field
 function validatePhoneNo() {
-    // const phoneNoRegex = /^\+?\d{1,3} ?\d{3} ?\d{3} ?\d{3,4}$/;
-    const phoneNoRegex = /^\+?\d{1,3} ?\d{3} ?\d{3} ?\d{3,4}$|^\d{3} ?\d{3} ?\d{4}$/;
+    const phoneNoRegex = /^\+?\d{1,3} ?\d{3} ?\d{3} ?\d{3,4}$/;
+    // const phoneNoRegex = /^\+?\d{1,3} ?\d{3} ?\d{3} ?\d{3,4}$|^\d{3} ?\d{3} ?\d{4}$/; //? Alternate Regex
 
     if (phoneField.value === '' || !phoneNoRegex.test(phoneField.value)) {
+        errorMessage[2].innerText = 'This field is required';
         phoneField.style.border = '1px solid var(--bright-red)';
         phoneField.classList.add('error-vibrate');
         setTimeout(() => {
@@ -86,40 +91,53 @@ function validatePhoneNo() {
         phoneField.style.border = '1px solid var(--transparent-purple)';
     }
 
-    return phoneNoRegex.test(phoneField.value); // Returns true or false if the phone number provided is valid or not
+    return phoneNoRegex.test(phoneField.value); 
+    //? Returns true or false if the phone number provided is valid or not
 }
 
 
-//! Display Error Messages
+//! Display Error Messages in Real Time
 
 // * Name Field Error Message
 nameField.addEventListener('input', () => {
-    if (!validateName()) {
+    //? If the name field is invalid (i.e validateName returns false), Display error message
+    if (!validateName()) { 
         errorMessage[0].innerText = 'Please enter your full name';
     }
     else {
         errorMessage[0].innerText = '';
     }
+
+    nameField.classList.remove('error-vibrate'); 
+    //? Removes the error-vibrate animation class from having any effect on the name field while the user is typing
 });
 
 
 // * Email Field Error Message
 emailField.addEventListener('input', () => {
+    // ? If the email field is invalid (i.e validateEmail returns false), Display error message
     if (!validateEmail()) {
         errorMessage[1].innerText = 'Please enter a valid email address';
     }
     else {
         errorMessage[1].innerText = '';
     }
+
+    emailField.classList.remove('error-vibrate'); 
+    //? Removes the error-vibrate animation class from having any effect on the email field while the user is typing
 });
 
 
 // * Phone Field Error Message
 phoneField.addEventListener('input', () => {
+    // ? If the phone field is invalid (i.e validatePhoneNo returns false), Display error message
     if (!validatePhoneNo()) {
         errorMessage[2].innerText = 'Please enter your phone number';
     }
     else {
         errorMessage[2].innerText = '';
     }
+
+    phoneField.classList.remove('error-vibrate'); 
+    //? Removes the error-vibrate animation class from having any effect on the phone field while the user is typing
 });
