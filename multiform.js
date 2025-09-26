@@ -13,16 +13,47 @@ const nextButton = document.querySelector('.next-button');
 
 //* Validate Form Input Fields
 
+//! Validate Name Input Field
 function validateName() {
     if (nameField.value === '') {
-        nameField.classList.add('error-mode');
+        nameField.style.border = '1px solid var(--bright-red)';
         nameField.classList.add('error-vibrate');
         setTimeout(() => {
             nameField.classList.remove('error-vibrate');
         }, 2000);
     }
     else {
-        nameField.classList.remove('error-mode');
+        nameField.style.border = '1px solid var(--transparent-purple)';
+    }
+}
+
+
+//! Validate Email Input Field
+function validateEmail() {
+    if (emailField.value === '') {
+        emailField.style.border = '1px solid var(--bright-red)';
+        emailField.classList.add('error-vibrate');
+        setTimeout(() => {
+            emailField.classList.remove('error-vibrate');
+        }, 2000);
+    }
+    else {
+        emailField.style.border = '1px solid var(--transparent-purple)';
+    }
+}
+
+
+//! Validate Phone Input Field
+function validatePhone() {
+    if (phoneField.value === '') {
+        phoneField.style.border = '1px solid var(--bright-red)';
+        phoneField.classList.add('error-vibrate');
+        setTimeout(() => {
+            phoneField.classList.remove('error-vibrate');
+        }, 2000);
+    }
+    else {
+        phoneField.style.border = '1px solid var(--transparent-purple)';
     }
 }
 
