@@ -155,11 +155,22 @@ body {
     margin-bottom: 32px;
 }
 
-.input-container label {
+.label-and-error {
+    display: flex;
+    justify-content: space-between;
+}
+
+.label-and-error label {
     text-transform: capitalize;
     color: var(--dark-blue);
     font-size: 14px;
     margin-bottom: 8px;
+}
+
+.error-message {
+    color: var(--bright-red);
+    font-size: 14px;
+    font-weight: var(--font-weight-medium);
 }
 
 #name, #email, #phone {
