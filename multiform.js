@@ -33,7 +33,9 @@ nextButton.addEventListener('click', () => {
 
 //! Validate Name Input Field
 function validateName() {
-    if (nameField.value === '') {
+    const fullNameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
+
+    if (nameField.value === '' || !fullNameRegex.test(nameField.value)) {
         nameField.style.border = '1px solid var(--bright-red)';
         nameField.classList.add('error-vibrate');
         setTimeout(() => {
