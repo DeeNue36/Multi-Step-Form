@@ -45,7 +45,7 @@ function validateName() {
         }, 2000);
     }
     else {
-        nameField.style.border = '1px solid var(--transparent-purple)';
+        nameField.classList.remove('error');
     }
 
     return fullNameRegex.test(nameField.value); 
@@ -66,7 +66,7 @@ function validateEmail() {
         }, 2000);
     }
     else {
-        emailField.style.border = '1px solid var(--transparent-purple)';
+        emailField.classList.remove('error');
     }
 
     return emailRegex.test(emailField.value); 
@@ -88,7 +88,7 @@ function validatePhoneNo() {
         }, 2000);
     }
     else {
-        phoneField.style.border = '1px solid var(--transparent-purple)';
+        phoneField.classList.remove('error');
     }
 
     return phoneNoRegex.test(phoneField.value); 
