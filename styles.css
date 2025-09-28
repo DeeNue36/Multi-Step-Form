@@ -249,6 +249,9 @@ body {
 }
 
 .plan-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 31%;
     height: 220px;
     padding: 24px 16px;
@@ -256,6 +259,34 @@ body {
     border: 1px solid var(--transparent-purple);
     cursor: pointer;
     transition: border-color 0.2s ease;
+}
+
+.plan-card-image img {
+    margin-bottom: 48px;
+}
+
+.plan-card:hover, .plan-card.active {
+    background-color: var(--transparent-light-blue);
+    cursor: pointer;
+    border-color: var(--purple-medium);
+    border-width: 1.5px;
+}
+
+.plan-card-header, .discount-duration {
+    color: var(--dark-blue);
+}
+
+.plan-card-header {
+    margin-bottom: 8px;
+}
+
+.price {
+    color: var(--dark-grey);
+}
+
+.yearly-discount-duration {
+    font-size: 14px;
+    margin-top: 8px;
 }
 
 
