@@ -8,16 +8,23 @@ const personalInfoForm = document.querySelector('.personal-info-form');
 const nameField = document.querySelector('#name');
 const emailField = document.querySelector('#email');
 const phoneField = document.querySelector('#phone');
-const nextButton = document.querySelector('.next-button');
 
 // * Step 2: Select Plan Form
 const selectPlanForm = document.querySelector('.select-plan-form');
 // const planField = document.querySelector('#plan');
 
+// * Next Button
+const nextButton = document.querySelectorAll('.next-button');
+console.log(nextButton);
+
 //* Error Messages
 const errorMessage = document.querySelectorAll('.error-message');
 
-nextButton.addEventListener('click', () => {
+
+//* Event Listeners
+
+//* Next Buttons
+nextButton[0].addEventListener('click', () => {
     validateName();
     validateEmail();
     validatePhoneNo();
@@ -34,11 +41,8 @@ nextButton.addEventListener('click', () => {
     selectPlanForm.classList.remove('hidden');
     
     // * Show Active Step
-    // steps[0].classList.remove('active');
-    // steps[1].classList.add('active');
-    
-    // * Move to Step 2
-    // personalInfoForm.submit();
+    steps[0].classList.remove('active');
+    steps[1].classList.add('active');
 });
 
 
