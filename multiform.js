@@ -10,6 +10,10 @@ const emailField = document.querySelector('#email');
 const phoneField = document.querySelector('#phone');
 const nextButton = document.querySelector('.next-button');
 
+// * Step 2: Select Plan Form
+const selectPlanForm = document.querySelector('.select-plan-form');
+// const planField = document.querySelector('#plan');
+
 //* Error Messages
 const errorMessage = document.querySelectorAll('.error-message');
 
@@ -17,10 +21,19 @@ nextButton.addEventListener('click', () => {
     validateName();
     validateEmail();
     validatePhoneNo();
+
+    //? If any of the fields are invalid, return
+    if (!validateName() || !validateEmail() || !validatePhoneNo()) {
+        return;
+    }
+
     //* Hide Step 1
-    // personalInfoForm.classList.add('hidden');
-    
+    personalInfoForm.classList.add('hidden');
+
     // * Show Step 2
+    selectPlanForm.classList.remove('hidden');
+    
+    // * Show Active Step
     // steps[0].classList.remove('active');
     // steps[1].classList.add('active');
     
