@@ -50,8 +50,9 @@
             </div>
         </section>
 
-        <!-- * Form Section -->
-        <section class="form-section">
+        <!-- * Main Form Section -->
+        <section class="form-main-section">
+            <!-- * Step 1: Personal Info Form -->
             <form class="personal-info-form">
 
                 <div class="form-header">
@@ -93,6 +94,66 @@
                     </button>
                 </div>
             </form>
+
+            <!-- * Step 2: Select Plan Form -->
+            <form class="select-plan-form hidden">
+                <div class="form-header">
+                    <h2>Select your plan</h2>
+                    <p>You have the option of monthly or yearly billing.</p>
+                </div>
+
+                <div class="form-body">
+                    <div class="plan-container">
+                        <div class="plan-card">
+                            <div class="plan-card-header">
+                                <h3>Arcade</h3>
+                            </div>
+                            <div class="plan-card-body">
+                                <p>$9/mo</p>
+                            </div>
+                        </div>
+
+                        <div class="plan-card">
+                            <div class="plan-card-header">
+                                <h3>Advanced</h3>
+                            </div>
+                            <div class="plan-card-body">
+                                <p>$12/mo</p>
+                            </div>
+                        </div>
+
+                        <div class="plan-card">
+                            <div class="plan-card-header">
+                                <h3>Pro</h3>
+                            </div>
+                            <div class="plan-card-body">
+                                <p>$15/mo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="billing-container">
+                        <div class="billing-option-container">
+                            <input type="radio" id="monthly" name="billing" value="monthly" checked>
+                            <label for="monthly">Monthly</label>
+                        </div>
+                        <div class="billing-option-container">
+                            <input type="radio" id="yearly" name="billing" value="yearly">
+                            <label for="yearly">Yearly</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-form">
+                    <button type="button" class="previous-button">
+                        Go Back
+                    </button>
+                    <button type="button" class="next-button">
+                        Next Step
+                    </button>
+                </div>
+            </form>
+
         </section>
     </div>
 
