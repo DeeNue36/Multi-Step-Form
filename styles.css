@@ -272,7 +272,7 @@ body {
     border-width: 1.5px;
 }
 
-.plan-card-header, .discount-duration {
+.plan-card-header, .yearly-discount-duration {
     color: var(--dark-blue);
 }
 
