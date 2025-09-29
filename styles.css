@@ -369,7 +369,8 @@ body {
 
 /** Bounce animation on click/toggle */
 .toggle-thumb.clicked {
-    transform: scale(0.85);
+    transform: scale(0.64);
+    transition: all 0.4s ease;
 }
 
 
