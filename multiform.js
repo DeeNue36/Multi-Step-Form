@@ -16,6 +16,7 @@ const planPrices = document.querySelectorAll('.price');
 const yearlyDiscountDurations = document.querySelectorAll('.yearly-discount-duration');
 const toggleContainer = document.querySelector('.toggle-container');
 const billingToggle = document.getElementById('billing-toggle');
+const toggleThumb = document.querySelector('.toggle-thumb');
 const monthly = document.getElementById('monthly');
 const yearly = document.getElementById('yearly');
 
@@ -168,24 +169,45 @@ phoneField.addEventListener('input', () => {
 
 //* STEP 2: Plan Cards & Monthly and Yearly Billing Options
 
+// * Plan Cards: Active Plan Card
+plans.forEach(plan => {
+    plan.addEventListener('click', () => {
+        plans.forEach(plan => {
+            plan.classList.remove('active');
+        });
+        plan.classList.add('active');
+    });
+});
+
 // * Billing Options: Monthly and Yearly
 billingToggle.addEventListener('input', () => {
     if (billingToggle.value === '1') {
         yearly.checked = true;
         toggleContainer.classList.add('active');
+        bounceThumb();
     } 
     else {
         monthly.checked = true;
         toggleContainer.classList.remove('active');
+        bounceThumb();
     }
 });
 
 monthly.addEventListener('change', () => {
     billingToggle.value = '0';
     toggleContainer.classList.remove('active');
+    bounceThumb();
 });
 
 yearly.addEventListener('change', () => {
     billingToggle.value = '1';
     toggleContainer.classList.add('active');
+    bounceThumb();
 });
+
+function bounceThumb() {
+    toggleThumb.classList.add('clicked');
+    setTimeout(() => {
+        toggleThumb.classList.remove('clicked');
+    }, 150);
+}
