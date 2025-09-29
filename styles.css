@@ -252,7 +252,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 31%;
+    width: 30.6%;
     height: 220px;
     padding: 24px 16px;
     border-radius: 8px;
@@ -288,6 +288,76 @@ body {
     font-size: 14px;
     margin-top: 8px;
 }
+
+
+/** Billing Section */
+.billing-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background: var(--transparent-blue);
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    width: fit-content;
+    margin: 1rem auto;
+}
+
+.billing-option-container label {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--dark-grey);
+    cursor: pointer;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.billing-option-container input[type="radio"] {
+    display: none;
+}
+
+/* Active label color + weight */
+.billing-option-container input[type="radio"]:checked + label {
+    color: var(--dark-blue);
+    font-weight: var(--font-weight-bold);
+}
+
+/* TOGGLE SWITCH */
+.toggle-container {
+    position: relative;
+    width: 45px;
+    height: 22px;
+    background: var(--dark-blue);
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.toggle-container input[type="range"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* Toggle Thumb */
+.toggle-thumb {
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    transition: left 0.3s ease;
+}
+
+/* Move thumb to right when value = 1 */
+.toggle-container input[type="range"][value="1"] ~ .toggle-thumb {
+    left: 25px;
+}
+
 
 
 /** Utilities */
