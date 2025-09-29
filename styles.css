@@ -132,10 +132,6 @@ body {
 
 /** General Styling for form section steps */
 
-.personal-info-form {
-    display: none;
-}
-
 .personal-info-form, .select-plan-form {
     width: 80%;
     height: 100%;
