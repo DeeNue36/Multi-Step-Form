@@ -13,6 +13,7 @@ const phoneField = document.querySelector('#phone');
 const selectPlanForm = document.querySelector('.select-plan-form');
 const plans = document.querySelectorAll('.plan-card');
 const planPrices = document.querySelectorAll('.price');
+const pricingCycles = document.querySelectorAll('.pricing-cycle');
 const yearlyDiscountDurations = document.querySelectorAll('.yearly-discount-duration');
 const toggleContainer = document.querySelector('.toggle-container');
 const billingToggle = document.getElementById('billing-toggle');
@@ -169,7 +170,7 @@ phoneField.addEventListener('input', () => {
 
 //* STEP 2: Plan Cards & Monthly and Yearly Billing Options
 
-// * Plan Cards: Active Plan Card
+// * Plan Cards: Selecting a Plan Card and Adding Active Class
 plans.forEach(plan => {
     plan.addEventListener('click', () => {
         plans.forEach(plan => {
@@ -185,11 +186,13 @@ billingToggle.addEventListener('input', () => {
         yearly.checked = true;
         toggleContainer.classList.add('active');
         bounceThumb();
+        updatePrices();
     } 
     else {
         monthly.checked = true;
         toggleContainer.classList.remove('active');
         bounceThumb();
+        updatePrices();
     }
 });
 
@@ -197,12 +200,14 @@ monthly.addEventListener('change', () => {
     billingToggle.value = '0';
     toggleContainer.classList.remove('active');
     bounceThumb();
+    updatePrices();
 });
 
 yearly.addEventListener('change', () => {
     billingToggle.value = '1';
     toggleContainer.classList.add('active');
     bounceThumb();
+    updatePrices();
 });
 
 function bounceThumb() {
@@ -210,4 +215,48 @@ function bounceThumb() {
     setTimeout(() => {
         toggleThumb.classList.remove('clicked');
     }, 150);
+}
+
+function updatePrices() {
+    //! Populating the Plans Prices, Pricing Cycles and Yearly Discount Durations Sequentially
+    // 1. Arcade Plan
+    // let arcadePlan = planPrices[0].innerHTML;
+    // const arcadePlanWithoutDollarSign = arcadePlan.replace('$', '');
+    // if (billingToggle.value === '1') {
+    //     console.log(arcadePlanWithoutDollarSign);
+    //     planPrices[0].innerHTML = '$' + parseInt(arcadePlanWithoutDollarSign * 10);
+    //     pricingCycles[0].innerHTML = '/yr';
+    //     yearlyDiscountDurations[0].classList.remove('hidden');
+    //     yearlyDiscountDurations[0].innerHTML = '2 months free';
+    // } 
+    // else {
+    //     planPrices[0].innerHTML = '$' + parseInt(arcadePlanWithoutDollarSign / 10);
+    //     pricingCycles[0].innerHTML = '/mo';
+    //     yearlyDiscountDurations[0].classList.add('hidden');
+    //     yearlyDiscountDurations[0].innerHTML = '';
+    // }
+
+    planPrices.forEach((planPrice) => {
+        const pricesWithoutDollarSign = planPrice.innerHTML.replace('$', '');
+        if (billingToggle.value === '1') {
+            planPrice.innerHTML = '$' + parseInt(pricesWithoutDollarSign * 10);
+            pricingCycles.forEach((cycle) => {
+                cycle.innerHTML = '/yr';
+            });
+            yearlyDiscountDurations.forEach((duration) => {
+                duration.classList.remove('hidden');
+                duration.innerHTML = '2 months free';
+            });
+        } 
+        else {
+            planPrice.innerHTML = '$' + parseInt(pricesWithoutDollarSign / 10);
+            pricingCycles.forEach((cycle) => {
+                cycle.innerHTML = '/mo';
+            });
+            yearlyDiscountDurations.forEach((duration) => {
+                duration.classList.add('hidden');
+                duration.innerHTML = '';
+            });
+        }
+    });
 }
