@@ -361,8 +361,8 @@ body {
     transition: left 0.3s ease;
 }
 
-/* Move thumb to right when value = 1 */
-.toggle-container input[type="range"][value="1"] ~ .toggle-thumb {
+/* When yearly is selected, move thumb right */
+.toggle-container.active .toggle-thumb {
     left: 25px;
 }
 
