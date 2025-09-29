@@ -11,7 +11,13 @@ const phoneField = document.querySelector('#phone');
 
 // * Step 2: Select Plan Form
 const selectPlanForm = document.querySelector('.select-plan-form');
-// const planField = document.querySelector('#plan');
+const plans = document.querySelectorAll('.plan-card');
+const planPrices = document.querySelectorAll('.price');
+const yearlyDiscountDurations = document.querySelectorAll('.yearly-discount-duration');
+const toggleContainer = document.querySelector('.toggle-container');
+const billingToggle = document.getElementById('billing-toggle');
+const monthly = document.getElementById('monthly');
+const yearly = document.getElementById('yearly');
 
 // * Next Button
 const nextButton = document.querySelectorAll('.next-button');
@@ -157,4 +163,29 @@ phoneField.addEventListener('input', () => {
 
     phoneField.classList.remove('error-vibrate'); 
     //? Removes the error-vibrate animation class from having any effect on the phone field while the user is typing
+});
+
+
+//* STEP 2: Plan Cards & Monthly and Yearly Billing Options
+
+// * Billing Options: Monthly and Yearly
+billingToggle.addEventListener('input', () => {
+    if (billingToggle.value === '1') {
+        yearly.checked = true;
+        toggleContainer.classList.add('active');
+    } 
+    else {
+        monthly.checked = true;
+        toggleContainer.classList.remove('active');
+    }
+});
+
+monthly.addEventListener('change', () => {
+    billingToggle.value = '0';
+    toggleContainer.classList.remove('active');
+});
+
+yearly.addEventListener('change', () => {
+    billingToggle.value = '1';
+    toggleContainer.classList.add('active');
 });
