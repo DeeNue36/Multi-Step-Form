@@ -315,13 +315,13 @@ body {
     display: none;
 }
 
-/* Active label color + weight */
+/** Active label color + weight */
 .billing-option-container input[type="radio"]:checked + label {
     color: var(--dark-blue);
     font-weight: var(--font-weight-bold);
 }
 
-/* TOGGLE SWITCH */
+/** Toggle Switch Container */
 .toggle-container {
     position: relative;
     width: 45px;
@@ -349,7 +349,7 @@ body {
     appearance: none;
 }
 
-/* Toggle Thumb */
+/** Toggle Thumb */
 .toggle-thumb {
     position: absolute;
     top: 3px;
@@ -359,11 +359,17 @@ body {
     background: var(--white);
     border-radius: 50%;
     transition: left 0.3s ease;
+    pointer-events: none;
 }
 
-/* When yearly is selected, move thumb right */
+/** When yearly is selected, move thumb right */
 .toggle-container.active .toggle-thumb {
     left: 25px;
+}
+
+/** Bounce animation on click/toggle */
+.toggle-thumb.clicked {
+    transform: scale(0.85);
 }
 
 
