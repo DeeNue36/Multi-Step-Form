@@ -299,13 +299,13 @@ body {
     background: var(--transparent-blue);
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
-    width: fit-content;
+    width: 100%;
     margin: 1rem auto;
 }
 
 .billing-option-container label {
-    font-weight: 500;
-    font-size: 0.9rem;
+    font-weight: var(--font-weight-medium);
+    font-size: 14px;
     color: var(--dark-grey);
     cursor: pointer;
     transition: color 0.3s ease, font-weight 0.3s ease;
@@ -327,9 +327,16 @@ body {
     width: 45px;
     height: 22px;
     background: var(--dark-blue);
-    border-radius: 9999px;
+    border-radius: 16px;
     cursor: pointer;
     transition: background 0.3s ease;
+}
+
+.toggle-container label {
+    display: none;
+    position: relative;
+    z-index: -6;
+    font-size: 0;
 }
 
 .toggle-container input[type="range"] {
@@ -339,6 +346,7 @@ body {
     opacity: 0;
     cursor: pointer;
     z-index: 2;
+    appearance: none;
 }
 
 /* Toggle Thumb */
@@ -348,7 +356,7 @@ body {
     left: 4px;
     width: 16px;
     height: 16px;
-    background: #fff;
+    background: var(--white);
     border-radius: 50%;
     transition: left 0.3s ease;
 }
