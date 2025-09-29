@@ -236,23 +236,35 @@ function updatePrices() {
     //     yearlyDiscountDurations[0].innerHTML = '';
     // }
 
-    planPrices.forEach((planPrice) => {
-        const pricesWithoutDollarSign = planPrice.innerHTML.replace('$', '');
+
+    planPrices.forEach((planPrice) => {    //? Using forEach to loop through the planPrices array and update the prices
+        const pricesWithoutDollarSign = planPrice.innerHTML.replace('$', ''); //? Removing the '$' from the price
+
         if (billingToggle.value === '1') {
+            //? Updating the plan prices for yearly billing
             planPrice.innerHTML = '$' + parseInt(pricesWithoutDollarSign * 10);
+
+            //? Updating the pricing cycles for yearly billing
             pricingCycles.forEach((cycle) => {
                 cycle.innerHTML = '/yr';
             });
+
+            //? Displaying the yearly discount durations
             yearlyDiscountDurations.forEach((duration) => {
                 duration.classList.remove('hidden');
                 duration.innerHTML = '2 months free';
             });
         } 
         else {
+            //? Updating the plan prices for monthly billing
             planPrice.innerHTML = '$' + parseInt(pricesWithoutDollarSign / 10);
+
+            //? Updating the pricing cycles for monthly billing
             pricingCycles.forEach((cycle) => {
                 cycle.innerHTML = '/mo';
             });
+
+            //? Hiding the yearly discount durations
             yearlyDiscountDurations.forEach((duration) => {
                 duration.classList.add('hidden');
                 duration.innerHTML = '';
