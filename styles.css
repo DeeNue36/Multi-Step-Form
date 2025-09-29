@@ -119,7 +119,7 @@ body {
 }
 
 
-/** Personal Info Form Section */
+/** STEP 1: Personal Info Form Section */
 
 .form-main-section {
     width: 70%;
@@ -216,7 +216,7 @@ body {
 }
 
 
-/** Submit Form Button  */
+/** STEP 1: Submit Form Button  */
 
 .submit-form {
     height: 160px;
@@ -240,7 +240,7 @@ body {
 }
 
 
-/** Select Plan Form Section */
+/** STEP 2: Select Plan Form Section */
 
 .plan-container {
     display: flex;
@@ -296,6 +296,7 @@ body {
 
 
 /** Billing Section */
+
 .billing-container {
     display: flex;
     align-items: center;
@@ -327,6 +328,7 @@ body {
 }
 
 /** Toggle Switch Container */
+
 .toggle-container {
     position: relative;
     width: 45px;
@@ -355,6 +357,7 @@ body {
 }
 
 /** Toggle Thumb */
+
 .toggle-thumb {
     position: absolute;
     top: 3px;
@@ -376,6 +379,29 @@ body {
 .toggle-thumb.clicked {
     transform: scale(0.64);
     transition: all 0.4s ease;
+}
+
+
+/** STEP 2: Submit Plan Buttons */
+
+.submit-plan {
+    height: 160px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+}
+
+.previous-button {
+    height: 48px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--dark-grey);
+    font-family: inherit;
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    align-self: flex-end;
 }
 
 
