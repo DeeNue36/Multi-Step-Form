@@ -34,21 +34,23 @@ const errorMessage = document.querySelectorAll('.error-message');
 
 
 // * Forms array for dynamic navigation
-const forms = [personalInfoForm, selectPlanForm]; //? Array of all the form step sections
+const forms = [personalInfoForm, selectPlanForm]; //? Array of all the form/sections steps
+console.log(forms.length)
+console.log(forms.length - 1)
+console.log(forms.indexOf(personalInfoForm))
 let currentStep = 0; //? Variable to keep track of the current step the user is on
 
 
 // * Function to show the current step the user is on
 /* 
-    ?stepIndex is a parameter used to represent the index of the form step the user is on
+    ?nextStepIndex: parameter used to represent the index of the form/section and step number the user is on
     ?Compares with the index of the forms and steps array to display the form step and active class of the step number to the user
-    ?Calls the showStep function to display the correct form step
 */
-function showStep(stepIndex) {
+function showNextStep(nextStepIndex) {
     //? Remove or add the hidden class to the form step section
     forms.forEach((form, index) => {
-        //? If the index of the parameter form(the forms array) matches the stepIndex, display the form step
-        if (index === stepIndex) {
+        //? If the index of the parameter "form"(the forms array) matches nextStepIndex, display the next form/section
+        if (index === nextStepIndex) {
             form.classList.remove('hidden');
         } 
         else {
@@ -58,8 +60,8 @@ function showStep(stepIndex) {
 
     //? Add or remove the active class to the step number
     steps.forEach((step, index) => {
-        //? If the index of the parameter step(the steps array, i.e const steps) matches the stepIndex, add the active class to the step number
-        if (index === stepIndex) {
+        //? If the index of the parameter "step"(the steps array, i.e const steps) matches nextStepIndex, add the active class to the step number
+        if (index === nextStepIndex) {
             step.classList.add('active');
         } 
         else {
@@ -67,6 +69,7 @@ function showStep(stepIndex) {
         }
     });
 }
+
 
 
 //* Next & Previous Buttons Navigation
@@ -86,9 +89,15 @@ nextButtons.forEach(button => {
                 return;
             }
         }
+        /*
+            ?If the current step is less than the last index of the forms array(i.e forms.length - 1), increase the current step by 1
+            ?.length is one number higher than the last index of an array
+            ? Hence why to get the last index of the array we do forms.length - 1
+            ?Then call the showNextStep function with currentStep as an argument which represents the nextStepIndex parameter
+        */
         if (currentStep < forms.length - 1) {
             currentStep++;
-            showStep(currentStep);
+            showNextStep(currentStep);
         }
     });
 });
@@ -96,42 +105,13 @@ nextButtons.forEach(button => {
 //* Dynamic previous buttons
 previousButtons.forEach(button => {
     button.addEventListener('click', () => {
+        //? If the index of the current step is greater than 0, decrease the current step by 1(i.e go to the previous step)
         if (currentStep > 0) {
             currentStep--;
-            showStep(currentStep);
+            showNextStep(currentStep);
         }
     });
 });
-
-//* Next Buttons
-// nextButtons[0].addEventListener('click', () => {
-//     validateName();
-//     validateEmail();
-//     validatePhoneNo();
-
-//     //? If any of the fields are invalid, return
-//     if (!validateName() || !validateEmail() || !validatePhoneNo()) {
-//         return;
-//     }
-
-//     //* Hide Step 1
-//     personalInfoForm.classList.add('hidden');
-
-//     //* Show Step 2
-//     selectPlanForm.classList.remove('hidden');
-    
-//     //* Show Active Step
-//     steps[0].classList.remove('active');
-//     steps[1].classList.add('active');
-// });
-
-//* Previous Buttons
-// previousButtons[0].addEventListener('click', () => {
-//     personalInfoForm.classList.remove('hidden');
-//     selectPlanForm.classList.add('hidden');
-//     steps[0].classList.add('active');
-//     steps[1].classList.remove('active');
-// });
 
 
 //* Validate Form Input Fields
