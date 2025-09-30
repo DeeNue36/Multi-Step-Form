@@ -34,29 +34,74 @@ const errorMessage = document.querySelectorAll('.error-message');
 
 
 // * Forms array for dynamic navigation
-const forms = [personalInfoForm, selectPlanForm];
-let currentStep = 0;
+const forms = [personalInfoForm, selectPlanForm]; //? Array of all the form step sections
+let currentStep = 0; //? Variable to keep track of the current step the user is on
 
-// * Function to show the current step
+
+// * Function to show the current step the user is on
+/* 
+    ?stepIndex is a parameter used to represent the index of the form step the user is on
+    ?Compares with the index of the forms and steps array to display the form step and active class of the step number to the user
+    ?Calls the showStep function to display the correct form step
+*/
 function showStep(stepIndex) {
+    //? Remove or add the hidden class to the form step section
     forms.forEach((form, index) => {
+        //? If the index of the parameter form(the forms array) matches the stepIndex, display the form step
         if (index === stepIndex) {
             form.classList.remove('hidden');
-        } else {
+        } 
+        else {
             form.classList.add('hidden');
         }
     });
+
+    //? Add or remove the active class to the step number
     steps.forEach((step, index) => {
+        //? If the index of the parameter step(the steps array, i.e const steps) matches the stepIndex, add the active class to the step number
         if (index === stepIndex) {
             step.classList.add('active');
-        } else {
+        } 
+        else {
             step.classList.remove('active');
         }
     });
 }
 
 
-//* Event Listeners
+//* Next & Previous Buttons Navigation
+
+//* Dynamic next buttons
+nextButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        if (currentStep === 0) {
+            e.preventDefault(); //? Prevents the default(submit) action of the button
+            //? Validate form input fields
+            validateName();
+            validateEmail();
+            validatePhoneNo();
+            
+            //? If any of the fields are left empty(i.e they return true), do not proceed running the rest of the code
+            if (!validateName() || !validateEmail() || !validatePhoneNo()) {
+                return;
+            }
+        }
+        if (currentStep < forms.length - 1) {
+            currentStep++;
+            showStep(currentStep);
+        }
+    });
+});
+
+//* Dynamic previous buttons
+previousButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        if (currentStep > 0) {
+            currentStep--;
+            showStep(currentStep);
+        }
+    });
+});
 
 //* Next Buttons
 // nextButtons[0].addEventListener('click', () => {
@@ -80,25 +125,6 @@ function showStep(stepIndex) {
 //     steps[1].classList.add('active');
 // });
 
-//* Dynamic next buttons
-nextButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        if (currentStep === 0) {
-            validateName();
-            validateEmail();
-            validatePhoneNo();
-            if (!validateName() || !validateEmail() || !validatePhoneNo()) {
-                return;
-            }
-        }
-        if (currentStep < forms.length - 1) {
-            currentStep++;
-            showStep(currentStep);
-        }
-    });
-});
-
-
 //* Previous Buttons
 // previousButtons[0].addEventListener('click', () => {
 //     personalInfoForm.classList.remove('hidden');
@@ -106,17 +132,6 @@ nextButtons.forEach(button => {
 //     steps[0].classList.add('active');
 //     steps[1].classList.remove('active');
 // });
-
-//* Dynamic previous buttons
-previousButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        if (currentStep > 0) {
-            currentStep--;
-            showStep(currentStep);
-        }
-    });
-});
-
 
 
 //* Validate Form Input Fields
