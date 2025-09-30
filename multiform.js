@@ -35,9 +35,6 @@ const errorMessage = document.querySelectorAll('.error-message');
 
 // * Forms array for dynamic navigation
 const forms = [personalInfoForm, selectPlanForm]; //? Array of all the form/sections steps
-console.log(forms.length)
-console.log(forms.length - 1)
-console.log(forms.indexOf(personalInfoForm))
 let currentStep = 0; //? Variable to keep track of the current step the user is on
 
 
@@ -94,6 +91,7 @@ nextButtons.forEach(button => {
             ?.length is one number higher than the last index of an array
             ? Hence why to get the last index of the array we do forms.length - 1
             ?Then call the showNextStep function with currentStep as an argument which represents the nextStepIndex parameter
+            ?Run console.log(forms.length), console.log(forms.length - 1), console.log(forms.indexOf(personalInfoForm)) for better understanding
         */
         if (currentStep < forms.length - 1) {
             currentStep++;
@@ -102,10 +100,11 @@ nextButtons.forEach(button => {
     });
 });
 
+
 //* Dynamic previous buttons
 previousButtons.forEach(button => {
     button.addEventListener('click', () => {
-        //? If the index of the current step is greater than 0, decrease the current step by 1(i.e go to the previous step)
+        //? If the index of the currentStep is greater than 0, decrease currentStep by 1(i.e go to the previous step)
         if (currentStep > 0) {
             currentStep--;
             showNextStep(currentStep);
