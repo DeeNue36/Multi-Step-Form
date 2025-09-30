@@ -25,7 +25,6 @@ const yearly = document.getElementById('yearly');
 const addOnsSection = document.querySelector('.add-ons-section');
 const addOns = document.querySelectorAll('.addon-card');
 const defaultCheckbox = document.querySelectorAll('.addon-card-body input[type="checkbox"]');
-console.log(defaultCheckbox);
 const customCheckbox = document.querySelectorAll('.custom-checkbox');
 const addOnPrices = document.querySelectorAll('.addon-price');
 const addOnsPricingCycles = document.querySelectorAll('.addon-pricing-cycle');
@@ -346,14 +345,13 @@ function updatePrices() {
 //* STEP 3: Add-ons Section
 
 // * Add-ons Cards: Selecting an Add-on Card, checking the checkbox and Adding Active Class
-addOns.forEach(addOn => {
-    const checkbox = addOn.querySelector('input[type="checkbox"]');
+addOns.forEach((addOn, index) => {
+    const checkbox = defaultCheckbox[index];
 
     // Toggle active class and checkbox checked state on card click
     addOn.addEventListener('click', () => {
         const isActive = addOn.classList.toggle('active');
         checkbox.checked = isActive;
-        // console.log(checkbox.checked);
     });
 
     // Toggle active class on checkbox change (e.g. keyboard interaction)
