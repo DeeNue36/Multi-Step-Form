@@ -21,36 +21,100 @@ const toggleThumb = document.querySelector('.toggle-thumb');
 const monthly = document.getElementById('monthly');
 const yearly = document.getElementById('yearly');
 
-// * Next Button
-const nextButton = document.querySelectorAll('.next-button');
-console.log(nextButton);
+// * Next Step Buttons
+const nextButtons = document.querySelectorAll('.next-button');
+console.log(nextButtons);
+
+// * Previous Step Buttons
+const previousButtons = document.querySelectorAll('.previous-button');
 
 //* Error Messages
 const errorMessage = document.querySelectorAll('.error-message');
 
 
+
+// * Forms array for dynamic navigation
+const forms = [personalInfoForm, selectPlanForm];
+let currentStep = 0;
+
+// * Function to show the current step
+function showStep(stepIndex) {
+    forms.forEach((form, index) => {
+        if (index === stepIndex) {
+            form.classList.remove('hidden');
+        } else {
+            form.classList.add('hidden');
+        }
+    });
+    steps.forEach((step, index) => {
+        if (index === stepIndex) {
+            step.classList.add('active');
+        } else {
+            step.classList.remove('active');
+        }
+    });
+}
+
+
 //* Event Listeners
 
 //* Next Buttons
-nextButton[0].addEventListener('click', () => {
-    validateName();
-    validateEmail();
-    validatePhoneNo();
+// nextButtons[0].addEventListener('click', () => {
+//     validateName();
+//     validateEmail();
+//     validatePhoneNo();
 
-    //? If any of the fields are invalid, return
-    if (!validateName() || !validateEmail() || !validatePhoneNo()) {
-        return;
-    }
+//     //? If any of the fields are invalid, return
+//     if (!validateName() || !validateEmail() || !validatePhoneNo()) {
+//         return;
+//     }
 
-    //* Hide Step 1
-    personalInfoForm.classList.add('hidden');
+//     //* Hide Step 1
+//     personalInfoForm.classList.add('hidden');
 
-    // * Show Step 2
-    selectPlanForm.classList.remove('hidden');
+//     //* Show Step 2
+//     selectPlanForm.classList.remove('hidden');
     
-    // * Show Active Step
-    steps[0].classList.remove('active');
-    steps[1].classList.add('active');
+//     //* Show Active Step
+//     steps[0].classList.remove('active');
+//     steps[1].classList.add('active');
+// });
+
+//* Dynamic next buttons
+nextButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        if (currentStep === 0) {
+            validateName();
+            validateEmail();
+            validatePhoneNo();
+            if (!validateName() || !validateEmail() || !validatePhoneNo()) {
+                return;
+            }
+        }
+        if (currentStep < forms.length - 1) {
+            currentStep++;
+            showStep(currentStep);
+        }
+    });
+});
+
+
+//* Previous Buttons
+// previousButtons[0].addEventListener('click', () => {
+//     personalInfoForm.classList.remove('hidden');
+//     selectPlanForm.classList.add('hidden');
+//     steps[0].classList.add('active');
+//     steps[1].classList.remove('active');
+// });
+
+//* Dynamic previous buttons
+previousButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        if (currentStep > 0) {
+            currentStep--;
+            showStep(currentStep);
+        }
+    });
 });
 
 
