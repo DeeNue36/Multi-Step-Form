@@ -436,9 +436,70 @@ body {
     gap: 24px;
 }
 
+/** Native/Default checkbox styling */
+/*
+.addon-card-body input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.addon-card-body input[type="checkbox"]:checked {
+    accent-color: var(--purple-medium);
+}
+*/
+
+/** Custom checkbox styling */
+
+/** Native Checkbox Input */
+.addon-card-body input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    position: absolute; /*? Position native checkbox on top the custom checkbox */
+    opacity: 0;
+    cursor: pointer;
+}
+
+/** Custom Checkbox */
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--transparent-purple);
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 0.2s ease-in;
+    flex-shrink: 0;
+}
+
+/** Trigger the custom checkbox when the native checkbox is checked */
+.addon-card-body input[type="checkbox"]:checked + .custom-checkbox {
+    background-color: var(--purple-medium);
+    border-color: var(--purple-medium);
+    background-image: url('images/icon-checkmark.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12px;
+}
+
 .addon-details {
     display: flex;
     flex-direction: column;
+}
+
+.addon-details label {
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-medium);
+    color: var(--dark-blue);
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.addon-details p {
+    font-size: 14px;
+    color: var(--dark-grey);
+    cursor: pointer;
 }
 
 
