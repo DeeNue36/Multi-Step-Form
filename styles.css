@@ -406,7 +406,7 @@ body {
     display: none;
 }
 
-.add-on-card {
+.addon-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -419,14 +419,23 @@ body {
     margin-bottom: 16px;
 }
 
-.add-on-card:hover, .add-on-card.active {
+.addon-card:hover, .addon-card.active {
     background-color: var(--transparent-light-blue);
     cursor: pointer;
     border-color: var(--purple-medium);
     border-width: 1.5px;
 }
 
+.addon-card-body {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
 
+.addon-details {
+    display: flex;
+    flex-direction: column;
+}
 
 
 /** Utilities */
