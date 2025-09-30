@@ -149,7 +149,7 @@ body {
     color: var(--dark-grey);
 }
 
-.form-body, .add-ons-container {
+.form-body {
     margin-top: 64px;
 }
 
@@ -404,6 +404,10 @@ body {
 /** STEP 3: Add-ons Section */
 .personal-info-form, .select-plan-section {
     display: none;
+}
+
+.add-ons-container {
+    margin-top: 48px;
 }
 
 .addon-card {
