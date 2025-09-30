@@ -9,8 +9,8 @@ const nameField = document.querySelector('#name');
 const emailField = document.querySelector('#email');
 const phoneField = document.querySelector('#phone');
 
-// * Step 2: Select Plan Form
-const selectPlanForm = document.querySelector('.select-plan-form');
+// * Step 2: Select Plan Section
+const selectPlanSection = document.querySelector('.select-plan-section');
 const plans = document.querySelectorAll('.plan-card');
 const planPrices = document.querySelectorAll('.price');
 const pricingCycles = document.querySelectorAll('.pricing-cycle');
@@ -21,12 +21,22 @@ const toggleThumb = document.querySelector('.toggle-thumb');
 const monthly = document.getElementById('monthly');
 const yearly = document.getElementById('yearly');
 
+//* Step 3: Addons Section
+const addOnsSection = document.querySelector('.add-ons-section');
+const addOns = document.querySelectorAll('.addon-card');
+const defaultCheckbox = document.querySelectorAll('.addon-card-body input[type="checkbox"]');
+console.log(defaultCheckbox);
+const customCheckbox = document.querySelectorAll('.custom-checkbox');
+const addOnPrices = document.querySelectorAll('.addon-price');
+const addOnsPricingCycles = document.querySelectorAll('.addon-pricing-cycle');
+
 // * Next Step Buttons
 const nextButtons = document.querySelectorAll('.next-button');
 console.log(nextButtons);
 
 // * Previous Step Buttons
 const previousButtons = document.querySelectorAll('.previous-button');
+console.log(previousButtons);
 
 //* Error Messages
 const errorMessage = document.querySelectorAll('.error-message');
@@ -34,7 +44,7 @@ const errorMessage = document.querySelectorAll('.error-message');
 
 
 // * Forms array for dynamic navigation
-const forms = [personalInfoForm, selectPlanForm]; //? Array of all the form/sections steps
+const forms = [personalInfoForm, selectPlanSection, addOnsSection]; //? Array of all the form/sections steps
 let currentStep = 0; //? Variable to keep track of the current step the user is on
 
 
@@ -112,6 +122,8 @@ previousButtons.forEach(button => {
     });
 });
 
+
+// * STEP 1: Personal Info Form
 
 //* Validate Form Input Fields
 
@@ -226,7 +238,7 @@ phoneField.addEventListener('input', () => {
 });
 
 
-//* STEP 2: Plan Cards & Monthly and Yearly Billing Options
+//* STEP 2: Select Plan Section
 
 // * Plan Cards: Selecting a Plan Card and Adding Active Class
 plans.forEach(plan => {
@@ -276,6 +288,41 @@ function bounceThumb() {
 }
 
 function updatePrices() {
+    planPrices.forEach((planPrice) => {    //? Using forEach to loop through the planPrices array and update the prices
+        const pricesWithoutDollarSign = planPrice.innerHTML.replace('$', ''); //? Removing the '$' from the price
+        
+        if (billingToggle.value === '1') {
+            //? Updating the plan prices for yearly billing
+            planPrice.innerHTML = '$' + parseInt(pricesWithoutDollarSign * 10);
+            
+            //? Updating the pricing cycles for yearly billing
+            pricingCycles.forEach((cycle) => {
+                cycle.innerHTML = '/yr';
+            });
+            
+            //? Displaying the yearly discount durations
+            yearlyDiscountDurations.forEach((duration) => {
+                duration.classList.remove('hidden');
+                duration.innerHTML = '2 months free';
+            });
+        } 
+        else {
+            //? Updating the plan prices for monthly billing
+            planPrice.innerHTML = '$' + parseInt(pricesWithoutDollarSign / 10);
+            
+            //? Updating the pricing cycles for monthly billing
+            pricingCycles.forEach((cycle) => {
+                cycle.innerHTML = '/mo';
+            });
+            
+            //? Hiding the yearly discount durations
+            yearlyDiscountDurations.forEach((duration) => {
+                duration.classList.add('hidden');
+                duration.innerHTML = '';
+            });
+        }
+    });
+
     //! Populating the Plans Prices, Pricing Cycles and Yearly Discount Durations Sequentially
     // 1. Arcade Plan
     // let arcadePlan = planPrices[0].innerHTML;
@@ -293,40 +340,27 @@ function updatePrices() {
     //     yearlyDiscountDurations[0].classList.add('hidden');
     //     yearlyDiscountDurations[0].innerHTML = '';
     // }
-
-
-    planPrices.forEach((planPrice) => {    //? Using forEach to loop through the planPrices array and update the prices
-        const pricesWithoutDollarSign = planPrice.innerHTML.replace('$', ''); //? Removing the '$' from the price
-
-        if (billingToggle.value === '1') {
-            //? Updating the plan prices for yearly billing
-            planPrice.innerHTML = '$' + parseInt(pricesWithoutDollarSign * 10);
-
-            //? Updating the pricing cycles for yearly billing
-            pricingCycles.forEach((cycle) => {
-                cycle.innerHTML = '/yr';
-            });
-
-            //? Displaying the yearly discount durations
-            yearlyDiscountDurations.forEach((duration) => {
-                duration.classList.remove('hidden');
-                duration.innerHTML = '2 months free';
-            });
-        } 
-        else {
-            //? Updating the plan prices for monthly billing
-            planPrice.innerHTML = '$' + parseInt(pricesWithoutDollarSign / 10);
-
-            //? Updating the pricing cycles for monthly billing
-            pricingCycles.forEach((cycle) => {
-                cycle.innerHTML = '/mo';
-            });
-
-            //? Hiding the yearly discount durations
-            yearlyDiscountDurations.forEach((duration) => {
-                duration.classList.add('hidden');
-                duration.innerHTML = '';
-            });
-        }
-    });
 }
+
+
+//* STEP 3: Add-ons Section
+
+// * Add-ons Cards: Selecting an Add-on Card, checking the checkbox and Adding Active Class
+addOns.forEach(addOn => {
+    const checkbox = addOn.querySelector('input[type="checkbox"]');
+
+    // Toggle active class and checkbox checked state on card click
+    addOn.addEventListener('click', () => {
+        const isActive = addOn.classList.toggle('active');
+        checkbox.checked = isActive;
+        // console.log(checkbox.checked);
+    });
+
+    // Toggle active class on checkbox change (e.g. keyboard interaction)
+    checkbox.addEventListener('change', () => {
+        addOn.classList.toggle('active', checkbox.checked);
+    });
+});
+
+
+
