@@ -15,16 +15,17 @@ const plans = document.querySelectorAll('.plan-card');
 const planPrices = document.querySelectorAll('.price');
 const pricingCycles = document.querySelectorAll('.pricing-cycle');
 const yearlyDiscountDurations = document.querySelectorAll('.yearly-discount-duration');
-const toggleContainer = document.querySelector('.toggle-container');
-const billingToggle = document.getElementById('billing-toggle');
-const toggleThumb = document.querySelector('.toggle-thumb');
+const toggleContainer = document.querySelector('.toggle-container'); //? Container for range input and custom toggle thumb
+const billingRange = document.getElementById('billing-toggle'); //? Input type range element, contains values 0(monthly) or 1(yearly)
+const toggleThumb = document.querySelector('.toggle-thumb'); //? Custom toggle thumb
 const monthly = document.getElementById('monthly');
 const yearly = document.getElementById('yearly');
 
 //* Step 3: Addons Section
 const addOnsSection = document.querySelector('.add-ons-section');
 const addOns = document.querySelectorAll('.addon-card');
-const defaultCheckbox = document.querySelectorAll('.addon-card-body input[type="checkbox"]');
+const defaultCheckboxes = document.querySelectorAll('.addon-card-body input[type="checkbox"]');
+console.log(defaultCheckboxes);
 const customCheckbox = document.querySelectorAll('.custom-checkbox');
 const addOnPrices = document.querySelectorAll('.addon-price');
 const addOnsPricingCycles = document.querySelectorAll('.addon-pricing-cycle');
@@ -250,33 +251,36 @@ plans.forEach(plan => {
 });
 
 // * Billing Options: Monthly and Yearly
-billingToggle.addEventListener('input', () => {
-    if (billingToggle.value === '1') {
+
+// * Clicking the Billing Toggle Switch
+billingRange.addEventListener('input', () => {
+    if (billingRange.value === '1') {
         yearly.checked = true;
         toggleContainer.classList.add('active');
         bounceThumb();
-        updatePrices();
+        updatePlanPrices();
     } 
     else {
         monthly.checked = true;
         toggleContainer.classList.remove('active');
         bounceThumb();
-        updatePrices();
+        updatePlanPrices();
     }
 });
 
+// * Clicking the "Monthly" and "Yearly" Labels to toggle switching
 monthly.addEventListener('change', () => {
-    billingToggle.value = '0';
+    billingRange.value = '0';
     toggleContainer.classList.remove('active');
     bounceThumb();
-    updatePrices();
+    updatePlanPrices();
 });
 
 yearly.addEventListener('change', () => {
-    billingToggle.value = '1';
+    billingRange.value = '1';
     toggleContainer.classList.add('active');
     bounceThumb();
-    updatePrices();
+    updatePlanPrices();
 });
 
 function bounceThumb() {
@@ -286,11 +290,11 @@ function bounceThumb() {
     }, 150);
 }
 
-function updatePrices() {
+function updatePlanPrices() {
     planPrices.forEach((planPrice) => {    //? Using forEach to loop through the planPrices array and update the prices
         const pricesWithoutDollarSign = planPrice.innerHTML.replace('$', ''); //? Removing the '$' from the price
         
-        if (billingToggle.value === '1') {
+        if (billingRange.value === '1') {
             //? Updating the plan prices for yearly billing
             planPrice.innerHTML = '$' + parseInt(pricesWithoutDollarSign * 10);
             
@@ -326,7 +330,7 @@ function updatePrices() {
     // 1. Arcade Plan
     // let arcadePlan = planPrices[0].innerHTML;
     // const arcadePlanWithoutDollarSign = arcadePlan.replace('$', '');
-    // if (billingToggle.value === '1') {
+    // if (billingRange.value === '1') {
     //     console.log(arcadePlanWithoutDollarSign);
     //     planPrices[0].innerHTML = '$' + parseInt(arcadePlanWithoutDollarSign * 10);
     //     pricingCycles[0].innerHTML = '/yr';
@@ -346,19 +350,43 @@ function updatePrices() {
 
 // * Add-ons Cards: Selecting an Add-on Card, checking the checkbox and Adding Active Class
 addOns.forEach((addOn, index) => {
-    const checkbox = defaultCheckbox[index];
+    const checkbox = defaultCheckboxes[index];  //? Use the index to access the corresponding checkbox
 
-    // Toggle active class and checkbox checked state on card click
+    //? Toggle active class and checkbox checked state on card click
     addOn.addEventListener('click', () => {
         const isActive = addOn.classList.toggle('active');
-        checkbox.checked = isActive;
+        checkbox.checked = isActive; 
+        //? isActive returns true if the active class is present and false vice versa
+        //? .check is a boolean value the input type checkbox has by default, it takes the isActive value and checks or unchecks the checkbox  
     });
 
-    // Toggle active class on checkbox change (e.g. keyboard interaction)
+    //? Toggle active class on checkbox change (e.g. keyboard interaction)
     checkbox.addEventListener('change', () => {
         addOn.classList.toggle('active', checkbox.checked);
     });
 });
+
+//* Checking if monthly or yearly billing is selected and updating the prices accordingly in step 3
+function updateAddOnPrices() {
+    if (billingRange.value === '1') {
+        addOnPrices.forEach((price) => {
+            const pricesWithoutDollarSign = price.innerHTML.replace('$', '');
+            price.innerHTML = '$' + parseInt(pricesWithoutDollarSign * 10);
+        });
+    } 
+    else {
+        addOnPrices.forEach((price) => {
+            const pricesWithoutDollarSign = price.innerHTML.replace('$', '');
+            price.innerHTML = '$' + parseInt(pricesWithoutDollarSign / 10);
+        });
+    }
+}
+
+/* 
+    TODO: Based on the billing cycle chosen in step 2, in step 3 display the add-on prices accordingly
+    TODO: i.e. if the user has chosen yearly billing, display the yearly add-on prices, 
+    TODO: if the user has chosen monthly billing, display the monthly add-on prices
+*/
 
 
 
