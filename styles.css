@@ -423,9 +423,12 @@ body {
 }
 
 .addon-card:hover, .addon-card.active {
-    background-color: var(--transparent-light-blue);
     cursor: pointer;
-    border-color: var(--purple-medium);
+    border: 1px solid var(--purple-medium);
+}
+
+.addon-card.active {
+    background-color: var(--transparent-light-blue);
     border-width: 1.5px;
 }
 
