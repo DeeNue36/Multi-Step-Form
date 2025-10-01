@@ -80,6 +80,8 @@ function showNextStep(nextStepIndex) {
 
 //* Next & Previous Buttons Navigation
 
+let lastBillingValue = billingRange.value; // Track last billing toggle value
+
 //* Dynamic next buttons
 nextButtons.forEach(button => {
     button.addEventListener('click', (e) => {
@@ -104,7 +106,11 @@ nextButtons.forEach(button => {
         */
         if (currentStep < forms.length - 1) {
             if (currentStep === 1) {
-                updateAddOnPrices(); // Call updateAddOnPrices when moving from step 2 to step 3
+                // Only update addon prices if billing toggle value changed or if prices are $0
+                if (billingRange.value !== lastBillingValue || Array.from(addOnPrices).some(price => price.innerHTML.includes('$0'))) {
+                    updateAddOnPrices(); // Call updateAddOnPrices when moving from step 2 to step 3
+                    lastBillingValue = billingRange.value;
+                }
             }
             currentStep++;
             showNextStep(currentStep);
@@ -145,8 +151,8 @@ function validateName() {
         nameField.classList.remove('error');
     }
 
-    return fullNameRegex.test(nameField.value); 
     //? Returns true or false if the name provided is valid or not
+    return fullNameRegex.test(nameField.value); 
 }
 
 
@@ -166,8 +172,8 @@ function validateEmail() {
         emailField.classList.remove('error');
     }
 
-    return emailRegex.test(emailField.value); 
     //? Returns true or false if the email provided is valid or not
+    return emailRegex.test(emailField.value); 
 }
 
 
@@ -188,8 +194,8 @@ function validatePhoneNo() {
         phoneField.classList.remove('error');
     }
 
-    return phoneNoRegex.test(phoneField.value); 
     //? Returns true or false if the phone number provided is valid or not
+    return phoneNoRegex.test(phoneField.value); 
 }
 
 
@@ -205,8 +211,8 @@ nameField.addEventListener('input', () => {
         errorMessage[0].innerText = '';
     }
 
-    nameField.classList.remove('error-vibrate'); 
     //? Removes the error-vibrate animation class from having any effect on the name field while the user is typing
+    nameField.classList.remove('error-vibrate'); 
 });
 
 
@@ -220,8 +226,8 @@ emailField.addEventListener('input', () => {
         errorMessage[1].innerText = '';
     }
 
-    emailField.classList.remove('error-vibrate'); 
     //? Removes the error-vibrate animation class from having any effect on the email field while the user is typing
+    emailField.classList.remove('error-vibrate'); 
 });
 
 
@@ -235,8 +241,8 @@ phoneField.addEventListener('input', () => {
         errorMessage[2].innerText = '';
     }
 
-    phoneField.classList.remove('error-vibrate'); 
     //? Removes the error-vibrate animation class from having any effect on the phone field while the user is typing
+    phoneField.classList.remove('error-vibrate'); 
 });
 
 
@@ -389,7 +395,7 @@ function updateAddOnPrices() {
                 addOnCycle.innerHTML = '/mo';
             });
         }
-    })
+    });
 }
 
 /* 
