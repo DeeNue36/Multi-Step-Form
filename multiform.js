@@ -80,7 +80,8 @@ function showNextStep(nextStepIndex) {
 
 //* Next & Previous Buttons Navigation
 
-let lastBillingValue = billingRange.value; // Track last billing toggle value
+//? Tracks and stores the current billing range value, the default value is 0(monthly) as defined in the HTML
+let lastRangeValue = billingRange.value; 
 
 //* Dynamic next buttons
 nextButtons.forEach(button => {
@@ -105,12 +106,12 @@ nextButtons.forEach(button => {
             ?Run console.log(forms.length), console.log(forms.length - 1), console.log(forms.indexOf(personalInfoForm)) for better understanding
         */
         if (currentStep < forms.length - 1) {
-            if (currentStep === 1) {
-                // Only update addon prices if billing toggle value changed or if prices are $0
-                if (billingRange.value !== lastBillingValue || Array.from(addOnPrices).some(price => price.innerHTML.includes('$0'))) {
-                    updateAddOnPrices(); // Call updateAddOnPrices when moving from step 2 to step 3
-                    lastBillingValue = billingRange.value;
-                }
+            //? Only update addon prices when moving from step 2 to step 3 and if billing range value changes
+            //? i.e if "billingRange.value" does not match the value stored in "lastRangeValue"
+            //? billingRange.value is dynamic and updates every time the range input is clicked
+            if (currentStep === 1 && billingRange.value !== lastRangeValue) {
+                updateAddOnPrices(); 
+                lastRangeValue = billingRange.value; //? Update the last range value
             }
             currentStep++;
             showNextStep(currentStep);
@@ -260,7 +261,7 @@ plans.forEach(plan => {
 
 // * Billing Options: Monthly and Yearly
 
-// * Clicking the Billing Toggle Switch
+// * Clicking the Range Input to toggle switching
 billingRange.addEventListener('input', () => {
     if (billingRange.value === '1') {
         yearly.checked = true;
