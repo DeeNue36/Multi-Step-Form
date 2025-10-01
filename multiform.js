@@ -25,10 +25,9 @@ const yearly = document.getElementById('yearly');
 const addOnsSection = document.querySelector('.add-ons-section');
 const addOns = document.querySelectorAll('.addon-card');
 const defaultCheckboxes = document.querySelectorAll('.addon-card-body input[type="checkbox"]');
-console.log(defaultCheckboxes);
 const customCheckbox = document.querySelectorAll('.custom-checkbox');
 const addOnPrices = document.querySelectorAll('.addon-price');
-const addOnsPricingCycles = document.querySelectorAll('.addon-pricing-cycle');
+const addOnPricingCycles = document.querySelectorAll('.addon-pricing-cycle');
 
 // * Next Step Buttons
 const nextButtons = document.querySelectorAll('.next-button');
@@ -104,6 +103,9 @@ nextButtons.forEach(button => {
             ?Run console.log(forms.length), console.log(forms.length - 1), console.log(forms.indexOf(personalInfoForm)) for better understanding
         */
         if (currentStep < forms.length - 1) {
+            if (currentStep === 1) {
+                updateAddOnPrices(); // Call updateAddOnPrices when moving from step 2 to step 3
+            }
             currentStep++;
             showNextStep(currentStep);
         }
@@ -368,18 +370,26 @@ addOns.forEach((addOn, index) => {
 
 //* Checking if monthly or yearly billing is selected and updating the prices accordingly in step 3
 function updateAddOnPrices() {
-    if (billingRange.value === '1') {
-        addOnPrices.forEach((price) => {
-            const pricesWithoutDollarSign = price.innerHTML.replace('$', '');
-            price.innerHTML = '$' + parseInt(pricesWithoutDollarSign * 10);
-        });
-    } 
-    else {
-        addOnPrices.forEach((price) => {
-            const pricesWithoutDollarSign = price.innerHTML.replace('$', '');
-            price.innerHTML = '$' + parseInt(pricesWithoutDollarSign / 10);
-        });
-    }
+    addOnPrices.forEach((addOnPrice) => {
+        const pricesWithoutSymbols = addOnPrice.innerHTML.replace(/[+$]/g, '');
+
+        if (billingRange.value === '1') {
+            addOnPrice.innerHTML = '+$' + parseInt(pricesWithoutSymbols * 10);
+
+            //? Updating the pricing cycles for yearly billing
+            addOnPricingCycles.forEach((addOnCycle) => {
+                addOnCycle.innerHTML = '/yr';
+            });
+        } 
+        else {
+            addOnPrice.innerHTML = '+$' + parseInt(pricesWithoutSymbols / 10);
+
+            //? Updating the pricing cycles for yearly billing
+            addOnPricingCycles.forEach((addOnCycle) => {
+                addOnCycle.innerHTML = '/mo';
+            });
+        }
+    })
 }
 
 /* 
