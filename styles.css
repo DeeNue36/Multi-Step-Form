@@ -422,7 +422,11 @@ body {
     margin-bottom: 16px;
 }
 
-.addon-card:hover, .addon-card.active {
+.addon-card:hover,
+.addon-card:focus,
+.addon-card:focus-visible,
+.addon-card.active {
+    outline: none;
     cursor: pointer;
     border: 1px solid var(--purple-medium);
 }
