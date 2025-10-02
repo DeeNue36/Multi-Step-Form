@@ -51,7 +51,7 @@
         </section>
 
         <!-- * Main Form Section -->
-        <section class="form-main-section">
+        <main class="form-main-section">
             <!-- * Step 1: Personal Info Form -->
             <form class="personal-info-form">
 
@@ -201,7 +201,7 @@
             </section>
 
             <!-- * Step 3: Add-ons Form -->
-            <section class="add-ons-section">
+            <section class="add-ons-section hidden">
                 <div class="form-header">
                     <h2>Pick add-ons</h2>
                     <p>Add-ons help enhance your gaming experience.</p>
@@ -297,7 +297,37 @@
                     </button>
                 </div>
             </section>
-        </section>
+
+            <!-- * Step 4: Summary Form -->
+            <section class="summary-section">
+                <div class="form-header">
+                    <h2>Finishing up</h2>
+                    <p>Double-check everything looks OK before confirming.</p>
+                </div>
+
+                <div class="summary-container">
+                    <div class="summary-card">
+                        <div class="summary-card-header">
+                            <img src="images/icon-thank-you.svg" alt="Thank You Icon">
+                            <h3>Thank you!</h3>
+                        </div>
+
+                        <div class="summary-card-body">
+                            <p>You have the plan <span id="selected-plan"></span> and <span id="selected-addons"></span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-summary">
+                    <button type="button" class="previous-button">
+                        Go Back
+                    </button>
+                    <button type="submit" class="next-button">
+                        Confirm
+                    </button>
+                </div>
+            </section>
+        </main>
     </div>
 
     <script src="multiform.js"></script>
