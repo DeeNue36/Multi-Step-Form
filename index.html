@@ -299,62 +299,49 @@
             </section>
 
             <!-- * Step 4: Summary Form -->
-            <section class="summary-section">
+            <section class="summary-section hidden">
                 <div class="form-header">
                     <h2>Finishing up</h2>
                     <p>Double-check everything looks OK before confirming.</p>
                 </div>
 
                 <div class="summary-card-container">
-                    <div class="selected-plan-and-price">
-                        <div class="selected-plan">
-                            <h4 class="user-plan-selected">Arcade (Monthly)</h4>
-                            <button type="button" class="change-plan-btn">
-                                Change
-                            </button>
+                    <div class="summary-card">
+                        <div class="selected-plan-and-price">
+                            <div class="selected-plan">
+                                <p class="user-plan-selected"></p>
+                                <button type="button" class="change-plan-btn">
+                                    Change
+                                </button>
+                            </div>
+                            <div class="selected-plan-price">
+                                <span></span>
+                            </div>
                         </div>
-                        <div class="selected-plan-price">
-                            <span>$9/mo</span>
+
+                        <div class="divider"></div>
+
+                        <div class="selected-addon-and-price-container">
+                            <!-- <div class="selected-addon-and-price">
+                                <span class="selected-addon"></span>
+                                <span class="selected-addon-price"></span>
+                            </div> -->
                         </div>
                     </div>
 
-                    <div class="divider"></div>
-
-                    <div class="selected-addon-and-price">
-                        <span class="selected-addon">
-                            Online Service
-                        </span>
-                        <span class="selected-addon-price">
-                            +$1/mo
-                        </span>
+                    <div class="total-cost-container">
+                        <span class="total-cost"></span>
+                        <span class="total-cost-value"></span>
                     </div>
 
-                    <div class="selected-addon-and-price">
-                        <span class="selected-addon">
-                            Larger Storage
-                        </span>
-                        <span class="selected-addon-price">
-                            +$2/mo
-                        </span>
+                    <div class="submit-summary">
+                        <button type="button" class="previous-button">
+                            Go Back
+                        </button>
+                        <button type="submit" class="confirm-button">
+                            Confirm
+                        </button>
                     </div>
-                </div>
-
-                <div class="total-cost-container">
-                    <span class="total-cost">
-                        Total (per month)
-                    </span>
-                    <span class="total-cost-value">
-                        +$12/mo
-                    </span>
-                </div>
-
-                <div class="submit-summary">
-                    <button type="button" class="previous-button">
-                        Go Back
-                    </button>
-                    <button type="submit" class="next-button">
-                        Confirm
-                    </button>
                 </div>
             </section>
         </main>
