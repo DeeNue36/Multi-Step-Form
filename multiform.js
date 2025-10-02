@@ -482,6 +482,11 @@ function displaySummary() {
         }
     });
 
+    //? Display the total per billing cycle
+    //? Ternary/conditional operator to display either 'year' or 'month' based on the value of billingRange
+    //? "year" is the expression if the condition is true and "month" if it is false
+    totalCost.textContent = 'Total (per ' + (billingRange.value === '1' ? 'year' : 'month') + ')';
+
     //? Display the total price
     totalCostValue.textContent = '$' + totalPrice;
 }
