@@ -382,9 +382,9 @@ body {
 }
 
 
-/** STEP 2 & 3: Next & Previous Buttons */
+/** STEP 2, 3 & 4: Next & Previous Buttons */
 
-.submit-plan, .submit-add-ons {
+.submit-plan, .submit-add-ons, .submit-summary {
     height: 160px;
     display: flex;
     justify-content: space-between;
@@ -534,11 +534,12 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
-    border-bottom: 1px solid var(--transparent-purple);
 }
 
-.selected-plan {
-    margin-bottom: 16px;
+.divider {
+    width: 100%;
+    border-bottom: 1px solid var(--transparent-purple);
+    margin: 16px 0 24px;
 }
 
 .user-plan-selected {
@@ -558,12 +559,44 @@ body {
     font-size: var(--small-font-size);
     cursor: pointer;
     transition: all 0.2s ease-in;
-    margin-bottom: 12px;
 }
 
 .change-plan-btn:hover {
     color: var(--purple-medium);
 }
+
+.selected-plan-price {
+    align-self: center;
+}
+
+.selected-plan-price span {
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-bold);
+    color: var(--dark-blue);
+}
+
+.selected-addon-and-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.selected-addon-and-price:last-child {
+    margin-bottom: 0;
+}
+
+.selected-addon {
+    font-size: var(--small-font-size);
+    color: var(--dark-grey);
+}
+
+.selected-addon-price {
+    font-size: var(--small-font-size);
+    color: var(--dark-blue);
+}
+
+
 
 
 
