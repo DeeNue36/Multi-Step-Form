@@ -416,7 +416,7 @@ body {
 
 /** STEP 3: Add-ons Section */
 /* .personal-info-form, .select-plan-section, .add-ons-section {
-    display: none;
+    display: none; 
 } */
 
 .add-ons-container, .summary-card-container {
@@ -594,6 +594,7 @@ body {
 .selected-addon {
     font-size: var(--small-font-size);
     color: var(--dark-grey);
+    text-transform: capitalize;
 }
 
 .selected-addon-price {
