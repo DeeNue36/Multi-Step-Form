@@ -29,6 +29,16 @@ const customCheckbox = document.querySelectorAll('.custom-checkbox');
 const addOnPrices = document.querySelectorAll('.addon-price');
 const addOnPricingCycles = document.querySelectorAll('.addon-pricing-cycle');
 
+// * Step 4: Summary Section
+const summarySection = document.querySelector('.summary-section');
+const summaryCard = document.querySelector('.summary-card');
+const changePlanBtn = document.querySelector('.change-plan-btn');
+const userPlanSelected = document.querySelector('.user-plan-selected');
+const selectedPlanPrice = document.querySelector('.selected-plan-price span');
+const totalCost = document.querySelector('.total-cost');
+const totalCostValue = document.querySelector('.total-cost-value');
+const selectedAddOnContainer = document.querySelector('.selected-addon-and-price-container');
+
 // * Next Step Buttons
 const nextButtons = document.querySelectorAll('.next-button');
 console.log(nextButtons);
@@ -43,7 +53,7 @@ const errorMessage = document.querySelectorAll('.error-message');
 
 
 // * Forms array for dynamic navigation
-const forms = [personalInfoForm, selectPlanSection, addOnsSection]; //? Array of all the form/sections steps
+const forms = [personalInfoForm, selectPlanSection, addOnsSection, summarySection]; //? Array of all the form/sections steps
 let currentStep = 0; //? Variable to keep track of the current step the user is on
 
 
@@ -115,6 +125,11 @@ nextButtons.forEach(button => {
             }
             currentStep++;
             showNextStep(currentStep);
+
+            // Call displaySummary when reaching the summary step (index 3)
+            if (currentStep === 3) {
+                displaySummary();
+            }
         }
     });
 });
@@ -399,11 +414,83 @@ function updateAddOnPrices() {
     });
 }
 
-/* 
-    TODO: Based on the billing cycle chosen in step 2, in step 3 display the add-on prices accordingly
-    TODO: i.e. if the user has chosen yearly billing, display the yearly add-on prices, 
-    TODO: if the user has chosen monthly billing, display the monthly add-on prices
-*/
+
+
+// * STEP 4: Summary Section
+
+//* Dynamically Create and Populate the Summary Section
+function displaySummary() {
+    let totalPrice = 0;
+
+    // Get the plan the user has selected
+    plans.forEach((selectedPlan) => {
+        if (selectedPlan.classList.contains('active')) {
+            // Get the plan name to display in summary
+            const planName = selectedPlan.querySelector('.plan-card-header').textContent;
+            userPlanSelected.textContent = planName;
+
+            // Get the plan price to display in summary and convert to number for calculation
+            const planPriceText = selectedPlan.querySelector('.price').textContent;
+            selectedPlanPrice.textContent = planPriceText;
+
+            // Extract numeric value from price string (e.g. "$10" -> 10)
+            const planPriceValue = parseInt(planPriceText.replace(/[^0-9]/g, ''));
+            totalPrice += planPriceValue;
+        }
+    });
+
+    // Clear previous add-ons summary if any
+    selectedAddOnContainer.innerHTML = '';
+
+    // Collect selected add-ons that are checked
+    addOns.forEach((addOn, index) => {
+        const checkbox = defaultCheckboxes[index];
+        if (checkbox.checked) {
+            const addOnName = addOn.querySelector('.addon-card-header').textContent;
+            const addOnPriceText = addOn.querySelector('.addon-price').textContent;
+            const addOnPriceValue = parseInt(addOnPriceText.replace(/[^0-9]/g, ''));
+
+            // Create elements for add-on name and price
+            const addOnDiv = document.createElement('div');
+            addOnDiv.classList.add('selected-addon-and-price');
+
+            const addOnNameSpan = document.createElement('span');
+            addOnNameSpan.classList.add('selected-addon');
+            addOnNameSpan.textContent = addOnName;
+
+            const addOnPriceSpan = document.createElement('span');
+            addOnPriceSpan.classList.add('selected-addon-price');
+            addOnPriceSpan.textContent = addOnPriceText;
+
+            addOnDiv.appendChild(addOnNameSpan);
+            addOnDiv.appendChild(addOnPriceSpan);
+
+            selectedAddOnContainer.appendChild(addOnDiv);
+
+            totalPrice += addOnPriceValue;
+        }
+    });
+
+    // Display total price
+    totalCostValue.textContent = '$' + totalPrice;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
