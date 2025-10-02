@@ -422,75 +422,66 @@ function updateAddOnPrices() {
 function displaySummary() {
     let totalPrice = 0;
 
-    // Get the plan the user has selected
+    //? Get the plan the user has selected
     plans.forEach((selectedPlan) => {
         if (selectedPlan.classList.contains('active')) {
-            // Get the plan name to display in summary
-            const planName = selectedPlan.querySelector('.plan-card-header').textContent;
-            userPlanSelected.textContent = planName;
+            //? Get the chosen/selected plan name
+            const chosenPlanName = selectedPlan.querySelector('.plan-card-header').textContent;
+            userPlanSelected.textContent = chosenPlanName;
 
-            // Get the plan price to display in summary and convert to number for calculation
-            const planPriceText = selectedPlan.querySelector('.price').textContent;
-            selectedPlanPrice.textContent = planPriceText;
+            //? Get the chosen plan's price and then convert to a pure number for calculation
+            const chosenPlanPrice = selectedPlan.querySelector('.price').textContent;
+            selectedPlanPrice.textContent = chosenPlanPrice;
 
-            // Extract numeric value from price string (e.g. "$10" -> 10)
-            const planPriceValue = parseInt(planPriceText.replace(/[^0-9]/g, ''));
-            totalPrice += planPriceValue;
+            //? Extract numeric value from price string (e.g. "$10" -> 10)
+            const planPriceWithoutSymbol = parseInt(chosenPlanPrice.replace(/[^0-9]/g, ''));
+            totalPrice += planPriceWithoutSymbol; //? Adds and then saves the extracted price to variable totalPrice
         }
     });
 
-    // Clear previous add-ons summary if any
+    //? Clear previous add-ons summary if any
     selectedAddOnContainer.innerHTML = '';
 
-    // Collect selected add-ons that are checked
-    addOns.forEach((addOn, index) => {
-        const checkbox = defaultCheckboxes[index];
+    //? Get add-ons that are checked by the user
+    addOns.forEach((selectedAddOn, index) => {
+        const checkbox = defaultCheckboxes[index]; //? Use the index to access the corresponding checkbox
+
         if (checkbox.checked) {
-            const addOnName = addOn.querySelector('.addon-card-header').textContent;
-            const addOnPriceText = addOn.querySelector('.addon-price').textContent;
-            const addOnPriceValue = parseInt(addOnPriceText.replace(/[^0-9]/g, ''));
+            const chosenAddOn = selectedAddOn.querySelector('.addon-card-header').textContent;
+            const chosenAddOnPrice = selectedAddOn.querySelector('.addon-price').textContent;
+            const addOnPriceWithoutSymbol = parseInt(chosenAddOnPrice.replace(/[^0-9]/g, ''));
 
-            // Create elements for add-on name and price
-            const addOnDiv = document.createElement('div');
-            addOnDiv.classList.add('selected-addon-and-price');
+            const selectedAddOns = `
+                <div class="selected-addon-and-price">
+                    <span class="selected-addon">${chosenAddOn}</span>
+                    <span class="selected-addon-price">${chosenAddOnPrice}</span>
+                </div>
+            `;
+            selectedAddOnContainer.innerHTML += selectedAddOns;
 
-            const addOnNameSpan = document.createElement('span');
-            addOnNameSpan.classList.add('selected-addon');
-            addOnNameSpan.textContent = addOnName;
+            //? Adds and then saves the extracted price to variable totalPrice
+            totalPrice += addOnPriceWithoutSymbol;
 
-            const addOnPriceSpan = document.createElement('span');
-            addOnPriceSpan.classList.add('selected-addon-price');
-            addOnPriceSpan.textContent = addOnPriceText;
+            // ! OR this:
+            //? Create elements for add-on name and price
+            // const addOnDiv = document.createElement('div');
+            // addOnDiv.classList.add('selected-addon-and-price');
 
-            addOnDiv.appendChild(addOnNameSpan);
-            addOnDiv.appendChild(addOnPriceSpan);
+            // const addOnNameSpan = document.createElement('span');
+            // addOnNameSpan.classList.add('selected-addon');
+            // addOnNameSpan.textContent = chosenAddOn;
 
-            selectedAddOnContainer.appendChild(addOnDiv);
+            // const addOnPriceSpan = document.createElement('span');
+            // addOnPriceSpan.classList.add('selected-addon-price');
+            // addOnPriceSpan.textContent = chosenAddOnPrice;
 
-            totalPrice += addOnPriceValue;
+            // addOnDiv.appendChild(addOnNameSpan);
+            // addOnDiv.appendChild(addOnPriceSpan);
+
+            // selectedAddOnContainer.appendChild(addOnDiv);
         }
     });
 
-    // Display total price
+    //? Display the total price
     totalCostValue.textContent = '$' + totalPrice;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
