@@ -20,6 +20,7 @@
     --transparent-light-blue: hsl(231, 100%, 99%);
     --white: hsl(0, 100%, 100%);
     /** typography */
+    --small-font-size: 14px;
     --font-size: 16px;
     --font-weight-thin: 300;
     --font-weight-regular: 400;
@@ -106,7 +107,7 @@ body {
 
 .step {
     color: var(--transparent-purple);
-    font-size: 14px;
+    font-size: var(--small-font-size);
     font-weight: var(--font-weight-thin);
     margin-bottom: 5px;
 }
@@ -132,7 +133,7 @@ body {
 
 /** General Styling for form section steps */
 
-.personal-info-form, .select-plan-section, .add-ons-section {
+.personal-info-form, .select-plan-section, .add-ons-section, .summary-section {
     width: 80%;
     height: 100%;
     margin: 0 auto;
@@ -167,13 +168,13 @@ body {
 .label-and-error label {
     text-transform: capitalize;
     color: var(--dark-blue);
-    font-size: 14px;
+    font-size: var(--small-font-size);
     margin-bottom: 8px;
 }
 
 .error-message {
     color: var(--bright-red);
-    font-size: 14px;
+    font-size: var(--small-font-size);
     font-weight: var(--font-weight-medium);
 }
 
@@ -286,7 +287,7 @@ body {
 }
 
 .yearly-discount-duration {
-    font-size: 14px;
+    font-size: var(--small-font-size);
     margin-top: 8px;
 }
 
@@ -307,7 +308,7 @@ body {
 
 .billing-option-container label {
     font-weight: var(--font-weight-medium);
-    font-size: 14px;
+    font-size: var(--small-font-size);
     color: var(--dark-grey);
     cursor: pointer;
     transition: color 0.3s ease, font-weight 0.3s ease;
@@ -402,11 +403,11 @@ body {
 
 
 /** STEP 3: Add-ons Section */
-.personal-info-form, .select-plan-section {
+.personal-info-form, .select-plan-section, .add-ons-section {
     display: none;
 }
 
-.add-ons-container {
+.add-ons-container, .summary-card-container {
     margin-top: 48px;
 }
 
@@ -503,7 +504,7 @@ body {
 }
 
 .addon-details p {
-    font-size: 14px;
+    font-size: var(--small-font-size);
     color: var(--dark-grey);
     cursor: pointer;
 }
@@ -511,6 +512,46 @@ body {
 .addon-price, .addon-pricing-cycle {
     color: var(--purple-medium);
 }
+
+
+/** STEP 4: Summary Section */
+
+.summary-card-container {
+    background-color: var(--transparent-light-blue);
+    border-radius: 10px;
+    padding: 32px 24px;
+}
+
+.selected-plan-and-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--transparent-purple);
+}
+
+.selected-plan {
+    margin-bottom: 16px;
+}
+
+.user-plan-selected {
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-medium);
+    color: var(--dark-blue);
+}
+
+.change-plan-btn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--dark-grey);
+    text-decoration: underline;
+    font-family: inherit;
+    font-size: var(--small-font-size);
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+}
+
 
 
 /** Utilities */
