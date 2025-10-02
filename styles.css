@@ -8,17 +8,17 @@
 
 :root {
     /** primary */
-    --dark-blue: hsl(213, 96%, 18%);
-    --purple-medium: hsl(243, 100%, 62%);
-    --light-blue: hsl(228, 100%, 84%);
-    --lighter-blue: hsl(206, 94%, 87%);
-    --bright-red: hsl(354, 84%, 57%);
+    --dark-blue: #032a59;
+    --purple-medium: #473dff;
+    --light-blue: #adbeff;
+    --lighter-blue: #bfe2fd;
+    --bright-red: #ed3548;
     /** neutrals */
-    --dark-grey: hsl(231, 11%, 63%);
-    --transparent-purple: hsl(229, 24%, 87%);
-    --transparent-blue: hsl(218, 100%, 97%);
-    --transparent-light-blue: hsl(231, 100%, 99%);
-    --white: hsl(0, 100%, 100%);
+    --dark-grey: #9699ab;
+    --transparent-purple: #d6d9e6;
+    --transparent-blue: #f0f5ff;
+    --transparent-light-blue: #fafbff;
+    --white: #ffffff;
     /** typography */
     --small-font-size: 14px;
     --font-size: 16px;
@@ -240,7 +240,7 @@ body {
 }
 
 .next-button:hover {
-    background-color: #174A8B;
+    background-color: var(--dark-blue-hover);
 }
 
 /** STEP 2: Select Plan Form Section */
