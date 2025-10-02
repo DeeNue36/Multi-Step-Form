@@ -236,6 +236,9 @@ body {
     align-self: flex-end;
 }
 
+.next-button:hover {
+    background-color: #174A8B;
+}
 
 /** STEP 2: Select Plan Form Section */
 
@@ -379,7 +382,7 @@ body {
 }
 
 
-/** STEP 2: Submit Plan Buttons */
+/** STEP 2 & 3: Next & Previous Buttons */
 
 .submit-plan, .submit-add-ons {
     height: 160px;
@@ -399,6 +402,10 @@ body {
     font-weight: var(--font-weight-medium);
     cursor: pointer;
     align-self: flex-end;
+}
+
+.previous-button:hover {
+    color: var(--dark-blue);
 }
 
 
@@ -538,6 +545,7 @@ body {
     font-size: var(--font-size);
     font-weight: var(--font-weight-medium);
     color: var(--dark-blue);
+    margin-bottom: 4px;
 }
 
 .change-plan-btn {
@@ -545,11 +553,16 @@ body {
     outline: none;
     background-color: transparent;
     color: var(--dark-grey);
-    text-decoration: underline;
+    text-decoration: 2px underline;
     font-family: inherit;
     font-size: var(--small-font-size);
     cursor: pointer;
     transition: all 0.2s ease-in;
+    margin-bottom: 12px;
+}
+
+.change-plan-btn:hover {
+    color: var(--purple-medium);
 }
 
 
