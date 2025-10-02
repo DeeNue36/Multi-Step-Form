@@ -227,7 +227,7 @@ body {
     margin-top: 32px;
 }
 
-.next-button {
+.next-button, .confirm-button {
     width: 128px;
     height: 48px;
     border-radius: 8px;
