@@ -26,6 +26,9 @@
     --font-weight-regular: 400;
     --font-weight-medium: 500;
     --font-weight-bold: 700;
+    /** hover */
+    --dark-blue-hover: #174A8B;
+    --purple-medium-hover: #938CFE;
 }
 
 html, body {
@@ -613,6 +616,14 @@ body {
     font-size: 20px;
     font-weight: var(--font-weight-bold);
     color: var(--purple-medium);
+}
+
+.next-button:last-child {
+    background-color: var(--purple-medium);
+}
+
+.next-button:last-child:hover {
+    background-color: var(--purple-medium-hover);
 }
 
 
