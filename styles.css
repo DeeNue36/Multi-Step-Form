@@ -596,6 +596,25 @@ body {
     color: var(--dark-blue);
 }
 
+.total-cost-container {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 32px auto 0;
+}
+
+.total-cost {
+    font-size: var(--small-font-size);
+    color: var(--dark-grey);
+}
+
+.total-cost-value {
+    font-size: 20px;
+    font-weight: var(--font-weight-bold);
+    color: var(--purple-medium);
+}
+
 
 
 
