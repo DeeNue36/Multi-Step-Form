@@ -415,9 +415,9 @@ body {
 
 
 /** STEP 3: Add-ons Section */
-.personal-info-form, .select-plan-section, .add-ons-section {
+/* .personal-info-form, .select-plan-section, .add-ons-section {
     display: none;
-}
+} */
 
 .add-ons-container, .summary-card-container {
     margin-top: 48px;
@@ -620,11 +620,11 @@ body {
     color: var(--purple-medium);
 }
 
-.next-button:last-child {
+.confirm-button {
     background-color: var(--purple-medium);
 }
 
-.next-button:last-child:hover {
+.confirm-button:hover {
     background-color: var(--purple-medium-hover);
 }
 
