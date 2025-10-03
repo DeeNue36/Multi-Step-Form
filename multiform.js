@@ -421,17 +421,20 @@ function updateAddOnPrices() {
 //* Dynamically Create and Populate the Summary Section
 function displaySummary() {
     let totalPrice = 0;
+    let compactBillingCycle = billingRange.value === '1' ? '/yr' : '/mo';
+    let planBillingCycle = billingRange.value === '1' ? ' (Yearly)' : ' (Monthly)';
+    let totalPerBillingCycle = billingRange.value === '1' ? 'year' : 'month';
 
     //? Get the plan the user has selected
     plans.forEach((selectedPlan) => {
         if (selectedPlan.classList.contains('active')) {
             //? Get the chosen/selected plan name
             const chosenPlanName = selectedPlan.querySelector('.plan-card-header').textContent;
-            userPlanSelected.textContent = chosenPlanName + (billingRange.value === '1' ? ' (Yearly)' : ' (Monthly)');
+            userPlanSelected.textContent = chosenPlanName + planBillingCycle;
 
             //? Get the chosen plan's price and then convert to a pure number for calculation
             const chosenPlanPrice = selectedPlan.querySelector('.price').textContent;
-            selectedPlanPrice.textContent = chosenPlanPrice + (billingRange.value === '1' ? '/yr' : '/mo');
+            selectedPlanPrice.textContent = chosenPlanPrice + compactBillingCycle;
 
             //? Extract numeric value from price string (e.g. "$10" -> 10)
             const planPriceWithoutSymbol = parseInt(chosenPlanPrice.replace(/[^0-9]/g, ''));
@@ -454,7 +457,7 @@ function displaySummary() {
             const selectedAddOns = `
                 <div class="selected-addon-and-price">
                     <span class="selected-addon">${chosenAddOn}</span>
-                    <span class="selected-addon-price">${ chosenAddOnPrice + (billingRange.value === '1' ? '/yr' : '/mo') }</span>
+                    <span class="selected-addon-price">${ chosenAddOnPrice + compactBillingCycle }</span>
                 </div>
             `;
             selectedAddOnContainer.innerHTML += selectedAddOns;
@@ -485,8 +488,8 @@ function displaySummary() {
     //? Display the total per billing cycle
     //? Ternary/conditional operator to display either 'year' or 'month' based on the value of billingRange
     //? "year" is the expression if the condition is true and "month" if it is false
-    totalCost.textContent = 'Total (per ' + (billingRange.value === '1' ? 'year' : 'month') + ')';
+    totalCost.textContent = 'Total (per ' + totalPerBillingCycle + ')';
 
     //? Display the total price
-    totalCostValue.textContent = '$' + totalPrice + (billingRange.value === '1' ? '/yr' : '/mo');
+    totalCostValue.textContent = '$' + totalPrice + compactBillingCycle;
 }
