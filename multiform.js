@@ -126,7 +126,7 @@ nextButtons.forEach(button => {
             currentStep++;
             showNextStep(currentStep);
 
-            // Call displaySummary when reaching the summary step (index 3)
+            //? Call displaySummary when reaching the summary step (index 3)
             if (currentStep === 3) {
                 displaySummary();
             }
@@ -427,11 +427,11 @@ function displaySummary() {
         if (selectedPlan.classList.contains('active')) {
             //? Get the chosen/selected plan name
             const chosenPlanName = selectedPlan.querySelector('.plan-card-header').textContent;
-            userPlanSelected.textContent = chosenPlanName;
+            userPlanSelected.textContent = chosenPlanName + (billingRange.value === '1' ? ' (Yearly)' : ' (Monthly)');
 
             //? Get the chosen plan's price and then convert to a pure number for calculation
             const chosenPlanPrice = selectedPlan.querySelector('.price').textContent;
-            selectedPlanPrice.textContent = chosenPlanPrice;
+            selectedPlanPrice.textContent = chosenPlanPrice + (billingRange.value === '1' ? '/yr' : '/mo');
 
             //? Extract numeric value from price string (e.g. "$10" -> 10)
             const planPriceWithoutSymbol = parseInt(chosenPlanPrice.replace(/[^0-9]/g, ''));
@@ -454,7 +454,7 @@ function displaySummary() {
             const selectedAddOns = `
                 <div class="selected-addon-and-price">
                     <span class="selected-addon">${chosenAddOn}</span>
-                    <span class="selected-addon-price">${chosenAddOnPrice}</span>
+                    <span class="selected-addon-price">${ chosenAddOnPrice + (billingRange.value === '1' ? '/yr' : '/mo') }</span>
                 </div>
             `;
             selectedAddOnContainer.innerHTML += selectedAddOns;
@@ -488,5 +488,5 @@ function displaySummary() {
     totalCost.textContent = 'Total (per ' + (billingRange.value === '1' ? 'year' : 'month') + ')';
 
     //? Display the total price
-    totalCostValue.textContent = '$' + totalPrice;
+    totalCostValue.textContent = '$' + totalPrice + (billingRange.value === '1' ? '/yr' : '/mo');
 }
