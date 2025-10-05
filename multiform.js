@@ -492,3 +492,19 @@ function displaySummary() {
     //? Display the total price
     totalCostValue.textContent = '$' + totalPrice + compactBillingCycle;
 }
+
+
+
+// * Change Plan Button
+
+//? Navigates back to step two (plan selection) by updating currentStep to 1.
+function handleChangePlanClick() {
+    //? Set current step to 1 (select plan section)
+    currentStep = 1;
+    
+    //? Use the centralized function to continue to the next step once the user has selected a plan
+    showNextStep(currentStep);
+}
+
+// Attach the event listener
+changePlanBtn.addEventListener('click', handleChangePlanClick);
