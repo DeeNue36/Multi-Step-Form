@@ -103,15 +103,14 @@ nextButtons.forEach(button => {
             validateEmail();
             validatePhoneNo();
             
-            //? If any of the fields are left empty(i.e they return true), do not proceed running the rest of the code
+            //? If any of the fields are not validated i.e left empty(i.e they return true), do not proceed running the rest of the code
             if (!validateName() || !validateEmail() || !validatePhoneNo()) {
                 return;
             }
         }
         /*
             ?If the current step is less than the last index of the forms array(i.e forms.length - 1), increase the current step by 1
-            ?.length is one number higher than the last index of an array
-            ? Hence why to get the last index of the array we do forms.length - 1
+            ?.length is one number higher than the last/highest index of an array, hence why to get the last index we do forms.length - 1
             ?Then call the showNextStep function with currentStep as an argument which represents the nextStepIndex parameter
             ?Run console.log(forms.length), console.log(forms.length - 1), console.log(forms.indexOf(personalInfoForm)) for better understanding
         */
