@@ -421,17 +421,17 @@ function updateAddOnPrices() {
 function displaySummary() {
     let totalPrice = 0;
     let compactBillingCycle = billingRange.value === '1' ? '/yr' : '/mo';
-    let planBillingCycle = billingRange.value === '1' ? ' (Yearly)' : ' (Monthly)';
+    let planBillingCycle = billingRange.value === '1' ? '(Yearly)' : '(Monthly)';
     let totalPerBillingCycle = billingRange.value === '1' ? 'year' : 'month';
 
     //? Get the plan the user has selected
     plans.forEach((selectedPlan) => {
         if (selectedPlan.classList.contains('active')) {
-            //? Get the chosen/selected plan name
+            //? Get and display the chosen/selected plan name
             const chosenPlanName = selectedPlan.querySelector('.plan-card-header').textContent;
             userPlanSelected.textContent = chosenPlanName + planBillingCycle;
 
-            //? Get the chosen plan's price and then convert to a pure number for calculation
+            //? Get and display the chosen plan's price and then convert to a pure number for calculation
             const chosenPlanPrice = selectedPlan.querySelector('.price').textContent;
             selectedPlanPrice.textContent = chosenPlanPrice + compactBillingCycle;
 
@@ -456,7 +456,7 @@ function displaySummary() {
             const selectedAddOns = `
                 <div class="selected-addon-and-price">
                     <span class="selected-addon">${chosenAddOn}</span>
-                    <span class="selected-addon-price">${ chosenAddOnPrice + compactBillingCycle }</span>
+                    <span class="selected-addon-price">${chosenAddOnPrice + compactBillingCycle}</span>
                 </div>
             `;
             selectedAddOnContainer.innerHTML += selectedAddOns;
@@ -490,7 +490,12 @@ function displaySummary() {
     totalCost.textContent = 'Total (per ' + totalPerBillingCycle + ')';
 
     //? Display the total price
-    totalCostValue.textContent = '$' + totalPrice + compactBillingCycle;
+    if (billingRange.value === '0') { //monthly billing price display
+        totalCostValue.textContent = '+$' + totalPrice + compactBillingCycle;
+    } 
+    else { //yearly billing price display
+        totalCostValue.textContent = '$' + totalPrice + compactBillingCycle;
+    }
 }
 
 
