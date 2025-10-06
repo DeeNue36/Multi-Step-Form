@@ -432,7 +432,7 @@ function displaySummary() {
             userPlanSelected.textContent = chosenPlanName + planBillingCycle;
 
             //? Get and display the chosen plan's price and then convert to a pure number for calculation
-            const chosenPlanPrice = selectedPlan.querySelector('.price').textContent;
+            const chosenPlanPrice = selectedPlan.querySelector('.price').textContent.trim();
             selectedPlanPrice.textContent = chosenPlanPrice + compactBillingCycle;
 
             //? Extract numeric value from price string (e.g. "$10" -> 10)
@@ -450,7 +450,7 @@ function displaySummary() {
 
         if (checkbox.checked) {
             const chosenAddOn = selectedAddOn.querySelector('.addon-card-header').textContent;
-            const chosenAddOnPrice = selectedAddOn.querySelector('.addon-price').textContent;
+            const chosenAddOnPrice = selectedAddOn.querySelector('.addon-price').textContent.trim();
             const addOnPriceWithoutSymbol = parseInt(chosenAddOnPrice.replace(/[^0-9]/g, ''));
 
             const selectedAddOns = `
