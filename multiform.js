@@ -125,7 +125,7 @@ nextButtons.forEach(button => {
             currentStep++;
             showNextStep(currentStep);
 
-            //? Call displaySummary when reaching the summary step (index 3)
+            //? Call displaySummary when reaching step 4 (index 3, the summary section)
             if (currentStep === 3) {
                 displaySummary();
             }
@@ -419,7 +419,9 @@ function updateAddOnPrices() {
 
 //* Dynamically Create and Populate the Summary Section
 function displaySummary() {
-    let totalPrice = 0;
+    let totalPrice = 0; //? Variable to store the total price of the selected plan and add-ons
+
+    // ? Billing cycle displays
     let compactBillingCycle = billingRange.value === '1' ? '/yr' : '/mo';
     let planBillingCycle = billingRange.value === '1' ? '(Yearly)' : '(Monthly)';
     let totalPerBillingCycle = billingRange.value === '1' ? 'year' : 'month';
