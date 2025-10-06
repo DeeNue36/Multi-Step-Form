@@ -415,7 +415,7 @@ body {
 
 
 /** STEP 3: Add-ons Section */
-.personal-info-form, .select-plan-section, .add-ons-section, .summary-section {
+.personal-info-form, .select-plan-section, .add-ons-section {
     /* display: none;  */
 }
 
@@ -607,7 +607,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 2rem auto 4.24rem;
+    margin: 2rem auto 1.64rem;
 }
 
 .total-cost {
