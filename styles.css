@@ -657,6 +657,11 @@ body {
     line-height: 1.5rem;
 }
 
+.thank-you-paragraph a {
+    color: var(--dark-grey);
+    text-decoration: none;
+}
+
 
 /** Utilities */
 
