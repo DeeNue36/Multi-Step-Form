@@ -270,8 +270,11 @@ body {
     margin-bottom: 3rem;
 }
 
-.plan-card:hover, .plan-card.active {
+.plan-card.active {
     background-color: var(--transparent-light-blue);
+}
+
+.plan-card:hover, .plan-card.active {
     cursor: pointer;
     border-color: var(--purple-medium);
     border-width: 0.0938rem;
@@ -415,9 +418,6 @@ body {
 
 
 /** STEP 3: Add-ons Section */
-.personal-info-form, .select-plan-section, .add-ons-section {
-    /* display: none;  */
-}
 
 .add-ons-container, .summary-card-container {
     margin-top: 3rem;
