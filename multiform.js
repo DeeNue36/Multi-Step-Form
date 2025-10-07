@@ -107,6 +107,9 @@ function showNextStep(nextStepIndex) {
 //? Tracks and stores the current billing range value, the default value is 0(monthly) as defined in the HTML
 let lastRangeValue = billingRange.value; 
 
+//? Index of the summary section in the forms array to persist the active state when the thank you section is displayed
+const summarySectionIndex = forms.indexOf(summarySection);
+
 //* Dynamic next buttons
 nextButtons.forEach(button => {
     button.addEventListener('click', (e) => {
@@ -129,25 +132,27 @@ nextButtons.forEach(button => {
             ?Run console.log(forms.length), console.log(forms.length - 1), console.log(forms.indexOf(personalInfoForm)) for better understanding
         */
         if (currentStep < forms.length - 1) {
-            //? Update addon prices when moving from step 2 to step 3 AND if the billing range value changes
-            //? i.e if "billingRange.value" does not match the value stored in "lastRangeValue"
-            //? billingRange.value is dynamic and updates every time the range input is clicked while lastRangeValue is static until updated 
+            //? if "billingRange.value" does not match the value stored in "lastRangeValue"
+            //? billingRange.value is dynamic and updates every time the range input is clicked while lastRangeValue is static until updated to match billingRange.value and prevents the function from running multiple times until the billingRange.value changes
+            //? UPDATE ADD-ONS SECTION PRICES based on if the user is on selectPlanSection(step 2, index 1) and if THE BILLING RANGE VALUE HAS CHANGED 
             if (currentStep === 1 && billingRange.value !== lastRangeValue) {
                 updateAddOnPrices();
                 lastRangeValue = billingRange.value; //? Update the last range value
             }
             currentStep++;
-            showNextStep(currentStep);
+            showNextStep(currentStep); //? Display the next form/sections
 
-            //? Call displaySummary when reaching step 4 (index 3, the summary section)
+            //? SHOW SUMMARY SECTION (step 4, index 3, summarySection)
             if (currentStep === 3) {
                 displaySummary();
             }
-        }
-        if (currentStep === 4) {
-            showThankYouSection();
-            // ? Keep the active class on the step number of the form/section the user is on
-            steps[3].classList.add('active');
+
+            //? SHOW THANK YOU SECTION (step 5, index 4, thankYouSection)
+            if (currentStep === 4) {
+                showThankYouSection();
+                // ? Keep the active class on the last section when the thank you section is displayed
+                steps[summarySectionIndex].classList.add('active');
+            }
         }
     });
 });
