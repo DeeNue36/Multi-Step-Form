@@ -61,6 +61,9 @@ body {
     box-shadow: 0 0.75rem 1rem var(--transparent-purple);
 }
 
+.personal-info-form, .select-plan-section, .add-ons-section {
+    display: none; 
+}
 
 /** Progress Section */
 
@@ -138,7 +141,7 @@ body {
 
 /** General Styling for form section steps */
 
-.personal-info-form, .select-plan-section, .add-ons-section, .summary-section {
+.personal-info-form, .select-plan-section, .add-ons-section, .summary-section, .thank-you-section {
     width: 80%;
     height: 100%;
     margin: 0 auto;
@@ -627,6 +630,34 @@ body {
 
 .confirm-button:hover {
     background-color: var(--purple-medium-hover);
+}
+
+
+
+/** STEP 5: Thank You Section */
+
+.thank-you-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.thank-you-section img, .thank-you-section h2 {
+    margin-bottom: 2rem;
+}
+
+.thank-you-text {
+    font-size: 2.25rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--dark-blue);
+}
+
+.thank-you-paragraph {
+    font-size: var(--font-size);
+    color: var(--dark-grey);
+    line-height: 1.5rem;
 }
 
 
