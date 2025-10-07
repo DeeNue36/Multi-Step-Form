@@ -42,9 +42,6 @@ const totalCost = document.querySelector('.total-cost');
 const totalCostValue = document.querySelector('.total-cost-value');
 const selectedAddOnContainer = document.querySelector('.selected-addon-and-price-container');
 
-// * STEP 4: Confirm Button
-const confirmBtn = document.querySelector('.confirm-button');
-
 // * STEP 5: Thank You Section
 const thankYouSection = document.querySelector('.thank-you-section');
 
@@ -54,7 +51,6 @@ console.log(nextButtons);
 
 // * Previous Step Buttons
 const previousButtons = document.querySelectorAll('.previous-button');
-console.log(previousButtons);
 
 
 
@@ -67,6 +63,7 @@ const forms = [ //? Array of all the form/sections steps
     summarySection, 
     thankYouSection
 ]; 
+
 
 
 // * SHOWING FORM STEPS/SECTIONS DYNAMICALLY
@@ -286,6 +283,7 @@ phoneField.addEventListener('input', () => {
 });
 
 
+
 //* STEP 2: Select Plan Section
 
 // * Plan Cards: Selecting a Plan Card and Adding Active Class
@@ -392,6 +390,7 @@ function updatePlanPrices() {
     //     yearlyDiscountDurations[0].innerHTML = '';
     // }
 }
+
 
 
 //* STEP 3: Add-ons Section
