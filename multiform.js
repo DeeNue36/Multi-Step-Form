@@ -74,7 +74,7 @@ const forms = [ //? Array of all the form/sections steps
 /* 
     ?nextStepIndex: parameter representing the index of the form/section and step number the user is on
     ?Compares with the index of the forms and steps array to display the form step and active class of the step number to the user
-    ?When called, an argument is passed in which is the index of the form/section and step number the user is on
+    ?When called, an argument has to be passed in which is the index of the form/section and step number the user is on
 */
 function showNextStep(nextStepIndex) {
     //? Remove or add the hidden class to the form step section
@@ -117,7 +117,7 @@ nextButtons.forEach(button => {
             validateEmail();
             validatePhoneNo();
             
-            //? If any of the fields are not validated i.e left empty(i.e they return true), do not proceed running the rest of the code
+            //? If any of the fields are not validated i.e left empty(they return true), do not proceed running the rest of the code
             if (!validateName() || !validateEmail() || !validatePhoneNo()) {
                 return;
             }
@@ -144,6 +144,11 @@ nextButtons.forEach(button => {
                 displaySummary();
             }
         }
+        if (currentStep === 4) {
+            showThankYouSection();
+            // ? Keep the active class on the step number of the form/section the user is on
+            steps[3].classList.add('active');
+        }
     });
 });
 
@@ -158,6 +163,7 @@ previousButtons.forEach(button => {
         }
     });
 });
+
 
 
 // * STEP 1: Personal Info Form
@@ -519,19 +525,27 @@ function displaySummary() {
 
 //? Navigates back to step two (plan selection) by updating currentStep to 1.
 function handleChangePlanClick() {
-    //? Set current step to 1 (select plan section)
+    //? Set current step to 1 (select plan section's index no in the array)
     currentStep = 1;
     
-    //? Use the centralized function to continue to the next step once the user has selected a plan
+    //? Use the function to continue to the next step once the user has selected a plan
     showNextStep(currentStep);
 }
-
-// Attach the event listener
 changePlanBtn.addEventListener('click', handleChangePlanClick);
-
-
-// * Confirm Button
 
 
 
 // * STEP 5: Thank You Section
+
+// ? Display the thank you section
+function showThankYouSection() {
+    const sectionElements = `
+        <img src="images/icon-thank-you.svg" alt="Thank You Image">
+        <h2 class="thank-you-text">Thank you!</h2>
+        <p class="thank-you-paragraph">
+            Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support,
+            please feel free to email us at <a href="mailto:support@loremgaming.com">support@loremgaming.com</a>
+        </p>
+    `
+    thankYouSection.innerHTML = sectionElements;
+}
