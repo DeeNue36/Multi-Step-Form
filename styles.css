@@ -61,9 +61,6 @@ body {
     box-shadow: 0 0.75rem 1rem var(--transparent-purple);
 }
 
-.personal-info-form, .select-plan-section, .add-ons-section {
-    display: none; 
-}
 
 /** Progress Section */
 
@@ -659,9 +656,6 @@ body {
     color: var(--dark-grey);
     line-height: 1.5rem;
 }
-
-
-
 
 
 /** Utilities */
