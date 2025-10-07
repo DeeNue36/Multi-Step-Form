@@ -60,14 +60,21 @@ console.log(previousButtons);
 
 // * TRACKING USER'S CURRENT STEP & FORMS ARRAY FOR DYNAMICALLY SHOWING FORM STEPS
 let currentStep = 0; //? Variable to keep track of the current step the user is on
-const forms = [personalInfoForm, selectPlanSection, addOnsSection, summarySection, thankYouSection]; //? Array of all the form/sections steps
+const forms = [ //? Array of all the form/sections steps
+    personalInfoForm, 
+    selectPlanSection, 
+    addOnsSection, 
+    summarySection, 
+    thankYouSection
+]; 
 
 
 // * SHOWING FORM STEPS/SECTIONS DYNAMICALLY
 
 /* 
-    ?nextStepIndex: parameter used to represent the index of the form/section and step number the user is on
+    ?nextStepIndex: parameter representing the index of the form/section and step number the user is on
     ?Compares with the index of the forms and steps array to display the form step and active class of the step number to the user
+    ?When called, an argument is passed in which is the index of the form/section and step number the user is on
 */
 function showNextStep(nextStepIndex) {
     //? Remove or add the hidden class to the form step section
