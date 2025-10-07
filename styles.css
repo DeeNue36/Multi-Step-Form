@@ -227,7 +227,7 @@ body {
     margin-top: 2rem;
 }
 
-.next-button, .confirm-button {
+.next-button {
     width: 8rem;
     height: 3rem;
     border-radius: 0.5rem;
@@ -621,11 +621,11 @@ body {
     color: var(--purple-medium);
 }
 
-.confirm-button {
+.submit-summary > .next-button {
     background-color: var(--purple-medium);
 }
 
-.confirm-button:hover {
+.submit-summary > .next-button:hover {
     background-color: var(--purple-medium-hover);
 }
 
