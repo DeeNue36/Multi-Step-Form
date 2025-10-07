@@ -3,13 +3,16 @@
 // * Steps
 const steps = document.querySelectorAll('.step-number');
 
-// * Step 1: Personal Info Form
+// * STEP 1: Personal Info Form
 const personalInfoForm = document.querySelector('.personal-info-form');
 const nameField = document.querySelector('#name');
 const emailField = document.querySelector('#email');
 const phoneField = document.querySelector('#phone');
 
-// * Step 2: Select Plan Section
+//* STEP 1: Error Messages
+const errorMessage = document.querySelectorAll('.error-message');
+
+// * STEP 2: Select Plan Section
 const selectPlanSection = document.querySelector('.select-plan-section');
 const plans = document.querySelectorAll('.plan-card');
 const planPrices = document.querySelectorAll('.price');
@@ -21,7 +24,7 @@ const toggleThumb = document.querySelector('.toggle-thumb'); //? Custom toggle t
 const monthly = document.getElementById('monthly');
 const yearly = document.getElementById('yearly');
 
-//* Step 3: Addons Section
+//* STEP 3: Addons Section
 const addOnsSection = document.querySelector('.add-ons-section');
 const addOns = document.querySelectorAll('.addon-card');
 const defaultCheckboxes = document.querySelectorAll('.addon-card-body input[type="checkbox"]');
@@ -29,7 +32,7 @@ const customCheckbox = document.querySelectorAll('.custom-checkbox');
 const addOnPrices = document.querySelectorAll('.addon-price');
 const addOnPricingCycles = document.querySelectorAll('.addon-pricing-cycle');
 
-// * Step 4: Summary Section
+// * STEP 4: Summary Section
 const summarySection = document.querySelector('.summary-section');
 const summaryCard = document.querySelector('.summary-card');
 const changePlanBtn = document.querySelector('.change-plan-btn');
@@ -39,6 +42,12 @@ const totalCost = document.querySelector('.total-cost');
 const totalCostValue = document.querySelector('.total-cost-value');
 const selectedAddOnContainer = document.querySelector('.selected-addon-and-price-container');
 
+// * STEP 4: Confirm Button
+const confirmBtn = document.querySelector('.confirm-button');
+
+// * STEP 5: Thank You Section
+const thankYouSection = document.querySelector('.thank-you-section');
+
 // * Next Step Buttons
 const nextButtons = document.querySelectorAll('.next-button');
 console.log(nextButtons);
@@ -47,17 +56,15 @@ console.log(nextButtons);
 const previousButtons = document.querySelectorAll('.previous-button');
 console.log(previousButtons);
 
-//* Error Messages
-const errorMessage = document.querySelectorAll('.error-message');
 
 
-
-// * Forms array for dynamic navigation
-const forms = [personalInfoForm, selectPlanSection, addOnsSection, summarySection]; //? Array of all the form/sections steps
+// * TRACKING USER'S CURRENT STEP & FORMS ARRAY FOR DYNAMICALLY SHOWING FORM STEPS
 let currentStep = 0; //? Variable to keep track of the current step the user is on
+const forms = [personalInfoForm, selectPlanSection, addOnsSection, summarySection, thankYouSection]; //? Array of all the form/sections steps
 
 
-// * Function to show the current step the user is on
+// * SHOWING FORM STEPS/SECTIONS DYNAMICALLY
+
 /* 
     ?nextStepIndex: parameter used to represent the index of the form/section and step number the user is on
     ?Compares with the index of the forms and steps array to display the form step and active class of the step number to the user
@@ -74,7 +81,7 @@ function showNextStep(nextStepIndex) {
         }
     });
 
-    //? Add or remove the active class to the step number
+    //? Add the active class to the step number of the form/section the user is on, else remove it
     steps.forEach((step, index) => {
         //? If the index of the parameter "step"(the steps array, i.e const steps) matches nextStepIndex, add the active class to the step number
         if (index === nextStepIndex) {
@@ -88,7 +95,7 @@ function showNextStep(nextStepIndex) {
 
 
 
-//* Next & Previous Buttons Navigation
+//* NEXT & PREVIOUS BUTTONS NAVIGATION FUNCTIONALITIES
 
 //? Tracks and stores the current billing range value, the default value is 0(monthly) as defined in the HTML
 let lastRangeValue = billingRange.value; 
@@ -501,7 +508,6 @@ function displaySummary() {
 }
 
 
-
 // * Change Plan Button
 
 //? Navigates back to step two (plan selection) by updating currentStep to 1.
@@ -515,3 +521,10 @@ function handleChangePlanClick() {
 
 // Attach the event listener
 changePlanBtn.addEventListener('click', handleChangePlanClick);
+
+
+// * Confirm Button
+
+
+
+// * STEP 5: Thank You Section
