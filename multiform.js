@@ -123,17 +123,17 @@ nextButtons.forEach(button => {
             }
         }
         /*
-            ?If the current step is less than the last index of the forms array(i.e forms.length - 1), increase the current step by 1
+            ?If the current step is less than the last index of the forms array(i.e forms.length - 1), increment the currentStep by 1 and display the next form/section
             ?.length is one number higher than the last/highest index of an array, hence why to get the last index we do forms.length - 1
             ?Then call the showNextStep function with currentStep as an argument which represents the nextStepIndex parameter
             ?Run console.log(forms.length), console.log(forms.length - 1), console.log(forms.indexOf(personalInfoForm)) for better understanding
         */
         if (currentStep < forms.length - 1) {
-            //? Only update addon prices when moving from step 2 to step 3 and if billing range value changes
+            //? Update addon prices when moving from step 2 to step 3 AND if the billing range value changes
             //? i.e if "billingRange.value" does not match the value stored in "lastRangeValue"
-            //? billingRange.value is dynamic and updates every time the range input is clicked
+            //? billingRange.value is dynamic and updates every time the range input is clicked while lastRangeValue is static until updated 
             if (currentStep === 1 && billingRange.value !== lastRangeValue) {
-                updateAddOnPrices(); 
+                updateAddOnPrices();
                 lastRangeValue = billingRange.value; //? Update the last range value
             }
             currentStep++;
