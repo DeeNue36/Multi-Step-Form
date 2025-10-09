@@ -24,6 +24,7 @@
     --purple-medium-hover: #938CFE;
     /** others */
     --summary-bg: #F8F9FE;
+    --spinner-container-color: #00000080;
     /** typography */
     --small-font-size: 14px;
     --font-size: 16px;
@@ -687,3 +688,37 @@ body {
         transform: translateX(-10px);
     }
 }
+
+
+/** Loading Animation */
+.spinner-container {
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background-color: var(--spinner-container-color);
+}
+
+.spinner {
+    width: 3.125rem;
+    height: 3.125rem;
+    margin: 0 auto;
+    border: 6px solid;
+    border-radius: 50%;
+    border-color: var(--purple-medium) transparent var(--white) transparent;
+    animation: spin 1.2s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
+    /* animation: spin 1.2s linear infinite; */
+}
+
+@keyframes spin {
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+
+
+/** Media Queries */
