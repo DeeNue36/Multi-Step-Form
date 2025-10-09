@@ -52,6 +52,9 @@ console.log(nextButtons);
 // * Previous Step Buttons
 const previousButtons = document.querySelectorAll('.previous-button');
 
+// * Spinner Element Container
+const spinnerContainer = document.querySelector('.spinner-container');
+
 
 
 // * TRACKING USER'S CURRENT STEP & FORMS ARRAY FOR DYNAMICALLY SHOWING FORM STEPS
@@ -543,13 +546,28 @@ changePlanBtn.addEventListener('click', handleChangePlanClick);
 
 // ? Display the thank you section
 function showThankYouSection() {
-    const sectionElements = `
-        <img src="images/icon-thank-you.svg" alt="Thank You Image">
-        <h2 class="thank-you-text">Thank you!</h2>
-        <p class="thank-you-paragraph">
-            Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support,
-            please feel free to email us at <a href="mailto:support@loremgaming.com">support@loremgaming.com</a>
-        </p>
-    `
-    thankYouSection.innerHTML = sectionElements;
+    // ? Creating the spinner before displaying the thank you section
+    spinnerContainer.classList.remove('hidden');
+    const spinner = document.createElement('div');
+    spinner.classList.add('spinner');
+    spinnerContainer.style.display = 'flex';
+    spinnerContainer.appendChild(spinner);
+
+    // ? After 3.2 seconds, remove the spinner and display the thank you section
+    setTimeout(() => {
+            // ? Hide the spinner and clear its content
+            spinnerContainer.style.display = '';
+            spinnerContainer.classList.add('hidden');
+            spinnerContainer.innerHTML = '';
+
+            const sectionElements = `
+                <img src="images/icon-thank-you.svg" alt="Thank You Image">
+                <h2 class="thank-you-text">Thank you!</h2>
+                <p class="thank-you-paragraph">
+                    Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support,
+                    please feel free to email us at <a href="mailto:support@loremgaming.com">support@loremgaming.com</a>
+                </p>
+            `
+            thankYouSection.innerHTML = sectionElements;
+    }, 3200);
 }
