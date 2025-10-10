@@ -479,6 +479,8 @@ function displaySummary() {
     let totalPrice = 0; //? Variable to store the total price of the selected plan and add-ons
 
     // ? Billing cycle displays
+    //? Ternary/conditional operator to display either 'year' or 'month' based on the value of billingRange
+    //? "year" is the expression if the condition is true and "month" if it is false
     let compactBillingCycle = billingRange.value === '1' ? '/yr' : '/mo';
     let planBillingCycle = billingRange.value === '1' ? '(Yearly)' : '(Monthly)';
     let totalPerBillingCycle = billingRange.value === '1' ? 'year' : 'month';
@@ -544,8 +546,6 @@ function displaySummary() {
     });
 
     //? Display the total per billing cycle
-    //? Ternary/conditional operator to display either 'year' or 'month' based on the value of billingRange
-    //? "year" is the expression if the condition is true and "month" if it is false
     totalCost.textContent = 'Total (per ' + totalPerBillingCycle + ')';
 
     //? Display the total price
@@ -599,7 +599,7 @@ function showThankYouSection() {
                 </p>
             `
             thankYouSection.innerHTML = sectionElements;
-            isSubmitted = true; // Set flag to true after showing thank you section
+            isSubmitted = true; //? Set flag to true after showing thank you section
     }, 2000);
 }
 
