@@ -671,6 +671,12 @@ body {
     pointer-events: none;
 }
 
+.disabled-section {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed; 
+}
+
 
 /**  Error Displays & Animations */
 
