@@ -57,7 +57,6 @@ const spinnerContainer = document.querySelector('.spinner-container');
 
 
 
-
 // * TRACKING USER'S CURRENT STEP & FORMS ARRAY FOR DYNAMICALLY SHOWING FORM STEPS
 let currentStep = 0; //? Variable to keep track of the current step the user is on
 const forms = [ //? Array of all the form/sections steps
@@ -115,26 +114,30 @@ const summarySectionIndex = forms.indexOf(summarySection);
 //* Dynamic next buttons
 nextButtons.forEach(button => {
     button.addEventListener('click', (e) => {
-        if (isSubmitted) return;
+        if (isSubmitted) return; //? Prevent multiple submissions
 
         e.preventDefault();
 
         if (!validateStep(currentStep)) {
-            return; // Prevent progression if current step invalid
+            return; //? Prevent progression if current step invalid
         }
 
         updateStepCompletion(currentStep);
 
+        //? Loop through the step completion array up to the current step index(4(max) in this case)
+        //? If any of the steps up to the current step index(i<=4) are incomplete (i.e stepCompletion[i] === false), prevent progression
         for (let i = 0; i <= currentStep; i++) {
             if (!stepCompletion[i]) {
-                return; // Prevent progression if any prior step incomplete
+                return; //? Prevent progression if any prior step incomplete
             }
         }
 
+        //? If the index of currentStep is less than the length of the forms array, increase currentStep by 1(i.e go to the next step)
+        //? length of forms array - 1 is the index of the forms array (in this case length is 5, index is 5-1 = 4)
         if (currentStep < forms.length - 1) {
             if (currentStep === 1 && billingRange.value !== lastRangeValue) {
                 updateAddOnPrices();
-                lastRangeValue = billingRange.value;
+                lastRangeValue = billingRange.value; //? Update lastRangeValue to the current billing range value
             }
             currentStep++;
             showNextStep(currentStep);
@@ -170,7 +173,7 @@ previousButtons.forEach(button => {
 function validateStep(stepIndex) {
     switch(stepIndex) {
         case 0:
-            // Explicitly call all validations to show all errors, then check combined validity
+            //? Explicitly call all validations to show all errors, then check combined validity
             const isNameValid = validateName();
             const isEmailValid = validateEmail();
             const isPhoneValid = validatePhoneNo();
@@ -178,7 +181,7 @@ function validateStep(stepIndex) {
         case 1:
             return Array.from(plans).some(plan => plan.classList.contains('active')); //? Returns true if at least one plan is selected
         case 2:
-            return true; // Add validation if needed
+            return true;
         case 3:
             return true;
         default:
@@ -196,6 +199,7 @@ function updateStepCompletion(stepIndex) {
 
 
 // * STEP 1: Personal Info Form
+
 
 //* Validate Form Input Fields
 
@@ -598,3 +602,5 @@ function showThankYouSection() {
             isSubmitted = true; // Set flag to true after showing thank you section
     }, 2000);
 }
+
+
