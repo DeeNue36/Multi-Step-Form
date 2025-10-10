@@ -57,6 +57,7 @@ const spinnerContainer = document.querySelector('.spinner-container');
 
 
 
+
 // * TRACKING USER'S CURRENT STEP & FORMS ARRAY FOR DYNAMICALLY SHOWING FORM STEPS
 let currentStep = 0; //? Variable to keep track of the current step the user is on
 const forms = [ //? Array of all the form/sections steps
@@ -68,18 +69,19 @@ const forms = [ //? Array of all the form/sections steps
 ]; 
 
 
+// * Flag to prevent multiple submissions
+let isSubmitted = false; 
+
 
 // * SHOWING FORM STEPS/SECTIONS DYNAMICALLY
 
-/* 
-    ?nextStepIndex: parameter representing the index of the form/section and step number the user is on
-    ?Compares with the index of the forms and steps array to display the form step and active class of the step number to the user
-    ?When called, an argument has to be passed in which is the index of the form/section and step number the user is on
+/*
+    *Displays and highlights the form/section & step number based on the user's current step index.
+    *@param {number} nextStepIndex - The index of the form/section and step number the user is on.
 */
 function showNextStep(nextStepIndex) {
-    //? Remove or add the hidden class to the form step section
+    //? Display the form/section by removing or add the hidden class to the it
     forms.forEach((form, index) => {
-        //? If the index of the parameter "form"(the forms array) matches nextStepIndex, display the next form/section
         if (index === nextStepIndex) {
             form.classList.remove('hidden');
         } 
@@ -90,7 +92,6 @@ function showNextStep(nextStepIndex) {
 
     //? Add the active class to the step number of the form/section the user is on, else remove it
     steps.forEach((step, index) => {
-        //? If the index of the parameter "step"(the steps array, i.e const steps) matches nextStepIndex, add the active class to the step number
         if (index === nextStepIndex) {
             step.classList.add('active');
         } 
@@ -110,52 +111,46 @@ let lastRangeValue = billingRange.value;
 //? Index of the summary section in the forms array to persist the active state when the thank you section is displayed
 const summarySectionIndex = forms.indexOf(summarySection);
 
+
 //* Dynamic next buttons
 nextButtons.forEach(button => {
     button.addEventListener('click', (e) => {
-        if (currentStep === 0) {
-            e.preventDefault(); //? Prevents the default(submit) action of the button
-            //? Validate form input fields
-            validateName();
-            validateEmail();
-            validatePhoneNo();
-            
-            //? If any of the fields are not validated i.e left empty(they return true), do not proceed running the rest of the code
-            if (!validateName() || !validateEmail() || !validatePhoneNo()) {
-                return;
+        if (isSubmitted) return;
+
+        e.preventDefault();
+
+        if (!validateStep(currentStep)) {
+            return; // Prevent progression if current step invalid
+        }
+
+        updateStepCompletion(currentStep);
+
+        for (let i = 0; i <= currentStep; i++) {
+            if (!stepCompletion[i]) {
+                return; // Prevent progression if any prior step incomplete
             }
         }
-        /*
-            ?If the current step is less than the last index of the forms array(i.e forms.length - 1), increment the currentStep by 1 and display the next form/section
-            ?.length is one number higher than the last/highest index of an array, hence why to get the last index we do forms.length - 1
-            ?Then call the showNextStep function with currentStep as an argument which represents the nextStepIndex parameter
-            ?Run console.log(forms.length), console.log(forms.length - 1), console.log(forms.indexOf(personalInfoForm)) for better understanding
-        */
+
         if (currentStep < forms.length - 1) {
-            //? if "billingRange.value" does not match the value stored in "lastRangeValue"
-            //? billingRange.value is dynamic and updates every time the range input is clicked while lastRangeValue is static until updated to match billingRange.value and prevents the function from running multiple times until the billingRange.value changes
-            //? UPDATE ADD-ONS SECTION PRICES based on if the user is on selectPlanSection(step 2, index 1) and if THE BILLING RANGE VALUE HAS CHANGED 
             if (currentStep === 1 && billingRange.value !== lastRangeValue) {
                 updateAddOnPrices();
-                lastRangeValue = billingRange.value; //? Update the last range value
+                lastRangeValue = billingRange.value;
             }
             currentStep++;
-            showNextStep(currentStep); //? Display the next form/sections
+            showNextStep(currentStep);
 
-            //? SHOW SUMMARY SECTION (step 4, index 3, summarySection)
             if (currentStep === 3) {
                 displaySummary();
             }
 
-            //? SHOW THANK YOU SECTION (step 5, index 4, thankYouSection)
             if (currentStep === 4) {
                 showThankYouSection();
-                // ? Keep the active class on the last section when the thank you section is displayed
                 steps[summarySectionIndex].classList.add('active');
             }
         }
     });
 });
+
 
 
 //* Dynamic previous buttons
@@ -168,6 +163,35 @@ previousButtons.forEach(button => {
         }
     });
 });
+
+
+
+//* Validation for each step
+function validateStep(stepIndex) {
+    switch(stepIndex) {
+        case 0:
+            // Explicitly call all validations to show all errors, then check combined validity
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isPhoneValid = validatePhoneNo();
+            return isNameValid && isEmailValid && isPhoneValid;
+        case 1:
+            return Array.from(plans).some(plan => plan.classList.contains('active')); //? Returns true if at least one plan is selected
+        case 2:
+            return true; // Add validation if needed
+        case 3:
+            return true;
+        default:
+            return false;
+    }
+}
+
+//? Track completion status, each step is false by default
+const stepCompletion = [false, false, false, false];
+
+function updateStepCompletion(stepIndex) {
+    stepCompletion[stepIndex] = validateStep(stepIndex);
+}
 
 
 
@@ -239,7 +263,9 @@ function validatePhoneNo() {
 }
 
 
-//! Display Error Messages in Real Time
+
+
+//! STEP 1: ERROR MESSAGES => Display Error Messages in Real Time
 
 // * Name Field Error Message
 nameField.addEventListener('input', () => {
@@ -569,5 +595,6 @@ function showThankYouSection() {
                 </p>
             `
             thankYouSection.innerHTML = sectionElements;
-    }, 3200);
+            isSubmitted = true; // Set flag to true after showing thank you section
+    }, 2000);
 }
