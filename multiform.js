@@ -56,6 +56,10 @@ const previousButtons = document.querySelectorAll('.previous-button');
 const spinnerContainer = document.querySelector('.spinner-container');
 
 
+// Initialize with step 0 active, all others hidden/disabled
+showNextStep(0);
+
+
 
 // * TRACKING USER'S CURRENT STEP & FORMS ARRAY FOR DYNAMICALLY SHOWING FORM STEPS
 let currentStep = 0; //? Variable to keep track of the current step the user is on
@@ -83,9 +87,11 @@ function showNextStep(nextStepIndex) {
     forms.forEach((form, index) => {
         if (index === nextStepIndex) {
             form.classList.remove('hidden');
+            form.classList.remove('disabled-section');
         } 
         else {
             form.classList.add('hidden');
+            form.classList.add('disabled-section');
         }
     });
 
@@ -445,6 +451,7 @@ addOns.forEach((addOn, index) => {
         addOn.classList.toggle('active', checkbox.checked);
     });
 });
+
 
 //* Checking if monthly or yearly billing is selected and updating the prices accordingly in step 3
 function updateAddOnPrices() {
