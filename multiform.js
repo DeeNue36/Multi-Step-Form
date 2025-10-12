@@ -56,11 +56,6 @@ const previousButtons = document.querySelectorAll('.previous-button');
 const spinnerContainer = document.querySelector('.spinner-container');
 
 
-// Initialize with step 0 active, all others hidden/disabled
-showNextStep(0);
-
-
-
 // * TRACKING USER'S CURRENT STEP & FORMS ARRAY FOR DYNAMICALLY SHOWING FORM STEPS
 let currentStep = 0; //? Variable to keep track of the current step the user is on
 const forms = [ //? Array of all the form/sections steps
@@ -71,6 +66,8 @@ const forms = [ //? Array of all the form/sections steps
     thankYouSection
 ]; 
 
+// Initialize with step 0 active, all others hidden/disabled
+showNextStep(0);
 
 // * Flag to prevent multiple submissions
 let isSubmitted = false; 
