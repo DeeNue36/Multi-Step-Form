@@ -52,6 +52,9 @@ console.log(nextButtons);
 // * Previous Step Buttons
 const previousButtons = document.querySelectorAll('.previous-button');
 
+// * Confirmation Modal
+const confirmationModalContainer = document.querySelector('.confirmation-modal-container');
+
 // * Spinner Element Container
 const spinnerContainer = document.querySelector('.spinner-container');
 
@@ -66,7 +69,7 @@ const forms = [ //? Array of all the form/sections steps
     thankYouSection
 ]; 
 
-// Initialize with step 0 active, all others hidden/disabled
+//* Initialize with first step 0 active, all other sections hidden/disabled
 showNextStep(0);
 
 // * Flag to prevent multiple submissions
@@ -580,15 +583,35 @@ changePlanBtn.addEventListener('click', handleChangePlanClick);
 
 // ? Display the thank you section
 function showThankYouSection() {
-    // ? Creating the spinner before displaying the thank you section
-    spinnerContainer.classList.remove('hidden');
-    const spinner = document.createElement('div');
-    spinner.classList.add('spinner');
-    spinnerContainer.style.display = 'flex';
-    spinnerContainer.appendChild(spinner);
+    // ? Create & display a confirmation modal
+    confirmationModalContainer.classList.remove('hidden');
+    confirmationModalContainer.style.display = 'flex';
+    const confirmationModal = document.createElement('div');
+    confirmationModal.classList.add('confirmation-modal');
+    confirmationModal.innerHTML = `
+        <h3>Confirm Subscription</h3>
+        <p>Are you sure you want to confirm your subscription?</p>
+        <button class="confirm-button">Confirm</button>
+    `;
+    confirmationModalContainer.innerHTML = '';
+    confirmationModalContainer.appendChild(confirmationModal);
 
-    // ? After 3.2 seconds, remove the spinner and display the thank you section
-    setTimeout(() => {
+    // ? Add event listener to the confirm button
+    const confirmButton = confirmationModal.querySelector('.confirm-button');
+    confirmButton.addEventListener('click', () => {
+        // ? Hide the confirmation modal
+        confirmationModalContainer.classList.add('hidden');
+        confirmationModalContainer.style.display = '';
+
+        // ? Creating the spinner before displaying the thank you section
+        spinnerContainer.classList.remove('hidden');
+        const spinner = document.createElement('div');
+        spinner.classList.add('spinner');
+        spinnerContainer.style.display = 'flex';
+        spinnerContainer.appendChild(spinner);
+
+        // ? After 2 seconds, remove the spinner and display the thank you section
+        setTimeout(() => {
             // ? Hide the spinner and clear its content
             spinnerContainer.style.display = '';
             spinnerContainer.classList.add('hidden');
@@ -601,10 +624,11 @@ function showThankYouSection() {
                     Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support,
                     please feel free to email us at <a href="mailto:support@loremgaming.com">support@loremgaming.com</a>
                 </p>
-            `
+            `;
             thankYouSection.innerHTML = sectionElements;
             isSubmitted = true; //? Set flag to true after showing thank you section
-    }, 2000);
+        }, 2000);
+    });
 }
 
 
