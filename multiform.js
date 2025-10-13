@@ -589,9 +589,16 @@ function showThankYouSection() {
     const confirmationModal = document.createElement('div');
     confirmationModal.classList.add('confirmation-modal');
     confirmationModal.innerHTML = `
-        <h3>Confirm Subscription</h3>
-        <p>Are you sure you want to confirm your subscription?</p>
-        <button class="confirm-button">Confirm</button>
+        <div class="close-modal"> 
+            <span>&#x274C</span> 
+        </div>
+        <div class="confirmation-modal-details">
+            <h3>Confirm Your Subscription 
+                <span>${nameField.value}</span>
+            </h3>
+            <p>Please make sure you have selected your preferred plan and add-ons. Are you sure you want to confirm your subscription?</p>
+            <button class="confirm-button">Confirm</button>
+        </div>
     `;
     confirmationModalContainer.innerHTML = '';
     confirmationModalContainer.appendChild(confirmationModal);
