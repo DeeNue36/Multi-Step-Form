@@ -596,6 +596,10 @@ function showThankYouSection() {
     confirmationModalContainer.innerHTML = '';
     confirmationModalContainer.appendChild(confirmationModal);
 
+    // ? Keep the summary section visible
+    summarySection.classList.remove('hidden');
+    summarySection.classList.remove('disabled-section');
+
     // ? Add event listener to the confirm button
     const confirmButton = confirmationModal.querySelector('.confirm-button');
     confirmButton.addEventListener('click', () => {
@@ -612,6 +616,10 @@ function showThankYouSection() {
 
         // ? After 2 seconds, remove the spinner and display the thank you section
         setTimeout(() => {
+            // ? Hide the summary section
+            summarySection.classList.add('hidden');
+            summarySection.classList.add('disabled-section');
+
             // ? Hide the spinner and clear its content
             spinnerContainer.style.display = '';
             spinnerContainer.classList.add('hidden');
