@@ -697,7 +697,31 @@ body {
 }
 
 
-/** Loading Animation */
+/** Confirmation Modal */
+.confirmation-modal-container {
+    height: 50%;
+    width: 50%;
+    justify-content: center;
+    align-content: center;
+    position: fixed;
+}
+
+.confirmation-modal {
+    background-color: var(--white);
+    border-radius: 0.625rem;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0.75rem 1rem var(--transparent-purple);
+}
+
+
+/** Spinner Loading Animation */
 .spinner-container {
     justify-content: center;
     align-items: center;
@@ -725,7 +749,6 @@ body {
         transform: rotate(360deg);
     }
 }
-
 
 
 /** Media Queries */
