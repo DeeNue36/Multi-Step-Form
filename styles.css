@@ -25,6 +25,7 @@
     /** others */
     --summary-bg: #F8F9FE;
     --spinner-container-color: #00000080;
+    --modal-container-color: ;
     /** typography */
     --small-font-size: 14px;
     --font-size: 16px;
@@ -699,25 +700,70 @@ body {
 
 /** Confirmation Modal */
 .confirmation-modal-container {
-    height: 50%;
-    width: 50%;
+    height: 100%;
+    width: 100%;
     justify-content: center;
-    align-content: center;
+    align-items: center;
     position: fixed;
 }
 
 .confirmation-modal {
+    width: 40vw;
+    height: 30vh;
     background-color: var(--white);
     border-radius: 0.625rem;
     padding: 2rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     text-align: center;
     position: relative;
     z-index: 2;
     box-shadow: 0 0.75rem 1rem var(--transparent-purple);
+}
+
+.close-modal {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+}
+
+.close-modal span {
+    cursor: pointer;
+}
+
+.confirmation-modal-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(100% - 2rem);
+}
+
+.confirmation-modal-details h3 {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--dark-blue);
+    text-transform: capitalize;
+}
+
+.confirmation-modal-details h3 > span {
+    color: var(--light-blue);
+}
+
+.confirmation-modal-details p {
+    font-size: .875rem;
+}
+
+.confirm-button {
+    align-self: end;
+    border: none;
+    outline: none;
+    background-color: var(--bright-red);
+    color: var(--white);
+    font-family: inherit;
+    font-size: var(--font-size);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.625rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
 }
 
 
@@ -749,6 +795,7 @@ body {
         transform: rotate(360deg);
     }
 }
+
 
 
 /** Media Queries */
