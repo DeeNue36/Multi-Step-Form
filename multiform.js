@@ -589,19 +589,32 @@ function showThankYouSection() {
     const confirmationModal = document.createElement('div');
     confirmationModal.classList.add('confirmation-modal');
     confirmationModal.innerHTML = `
-    <div class="close-modal"> 
-    <span>&#x274C</span> 
-    </div>
-    <div class="confirmation-modal-details">
-    <h3>Confirm Your Subscription 
-    <span>${nameField.value}</span>
-    </h3>
-    <p>Please make sure you have selected your preferred plan and add-ons. Are you sure you want to confirm your subscription?</p>
-    <button class="confirm-button">Confirm</button>
-    </div>
+        <div class="close-modal"> 
+            <span>&#x274C</span> 
+        </div>
+        <div class="confirmation-modal-details">
+            <h3>Confirm Your Subscription 
+                <span>${nameField.value}</span>
+            </h3>
+            <p>
+                Please make sure you have selected your preferred plan and add-ons. Are you sure you want to confirm your subscription?
+            </p>
+            <button class="confirm-button">
+                Confirm
+            </button>
+        </div>
     `;
     confirmationModalContainer.innerHTML = '';
     confirmationModalContainer.appendChild(confirmationModal);
+
+    const closeModal = confirmationModal.querySelector('.close-modal span');
+    closeModal.addEventListener('click', () => {
+        confirmationModalContainer.classList.add('hidden');
+        confirmationModalContainer.style.display = '';
+        //? Reset to summary step to allow showing modal again on next attempt
+        currentStep = 3;
+        showNextStep(currentStep);
+    });
     
     // ? Keep the summary section visible
     summarySection.classList.remove('hidden');
