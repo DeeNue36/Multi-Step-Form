@@ -589,25 +589,29 @@ function showThankYouSection() {
     const confirmationModal = document.createElement('div');
     confirmationModal.classList.add('confirmation-modal');
     confirmationModal.innerHTML = `
-        <div class="close-modal"> 
-            <span>&#x274C</span> 
-        </div>
-        <div class="confirmation-modal-details">
-            <h3>Confirm Your Subscription 
-                <span>${nameField.value}</span>
-            </h3>
-            <p>Please make sure you have selected your preferred plan and add-ons. Are you sure you want to confirm your subscription?</p>
-            <button class="confirm-button">Confirm</button>
-        </div>
+    <div class="close-modal"> 
+    <span>&#x274C</span> 
+    </div>
+    <div class="confirmation-modal-details">
+    <h3>Confirm Your Subscription 
+    <span>${nameField.value}</span>
+    </h3>
+    <p>Please make sure you have selected your preferred plan and add-ons. Are you sure you want to confirm your subscription?</p>
+    <button class="confirm-button">Confirm</button>
+    </div>
     `;
     confirmationModalContainer.innerHTML = '';
     confirmationModalContainer.appendChild(confirmationModal);
-
+    
     // ? Keep the summary section visible
     summarySection.classList.remove('hidden');
     summarySection.classList.remove('disabled-section');
 
-    // ? Add event listener to the confirm button
+    // ? Ensure the thank you section remains hidden until confirmation
+    thankYouSection.classList.add('hidden');
+    thankYouSection.classList.add('disabled-section');
+
+    // ? Confirm button
     const confirmButton = confirmationModal.querySelector('.confirm-button');
     confirmButton.addEventListener('click', () => {
         // ? Hide the confirmation modal
@@ -627,6 +631,10 @@ function showThankYouSection() {
             summarySection.classList.add('hidden');
             summarySection.classList.add('disabled-section');
 
+            // ? Display the thank you section
+            thankYouSection.classList.remove('hidden');
+            thankYouSection.classList.remove('disabled-section');
+
             // ? Hide the spinner and clear its content
             spinnerContainer.style.display = '';
             spinnerContainer.classList.add('hidden');
@@ -645,5 +653,3 @@ function showThankYouSection() {
         }, 2000);
     });
 }
-
-
