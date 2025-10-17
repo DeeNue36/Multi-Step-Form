@@ -607,6 +607,7 @@ function showThankYouSection() {
     confirmationModalContainer.innerHTML = '';
     confirmationModalContainer.appendChild(confirmationModal);
 
+    // ? Close the confirmation modal
     const closeModal = confirmationModal.querySelector('.close-modal span');
     closeModal.addEventListener('click', () => {
         confirmationModalContainer.classList.add('hidden');
@@ -693,8 +694,22 @@ function resetForm() {
         monthly.checked = true;
         yearly.checked = false;
         toggleContainer.classList.remove('active');
-        updatePlanPrices();
-        updateAddOnPrices();
+
+        // Set original monthly plan prices
+        planPrices[0].innerHTML = '$9'; // Arcade
+        planPrices[1].innerHTML = '$12'; // Advanced
+        planPrices[2].innerHTML = '$15'; // Pro
+        pricingCycles.forEach(cycle => cycle.innerHTML = '/mo');
+        yearlyDiscountDurations.forEach(duration => {
+            duration.classList.add('hidden');
+            duration.innerHTML = '';
+        });
+
+        // Set original monthly add-on prices
+        addOnPrices[0].innerHTML = '+$1'; // Online service
+        addOnPrices[1].innerHTML = '+$2'; // Larger storage
+        addOnPrices[2].innerHTML = '+$2'; // Customizable profile
+        addOnPricingCycles.forEach(cycle => cycle.innerHTML = '/mo');
 
         // Clear error messages
         errorMessage.forEach(msg => msg.innerText = '');
