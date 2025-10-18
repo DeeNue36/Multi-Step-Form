@@ -673,29 +673,29 @@ function showThankYouSection() {
 // * Reset the form to its initial state after 5 seconds
 function resetForm() {
     setTimeout(() => {
-        // Reset current step to 0
+        //? Reset current step to 0
         currentStep = 0;
         showNextStep(currentStep);
 
-        // Clear form fields
+        //? Clear form fields
         nameField.value = '';
         emailField.value = '';
         phoneField.value = '';
 
-        // Remove active class from plans
+        //? Remove active class from plans
         plans.forEach(plan => plan.classList.remove('active'));
 
-        // Uncheck all add-ons
+        //? Uncheck all add-ons and remove active class
         defaultCheckboxes.forEach(checkbox => checkbox.checked = false);
         addOns.forEach(addOn => addOn.classList.remove('active'));
 
-        // Reset billing to monthly
+        //? Reset billing to monthly
         billingRange.value = '0';
         monthly.checked = true;
         yearly.checked = false;
         toggleContainer.classList.remove('active');
 
-        // Set original monthly plan prices
+        //? Set original monthly plan prices
         planPrices[0].innerHTML = '$9'; // Arcade
         planPrices[1].innerHTML = '$12'; // Advanced
         planPrices[2].innerHTML = '$15'; // Pro
@@ -705,28 +705,28 @@ function resetForm() {
             duration.innerHTML = '';
         });
 
-        // Set original monthly add-on prices
+        //? Set original monthly add-on prices
         addOnPrices[0].innerHTML = '+$1'; // Online service
         addOnPrices[1].innerHTML = '+$2'; // Larger storage
         addOnPrices[2].innerHTML = '+$2'; // Customizable profile
         addOnPricingCycles.forEach(cycle => cycle.innerHTML = '/mo');
 
-        // Clear error messages
+        //? Clear error messages
         errorMessage.forEach(msg => msg.innerText = '');
         nameField.classList.remove('error');
         emailField.classList.remove('error');
         phoneField.classList.remove('error');
 
-        // Reset step completion
+        //? Reset step completion
         stepCompletion.fill(false);
 
-        // Hide modal and thank you section
+        //? Hide modal and thank you section
         confirmationModalContainer.classList.add('hidden');
         confirmationModalContainer.style.display = '';
         thankYouSection.classList.add('hidden');
         thankYouSection.classList.add('disabled-section');
 
-        // Reset submission flag
+        //? Reset submission flag
         isSubmitted = false;
     }, 5000);
 }
