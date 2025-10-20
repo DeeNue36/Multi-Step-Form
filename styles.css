@@ -25,7 +25,7 @@
     /** others */
     --summary-bg: #F8F9FE;
     --spinner-container-color: #00000080;
-    --modal-container-color: ;
+    --modal-container-color: #80808080;
     /** typography */
     --small-font-size: 14px;
     --font-size: 16px;
@@ -49,7 +49,7 @@ body {
 }
 
 .container {
-    width: 100%;
+    width: clamp(18.75rem, 90vw, 75rem);
     height: 100%;
     display: flex;
     justify-content: center;
@@ -69,20 +69,22 @@ body {
 .progress-section {
     background: url('images/bg-sidebar-desktop.svg') no-repeat center center / cover;
     height: 43rem;
-    width: 30%;
+    width: 30vw;
     border-radius: 0.625rem;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-inline-start: 2.25rem;
 }
 
 .progress-circle.initial {
-    margin-top: 4rem;
+    margin-top: 2.5rem;
 }
 
 .progress-circle {
     display: flex;
-    justify-content: start;
     align-items: center;
-    padding: 0 2.25rem;
+    width: 11.5rem;
     margin: 2.5rem 0 0;
 }
 
@@ -130,7 +132,7 @@ body {
 /** STEP 1: Personal Info Form Section */
 
 .form-main-section {
-    width: 70%;
+    width: 70vw;
     height: 43rem;
     display: flex;
     flex-direction: column;
@@ -699,9 +701,11 @@ body {
 
 
 /** Confirmation Modal */
+
 .confirmation-modal-container {
     height: 100%;
     width: 100%;
+    background-color: var(--modal-container-color);
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -711,12 +715,11 @@ body {
     width: 40vw;
     height: 30vh;
     background-color: var(--white);
-    border-radius: 0.625rem;
+    border-radius: 1rem;
     padding: 2rem 1.5rem;
     text-align: center;
     position: relative;
     z-index: 2;
-    box-shadow: 0 0.75rem 1rem var(--transparent-purple);
 }
 
 .close-modal {
@@ -749,7 +752,10 @@ body {
 }
 
 .confirmation-modal-details p {
+    width: 80%;
     font-size: .875rem;
+    color: var(--dark-grey);
+    line-height: 1.25rem;
 }
 
 .confirm-button {
@@ -768,6 +774,7 @@ body {
 
 
 /** Spinner Loading Animation */
+
 .spinner-container {
     justify-content: center;
     align-items: center;
@@ -787,7 +794,6 @@ body {
     border-radius: 50%;
     border-color: var(--purple-medium) transparent var(--white) transparent;
     animation: spin 1.2s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
-    /* animation: spin 1.2s linear infinite; */
 }
 
 @keyframes spin {
