@@ -52,38 +52,38 @@
 
         <!-- * Main Form Section -->
         <main class="form-main-section">
+
             <!-- * Step 1: Personal Info Form -->
             <form class="personal-info-form">
 
-                <div class="form-header">
-                    <h2>Personal info</h2>
-                    <p>Please provide your name, email address, and phone number.</p>
-                </div>
+                <div class="personal-info-form-mobile">  <!-- * Personal Info Form Mobile Container -->
 
-                <div class="form-body">
-
-                    <div class="input-container">
-                        <div class="label-and-error">
-                            <label for="name">Name</label>
-                            <span class="error-message"></span>
-                        </div>
-                        <input type="text" id="name" class="name" name="name" placeholder="e.g. Stephen King" required autocomplete="on">
+                    <div class="form-header">
+                        <h2>Personal info</h2>
+                        <p>Please provide your name, email address, and phone number.</p>
                     </div>
-
-                    <div class="input-container">
-                        <div class="label-and-error">
-                            <label for="email">Email Address</label>
-                            <span class="error-message"></span>
+                    <div class="form-body">
+                        <div class="input-container">
+                            <div class="label-and-error">
+                                <label for="name">Name</label>
+                                <span class="error-message"></span>
+                            </div>
+                            <input type="text" id="name" class="name" name="name" placeholder="e.g. Stephen King" required autocomplete="on">
                         </div>
-                        <input type="email" id="email" class="email" name="email" placeholder="e.g. stephenking@lorem.com" required autocomplete="on">
-                    </div>
-
-                    <div class="input-container">
-                        <div class="label-and-error">
-                            <label for="phone">Phone Number</label>
-                            <span class="error-message"></span>
+                        <div class="input-container">
+                            <div class="label-and-error">
+                                <label for="email">Email Address</label>
+                                <span class="error-message"></span>
+                            </div>
+                            <input type="email" id="email" class="email" name="email" placeholder="e.g. stephenking@lorem.com" required autocomplete="on">
                         </div>
-                        <input type="tel" id="phone" class="phone-no" name="phone" placeholder="e.g. +1 234 567 890" required autocomplete="on">
+                        <div class="input-container">
+                            <div class="label-and-error">
+                                <label for="phone">Phone Number</label>
+                                <span class="error-message"></span>
+                            </div>
+                            <input type="tel" id="phone" class="phone-no" name="phone" placeholder="e.g. +1 234 567 890" required autocomplete="on">
+                        </div>
                     </div>
 
                 </div>
@@ -329,15 +329,17 @@
                         <span class="total-cost-value"></span>
                     </div>
 
-                    <div class="submit-summary">
-                        <button type="button" class="previous-button">
-                            Go Back
-                        </button>
-                        <button type="submit" class="next-button">
-                            Confirm
-                        </button>
-                    </div>
                 </div>
+
+                <div class="submit-summary">
+                    <button type="button" class="previous-button">
+                        Go Back
+                    </button>
+                    <button type="submit" class="next-button">
+                        Confirm
+                    </button>
+                </div>
+
             </section>
 
             <!-- * Step 5: Thank You Section -->
