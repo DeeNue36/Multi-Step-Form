@@ -843,7 +843,7 @@ body {
         justify-content: flex-start;
         width: 100vw;
         min-height: 100dvh;
-        background-color: none;
+        background-color: transparent;
         border-radius: 0;
         padding: 0;
         margin: 0;
@@ -879,7 +879,7 @@ body {
         align-items: center;
     }
     .personal-info-form-mobile, .select-plan-section-mobile, .add-ons-section-mobile, .summary-section-mobile, .thank-you-section {
-        width: clamp(20rem, 86vw, 32rem);
+        width: clamp(18rem, 88vw, 32rem);
         border-radius: 0.5rem;
         background-color: var(--white);
         margin-top: -4.8rem;
