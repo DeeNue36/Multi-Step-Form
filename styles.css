@@ -61,6 +61,7 @@ body {
     max-width: 75rem;
     min-height: 45rem;
     box-shadow: 0 0.75rem 1rem var(--transparent-purple);
+    transition: all 0.2s ease-in;
 }
 
 
@@ -137,7 +138,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 2rem;
+    padding-inline: 2rem;
 }
 
 /** General Styling for form section steps */
@@ -816,10 +817,13 @@ body {
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     .container {
-        width: clamp(45rem, 96vw, 50rem);
+        width: clamp(45rem, 96vw, 64rem);
     }
     .progress-section {
         padding-inline-start: 1rem;
+    }
+    .form-main-section {
+        padding-inline: clamp(1rem, 1.5rem, 2rem);
     }
     .confirmation-modal {
         width: clamp(25rem, 64vw, 50rem)
