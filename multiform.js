@@ -590,7 +590,7 @@ function showThankYouSection() {
     confirmationModal.classList.add('confirmation-modal');
     confirmationModal.innerHTML = `
         <div class="close-modal"> 
-            <span>&#x274C</span> 
+            <span>&times;</span> 
         </div>
         <div class="confirmation-modal-details">
             <h3>Confirm Your Subscription 
