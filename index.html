@@ -50,13 +50,14 @@
             </div>
         </section>
 
+
         <!-- * Main Form Section -->
         <main class="form-main-section">
 
             <!-- * Step 1: Personal Info Form -->
             <form class="personal-info-form">
 
-                <div class="personal-info-form-mobile">  <!-- * Personal Info Form Mobile Container -->
+                <section class="personal-info-form-mobile">  <!-- * Personal Info Form Mobile Container -->
 
                     <div class="form-header">
                         <h2>Personal info</h2>
@@ -86,7 +87,7 @@
                         </div>
                     </div>
 
-                </div>
+                </section>
 
                 <div class="submit-form">
                     <button type="submit" class="next-button">
@@ -95,100 +96,105 @@
                 </div>
             </form>
 
-            <!-- * Step 2: Select Plan Form -->
+
+            <!-- * Step 2: Select Plan Section -->
             <section class="select-plan-section hidden">
-                <div class="form-header">
-                    <h2>Select your plan</h2>
-                    <p>You have the option of monthly or yearly billing.</p>
-                </div>
+                <section class="select-plan-section-mobile">  <!-- * Select Plan Form Mobile Container -->
 
-                <div class="form-body">
-                    <div class="plan-container">
-                        <!-- * Plan Cards -->
-                        <!-- * Plan Card 1: Arcade Plan -->
-                        <div class="plan-card">
-                            <div class="plan-card-image">
-                                <img src="images/icon-arcade.svg" alt="Arcade Plan Image">
+                    <div class="form-header">
+                        <h2>Select your plan</h2>
+                        <p>You have the option of monthly or yearly billing.</p>
+                    </div>
+
+                    <div class="form-body">
+                        <div class="plan-container">
+                            <!-- * Plan Cards -->
+
+                            <!-- * Plan Card 1: Arcade Plan -->
+                            <div class="plan-card">
+                                <div class="plan-card-image">
+                                    <img src="images/icon-arcade.svg" alt="Arcade Plan Image">
+                                </div>
+                                <div class="plan-card-body">
+                                    <h3 class="plan-card-header">
+                                        Arcade
+                                    </h3>
+                                    <div class="monthly-yearly-pricing">
+                                        <span class="price">
+                                            $9
+                                        </span>
+                                        <span class="pricing-cycle">
+                                            /mo
+                                        </span>
+                                    </div>
+                                    <p class="yearly-discount-duration hidden"></p>
+                                </div>
                             </div>
 
-                            <div class="plan-card-body">
-                                <h3 class="plan-card-header">
-                                    Arcade
-                                </h3>
-                                <div class="monthly-yearly-pricing">
-                                    <span class="price">
-                                        $9
-                                    </span>
-                                    <span class="pricing-cycle">
-                                        /mo
-                                    </span>
+                            <!-- * Plan Card 2: Advanced Plan -->
+                            <div class="plan-card">
+                                <div class="plan-card-image">
+                                    <img src="images/icon-advanced.svg" alt="Advanced Plan Image">
                                 </div>
-                                <p class="yearly-discount-duration hidden"></p>
+                                <div class="plan-card-body">
+                                    <h3 class="plan-card-header">
+                                        Advanced
+                                    </h3>
+                                    <div class="monthly-yearly-pricing">
+                                        <span class="price">
+                                            $12
+                                        </span>
+                                        <span class="pricing-cycle">
+                                            /mo
+                                        </span>
+                                    </div>
+                                    <p class="yearly-discount-duration hidden"></p>
+                                </div>
+                            </div>
+
+                            <!-- * Plan Card 3: Pro Plan -->
+                            <div class="plan-card">
+                                <div class="plan-card-image">
+                                    <img src="images/icon-pro.svg" alt="Pro Plan Image">
+                                </div>
+                                <div class="plan-card-body">
+                                    <h3 class="plan-card-header">
+                                        Pro
+                                    </h3>
+                                    <div class="monthly-yearly-pricing">
+                                        <span class="price">
+                                            $15
+                                        </span>
+                                        <span class="pricing-cycle">
+                                            /mo
+                                        </span>
+                                    </div>
+                                    <p class="yearly-discount-duration hidden"></p>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- * Plan Card 2: Advanced Plan -->
-                        <div class="plan-card">
-                            <div class="plan-card-image">
-                                <img src="images/icon-advanced.svg" alt="Advanced Plan Image">
+                        <!-- * Billing Options: Monthly and Yearly -->
+                        <div class="billing-container">
+                            <div class="billing-option-container">
+                                <input type="radio" id="monthly" name="billing" value="monthly" checked>
+                                <label for="monthly">Monthly</label>
                             </div>
 
-                            <div class="plan-card-body">
-                                <h3 class="plan-card-header">
-                                    Advanced
-                                </h3>
-                                <div class="monthly-yearly-pricing">
-                                    <span class="price">
-                                        $12
-                                    </span>
-                                    <span class="pricing-cycle">
-                                        /mo
-                                    </span>
-                                </div>
-                                <p class="yearly-discount-duration hidden"></p>
-                            </div>
-                        </div>
-
-                        <!-- * Plan Card 3: Pro Plan -->
-                        <div class="plan-card">
-                            <div class="plan-card-image">
-                                <img src="images/icon-pro.svg" alt="Pro Plan Image">
+                            <div class="toggle-container">
+                                <label for="billing-toggle">Toggle</label>
+                                <input type="range" id="billing-toggle" name="billing toggle" min="0" max="1" step="1" value="0">
+                                <div class="toggle-thumb"></div>
                             </div>
 
-                            <div class="plan-card-body">
-                                <h3 class="plan-card-header">
-                                    Pro
-                                </h3>
-                                <div class="monthly-yearly-pricing">
-                                    <span class="price">
-                                        $15
-                                    </span>
-                                    <span class="pricing-cycle">
-                                        /mo
-                                    </span>
-                                </div>
-                                <p class="yearly-discount-duration hidden"></p>
+                            <div class="billing-option-container">
+                                <input type="radio" id="yearly" name="billing" value="yearly">
+                                <label for="yearly">Yearly</label>
                             </div>
                         </div>
                     </div>
 
-                    <!-- * Billing Options: Monthly and Yearly -->
-                    <div class="billing-container">
-                        <div class="billing-option-container">
-                            <input type="radio" id="monthly" name="billing" value="monthly" checked>
-                            <label for="monthly">Monthly</label>
-                        </div>
-                        <div class="toggle-container">
-                            <label for="billing-toggle">Toggle</label>
-                            <input type="range" id="billing-toggle" name="billing toggle" min="0" max="1" step="1" value="0">
-                            <div class="toggle-thumb"></div>
-                        </div>
-                        <div class="billing-option-container">
-                            <input type="radio" id="yearly" name="billing" value="yearly">
-                            <label for="yearly">Yearly</label>
-                        </div>
-                    </div>
-                </div>
+                </section>
 
                 <div class="submit-plan">
                     <button type="button" class="previous-button">
@@ -200,93 +206,92 @@
                 </div>
             </section>
 
+
             <!-- * Step 3: Add-ons Section -->
             <section class="add-ons-section hidden">
-                <div class="form-header">
-                    <h2>Pick add-ons</h2>
-                    <p>Add-ons help enhance your gaming experience.</p>
-                </div>
+                <section class="add-ons-section-mobile"> <!-- * Add-ons Section Container Mobile -->
 
-                <div class="add-ons-container">
+                    <div class="form-header">
+                        <h2>Pick add-ons</h2>
+                        <p>Add-ons help enhance your gaming experience.</p>
+                    </div>
 
-                    <!-- * Addon Option Card 1: Online Service -->
-                    <div class="addon-card">
-                        <div class="addon-card-body">
-                            <input type="checkbox" id="online-service" name="online-service-addon" value="online-service">
-                            <span class="custom-checkbox"></span>
+                    <div class="add-ons-container">
 
-                            <div class="addon-details">
-                                <label for="online-service" class="addon-card-header">
-                                    Online service
-                                </label>
-                                <p class="addon-card-description">
-                                    Access to multiplayer games
-                                </p>
+                        <!-- * Addon Option Card 1: Online Service -->
+                        <div class="addon-card">
+                            <div class="addon-card-body">
+                                <input type="checkbox" id="online-service" name="online-service-addon" value="online-service">
+                                <span class="custom-checkbox"></span>
+                                <div class="addon-details">
+                                    <label for="online-service" class="addon-card-header">
+                                        Online service
+                                    </label>
+                                    <p class="addon-card-description">
+                                        Access to multiplayer games
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="monthly-yearly-pricing">
+                                <span class="addon-price">
+                                    +$1
+                                </span>
+                                <span class="addon-pricing-cycle">
+                                    /mo
+                                </span>
                             </div>
                         </div>
 
-                        <div class="monthly-yearly-pricing">
-                            <span class="addon-price">
-                                +$1
-                            </span>
-                            <span class="addon-pricing-cycle">
-                                /mo
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- * Addon Option Card 2: Larger Storage -->
-                    <div class="addon-card">
-                        <div class="addon-card-body">
-                            <input type="checkbox" id="larger-storage" name="larger-storage-addon" value="larger-storage">
-                            <span class="custom-checkbox"></span>
-
-                            <div class="addon-details">
-                                <label for="larger-storage" class="addon-card-header">
-                                    Larger Storage
-                                </label>
-                                <p class="addon-card-description">
-                                    Extra 1TB of cloud save
-                                </p>
+                        <!-- * Addon Option Card 2: Larger Storage -->
+                        <div class="addon-card">
+                            <div class="addon-card-body">
+                                <input type="checkbox" id="larger-storage" name="larger-storage-addon" value="larger-storage">
+                                <span class="custom-checkbox"></span>
+                                <div class="addon-details">
+                                    <label for="larger-storage" class="addon-card-header">
+                                        Larger Storage
+                                    </label>
+                                    <p class="addon-card-description">
+                                        Extra 1TB of cloud save
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="monthly-yearly-pricing">
+                                <span class="addon-price">
+                                    +$2
+                                </span>
+                                <span class="addon-pricing-cycle">
+                                    /mo
+                                </span>
                             </div>
                         </div>
 
-                        <div class="monthly-yearly-pricing">
-                            <span class="addon-price">
-                                +$2
-                            </span>
-                            <span class="addon-pricing-cycle">
-                                /mo
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- * Addon Option Card 3: Customizable Profile -->
-                    <div class="addon-card">
-                        <div class="addon-card-body">
-                            <input type="checkbox" id="customizable-profile" name="customizable-profile-addon" value="customizable-profile">
-                            <span class="custom-checkbox"></span>
-
-                            <div class="addon-details">
-                                <label for="customizable-profile" class="addon-card-header">
-                                    Customizable Profile
-                                </label>
-                                <p class="addon-card-description">
-                                    Custom theme on your profile
-                                </p>
+                        <!-- * Addon Option Card 3: Customizable Profile -->
+                        <div class="addon-card">
+                            <div class="addon-card-body">
+                                <input type="checkbox" id="customizable-profile" name="customizable-profile-addon" value="customizable-profile">
+                                <span class="custom-checkbox"></span>
+                                <div class="addon-details">
+                                    <label for="customizable-profile" class="addon-card-header">
+                                        Customizable Profile
+                                    </label>
+                                    <p class="addon-card-description">
+                                        Custom theme on your profile
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="monthly-yearly-pricing">
+                                <span class="addon-price">
+                                    +$2
+                                </span>
+                                <span class="addon-pricing-cycle">
+                                    /mo
+                                </span>
                             </div>
                         </div>
-
-                        <div class="monthly-yearly-pricing">
-                            <span class="addon-price">
-                                +$2
-                            </span>
-                            <span class="addon-pricing-cycle">
-                                /mo
-                            </span>
-                        </div>
                     </div>
-                </div>
+
+                </section>
 
                 <div class="submit-add-ons">
                     <button type="button" class="previous-button">
@@ -298,38 +303,38 @@
                 </div>
             </section>
 
+
             <!-- * Step 4: Summary Section-->
             <section class="summary-section hidden">
-                <div class="form-header">
-                    <h2>Finishing up</h2>
-                    <p>Double-check everything looks OK before confirming.</p>
-                </div>
+                <section class="summary-section-mobile"> <!-- * Summary Section Container on Mobile  -->
 
-                <div class="summary-card-container">
-                    <div class="summary-card">
-                        <div class="selected-plan-and-price">
-                            <div class="selected-plan">
-                                <p class="user-plan-selected"></p>
-                                <button type="button" class="change-plan-btn">
-                                    Change
-                                </button>
+                    <div class="form-header">
+                        <h2>Finishing up</h2>
+                        <p>Double-check everything looks OK before confirming.</p>
+                    </div>
+                    <div class="summary-card-container">
+                        <div class="summary-card">
+                            <div class="selected-plan-and-price">
+                                <div class="selected-plan">
+                                    <p class="user-plan-selected"></p>
+                                    <button type="button" class="change-plan-btn">
+                                        Change
+                                    </button>
+                                </div>
+                                <div class="selected-plan-price">
+                                    <span></span>
+                                </div>
                             </div>
-                            <div class="selected-plan-price">
-                                <span></span>
-                            </div>
+                            <div class="divider"></div>
+                            <div class="selected-addon-and-price-container"></div>
                         </div>
-
-                        <div class="divider"></div>
-
-                        <div class="selected-addon-and-price-container"></div>
+                        <div class="total-cost-container">
+                            <span class="total-cost"></span>
+                            <span class="total-cost-value"></span>
+                        </div>
                     </div>
 
-                    <div class="total-cost-container">
-                        <span class="total-cost"></span>
-                        <span class="total-cost-value"></span>
-                    </div>
-
-                </div>
+                </section>
 
                 <div class="submit-summary">
                     <button type="button" class="previous-button">
