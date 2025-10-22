@@ -141,12 +141,15 @@ nextButtons.forEach(button => {
         //? If the index of currentStep is less than the length of the forms array, increase currentStep by 1(i.e go to the next step)
         //? length of forms array - 1 is the index of the forms array (in this case length is 5, index is 5-1 = 4)
         if (currentStep < forms.length - 1) {
-            if (currentStep === 1 && billingRange.value !== lastRangeValue) {
-                updateAddOnPrices();
-                lastRangeValue = billingRange.value; //? Update lastRangeValue to the current billing range value
-            }
             currentStep++;
             showNextStep(currentStep);
+
+            //! To use this remove the reset form function and the function calls from step 2 below
+            // Reset the lastRangeValue to the current billing range value to update the add-on prices
+            // if (currentStep === 1 && billingRange.value !== lastRangeValue) { 
+            //     updateAddOnPrices();
+            //     lastRangeValue = billingRange.value; // Update lastRangeValue to the current billing range value
+            // }
 
             if (currentStep === 3) {
                 displaySummary();
@@ -344,12 +347,14 @@ billingRange.addEventListener('input', () => {
         toggleContainer.classList.add('active');
         bounceThumb();
         updatePlanPrices();
+        updateAddOnPrices();
     } 
     else {
         monthly.checked = true;
         toggleContainer.classList.remove('active');
         bounceThumb();
         updatePlanPrices();
+        updateAddOnPrices();
     }
 });
 
@@ -359,6 +364,7 @@ monthly.addEventListener('change', () => {
     toggleContainer.classList.remove('active');
     bounceThumb();
     updatePlanPrices();
+    updateAddOnPrices();
 });
 
 yearly.addEventListener('change', () => {
@@ -366,6 +372,7 @@ yearly.addEventListener('change', () => {
     toggleContainer.classList.add('active');
     bounceThumb();
     updatePlanPrices();
+    updateAddOnPrices();
 });
 
 function bounceThumb() {
