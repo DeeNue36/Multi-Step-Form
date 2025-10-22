@@ -25,7 +25,9 @@
     /** others */
     --summary-bg: #F8F9FE;
     --spinner-container-color: #00000080;
-    --modal-container-color: #80808080;
+    --modal-container-color: #032a5973;
+    --dark-blue-transparent: #032a5933;
+    --dark-blue-transparent-light: #032a5926;
     /** typography */
     --small-font-size: 14px;
     --font-size: 16px;
@@ -62,7 +64,7 @@ body {
     max-width: 75rem;
     min-height: 45rem;
     box-shadow: 0 0.75rem 1rem var(--transparent-purple);
-    transition: all 0.2s ease-in;
+    transition: all 0.2s ease-out;
 }
 
 
@@ -712,30 +714,54 @@ body {
 .confirmation-modal {
     width: clamp(25rem, 50vw, 50rem);
     height: 30vh;
-    background-color: var(--white);
-    border-radius: 1rem;
+    background-color: var(--transparent-light-blue);
+    border: 1px solid #d6d9e6;
+    box-shadow: 0 8px 32px var(--dark-blue-transparent);
+    border-radius: 0.75rem;
     padding: 2rem 1.5rem;
     text-align: center;
     position: relative;
-    z-index: 2;
 }
 
 .close-modal {
-    display: flex;
+    /* display: flex;
     justify-content: flex-end;
     align-items: center;
     margin-bottom: 0.5rem;
-    height: 24px;
-}
-
-.close-modal span {
+    height: 24px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -0.75rem;
+    right: -0.75rem;
+    background-color: var(--white);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    z-index: 4;
+    border: 2px solid var(--transparent-purple);
+    box-shadow: 0 4px 12px var(--dark-blue-transparent-light);
+    transition: all 0.2s ease;
     cursor: pointer;
-    font-size: 2.25rem;
-    color: var(--dark-grey);
 }
 
-.close-modal span:hover {
-    color: var(--bright-red);
+.close-modal:hover {
+    background-color: var(--transparent-light-blue);
+    border-color: var(--light-blue);
+    box-shadow: 0 6px 16px var(--dark-blue-transparent);
+    transform: scale(1.05);
+}
+
+.close-modal-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--dark-grey);
+    transition: color 0.2s ease;
+}
+
+.close-modal-icon:hover {
+    fill: var(--bright-red);
 }
 
 .confirmation-modal-details {
@@ -872,7 +898,7 @@ body {
         margin-inline-end: 0;
     }
     .form-main-section {
-        background-color: var(--transparent-purple);
+        background-color: var(--transparent-blue);
         flex-direction: column;
         width: 100vw;
         height: 50rem;
@@ -889,7 +915,7 @@ body {
         background-color: var(--white);
         margin-top: -4.8rem;
         padding: 1.25rem;
-        position: relative;
+        box-shadow: 0rem 0.5rem 0.5rem 0rem var(--transparent-purple);
     }
     .submit-form, .submit-plan, .submit-add-ons, .submit-summary {
         width: 100vw;
@@ -911,6 +937,7 @@ body {
         font-size: var(--font-size);
     }
 }
+
 
 /** Mobile Only */
 
