@@ -594,8 +594,29 @@ function showThankYouSection() {
     // ? Create & display a confirmation modal
     confirmationModalContainer.classList.remove('hidden');
     confirmationModalContainer.style.display = 'flex';
+
     const confirmationModal = document.createElement('div');
     confirmationModal.classList.add('confirmation-modal');
+
+    let selectedPlanName = '';
+    let selectedPlanPrice = '';
+    plans.forEach(plan => {
+        if (plan.classList.contains('active')) {
+            selectedPlanName = plan.querySelector('.plan-card-header').textContent;
+            selectedPlanPrice = plan.querySelector('.price').textContent.trim();
+        }
+    });
+
+    let selectedAddOn = '';
+    let selectedAddOnPrice = '';
+    addOns.forEach(addOn => {
+        if (addOn.querySelector('input').checked) {
+            selectedAddOn = addOn.querySelector('.addon-card-header').textContent;
+            selectedAddOnPrice = addOn.querySelector('.addon-price').textContent.trim();
+
+        }
+    });
+
     confirmationModal.innerHTML = `
         <div class="close-modal"> 
             <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill-rule="evenodd" class="close-modal-icon">
@@ -612,8 +633,26 @@ function showThankYouSection() {
                 </p>
             </div>
             <div class="modal-body">
-
+                <div class="confirm-plan">
+                    <div class="confirm-plan-name">
+                        <span class="plan-name">Plan: ${selectedPlanName}</span>
+                    </div>
+                    <div class="confirm-plan-price">
+                        <span class="plan-price">${selectedPlanPrice}</span>
+                        <span class="plan-billing-cycle">${billingRange.value === '0' ? '(Monthly)' : '(Yearly)'}</span>
+                    </div>
+                </div>
+                <div class="confirm-add-ons">
+                    <div class="confirm-add-on-name">
+                        <span class="add-on-name">${selectedAddOn}</span>
+                    </div>
+                    <div class="confirm-add-on-price">
+                        <span class="add-on-price">${selectedAddOnPrice}</span>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="confirm-button-container">
             <button class="confirm-button">
                 Confirm
             </button>
