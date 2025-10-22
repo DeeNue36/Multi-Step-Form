@@ -214,7 +214,8 @@ function updateStepCompletion(stepIndex) {
 
 //! Validate Name Input Field
 function validateName() {
-    const fullNameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    const fullNameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/; //? Only first and last name
+    // const fullNameRegex = /^[a-zA-Z]+ [a-zA-Z]+(?: [a-zA-Z]+)?$/; //? Optional middle/third name
 
     if (nameField.value === '' || !fullNameRegex.test(nameField.value)) {
         errorMessage[0].innerText = 'This field is required';
