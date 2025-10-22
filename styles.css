@@ -78,10 +78,6 @@ body {
     padding-inline-start: 2.25rem;
 }
 
-.progress-circle.initial {
-    margin-top: 2.5rem;
-}
-
 .progress-circle {
     display: flex;
     align-items: center;
@@ -99,7 +95,7 @@ body {
     justify-content: center;
     align-items: center;
     font-weight: var(--font-weight-bold);
-    margin-right: 1rem;
+    margin-inline-end: 1rem;
 }
 
 .step-number.active {
@@ -857,21 +853,28 @@ body {
         width: 100%;
         flex-direction: row;
         justify-content: center;
-        align-items: start;
         padding-inline-start: 0;
         border-radius: 0;
     }
+    .progress-section-mobile {
+        width: clamp(14rem, 64vw, 24rem);
+        display: flex;
+        justify-content: space-between;
+    }
     .progress-circle {
-        width: 4rem;
+        width: 2.5rem;
     }
     .user-info-step {
         display: none;
+    }
+    .step-number {
+        margin-inline-end: 0;
     }
     .form-main-section {
         background-color: var(--transparent-purple);
         flex-direction: column;
         width: 100vw;
-        height: 45rem;
+        height: 50rem;
         min-height: 100%;
         padding-inline: 0;
     }
@@ -904,4 +907,3 @@ body {
         height: clamp(20rem, 40vh, 30rem);
     }
 }
-
