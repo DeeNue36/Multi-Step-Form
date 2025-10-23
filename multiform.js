@@ -634,40 +634,73 @@ function showThankYouSection() {
             </div>
 
             <table class="modal-body">
-                <!-- * Confirm Selected Plan -->
-                <tr class="confirm-plan-header">
-                    <th>Plan</th>
-                    <th>Price</th>
-                </tr>
-                <tr class="confirm-plan-body">
-                    <td class="confirm-plan-name">
-                        <span class="plan-name">${selectedPlanName}</span>
-                    </td>
-                    <td class="confirm-plan-price">
-                        <span class="plan-price">${selectedPlanPrice}</span>
-                        <span class="plan-billing-cycle">${billingRange.value === '0' ? '(Monthly)' : '(Yearly)'}</span>
-                    </td>
-                </tr>
+                <tbody>
+                    <!--* Personal Info -->
+                    <tr class="confirm-personal-info-header">
+                        <th colspan="2">Personal Info</th>
+                    </tr>
 
-                <tr class="confirm-divider">
-                    <td colspan="2">
-                        <hr>
-                    </td>
-                </tr>
+                    <tr class="confirm-divider">
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
 
-                <!-- * Confirm Selected Add-ons -->
-                <tr class="confirm-add-ons-header">
-                    <th>Add-ons</th>
-                </tr>
-                <tr class="confirm-add-ons-body">
-                    <td class="confirm-add-on-name">
-                        <span class="add-on-name">${selectedAddOn}</span>
-                    </td>
-                    <td class="confirm-add-on-price">
-                        <span class="add-on-price">${selectedAddOnPrice}</span>
-                        <span class="add-on-billing-cycle">${billingRange.value === '0' ? '/mo' : '/yr'}</span>
-                    </td>
-                </tr>
+                    <tr class="personal-info-inputs-header">
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </tr>
+
+                    <tr class="confirm-personal-info-body">
+                        <td class="confirm-personal-info-email">
+                            <span class="personal-info-email">${emailField.value}</span>
+                        </td>
+                        <td class="confirm-personal-info-phone">
+                            <span class="personal-info-phone">${phoneField.value}</span>
+                        </td>
+                    </tr>
+                    
+                    <tr class="confirm-divider">
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
+                    
+                    <!-- * Confirm Selected Plan -->
+                    <tr class="confirm-plan-header">
+                        <th>Plan</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr class="confirm-plan-body">
+                        <td class="confirm-plan-name">
+                            <span class="plan-name">${selectedPlanName}</span>
+                        </td>
+                        <td class="confirm-plan-price">
+                            <span class="plan-price">${selectedPlanPrice}</span>
+                            <span class="plan-billing-cycle">${billingRange.value === '0' ? '(Monthly)' : '(Yearly)'}</span>
+                        </td>
+                    </tr>
+
+                    <tr class="confirm-divider">
+                        <td colspan=2">
+                            <hr>
+                        </td>
+                    </tr>
+
+                    <!-- * Confirm Selected Add-ons -->
+                    <tr class="confirm-add-ons-header">
+                        <th>Add-ons</th>
+                    </tr>
+                    <tr class="confirm-add-ons-body">
+                        <td class="confirm-add-on-name">
+                            <span class="add-on-name">${selectedAddOn}</span>
+                        </td>
+                        <td class="confirm-add-on-price">
+                            <span class="add-on-price">${selectedAddOnPrice}</span>
+                            <span class="add-on-billing-cycle">${billingRange.value === '0' ? '/mo' : '/yr'}</span>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
         <div class="confirm-button-container">
