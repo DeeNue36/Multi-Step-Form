@@ -636,16 +636,6 @@ function showThankYouSection() {
             <table class="modal-body">
                 <tbody>
                     <!--* Personal Info -->
-                    <tr class="confirm-personal-info-header">
-                        <th colspan="2">Personal Info</th>
-                    </tr>
-
-                    <tr class="confirm-divider">
-                        <td colspan="2">
-                            <hr>
-                        </td>
-                    </tr>
-
                     <tr class="personal-info-inputs-header">
                         <th>Email</th>
                         <th>Phone</th>
