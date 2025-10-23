@@ -713,22 +713,17 @@ body {
 
 .confirmation-modal {
     width: clamp(25rem, 50vw, 50rem);
-    height: 30vh;
+    /* height: 30vh; */
     background-color: var(--transparent-light-blue);
     border: 1px solid #d6d9e6;
     box-shadow: 0 8px 32px var(--dark-blue-transparent);
     border-radius: 0.75rem;
     padding: 2rem 1.5rem;
-    text-align: center;
+    /* text-align: center; */
     position: relative;
 }
 
 .close-modal {
-    /* display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 0.5rem;
-    height: 24px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -769,25 +764,77 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: calc(100% - 2rem);
+    /* height: calc(100% - 2rem); */
+    height: 100%;
 }
 
-.confirmation-modal-details h3 {
+.modal-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    align-self: center;
+    margin: 1.5rem auto;
+    justify-items: center;
+}
+
+.modal-header h3 {
     font-size: 1.5rem;
     font-weight: var(--font-weight-bold);
     color: var(--dark-blue);
     text-transform: capitalize;
 }
 
-.confirmation-modal-details h3 > span {
+.modal-header h3 > span {
     color: var(--light-blue);
 }
 
-.confirmation-modal-details p {
-    width: 80%;
+.modal-header p {
     font-size: var(--small-font-size);
     color: var(--dark-grey);
     line-height: 1.25rem;
+}
+
+.modal-body {
+    background-color: var(--transparent-blue);
+    height: 100%;
+    width: 90%;
+    margin: 0 auto 1.5rem;
+    border-radius: 0.625rem;
+    padding: 1.5rem;
+}
+
+/* .confirm-plan-header th {
+    width: 50%;
+} */
+
+.confirm-plan-header th:nth-child(1), .confirm-add-ons-header th {
+    text-align: start;
+}
+
+.confirm-plan-header th:nth-child(2), td.confirm-plan-price, td.confirm-add-on-price {
+    text-align: end;
+}
+
+.confirm-divider td hr {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    color: var(--transparent-purple);
+    border-style: solid;
+    border-bottom-width: 1px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-width: 0;
+    width: 100%;
+}
+
+.confirm-button-container {
+    width: 90%;
+    display: flex;
+    justify-content: end;
+    margin: 1.5rem auto;
 }
 
 .confirm-button {
@@ -931,11 +978,11 @@ body {
     }
     .confirmation-modal {
         width: clamp(24rem, 96vw, 32rem);
-        height: clamp(20rem, 40vh, 30rem);
+        /* height: clamp(20rem, 40vh, 30rem); */
     }
-    .confirmation-modal-details p {
+    /* .confirmation-modal-details p {
         font-size: var(--font-size);
-    }
+    } */
 }
 
 
