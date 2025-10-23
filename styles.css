@@ -804,15 +804,21 @@ body {
     padding: 1.5rem;
 }
 
-/* .confirm-plan-header th {
-    width: 50%;
-} */
-
-.confirm-plan-header th:nth-child(1), .confirm-add-ons-header th {
+.personal-info-inputs-header th:nth-child(1), 
+.confirm-personal-info-email,
+.confirm-plan-header th:nth-child(1), 
+.confirm-add-ons-header th:nth-child(1) 
+{
     text-align: start;
 }
 
-.confirm-plan-header th:nth-child(2), td.confirm-plan-price, td.confirm-add-on-price {
+.personal-info-inputs-header th:nth-child(2),
+.confirm-personal-info-phone,  
+.confirm-plan-header th:nth-child(2),
+.confirm-add-ons-header th:nth-child(2),  
+td.confirm-plan-price, 
+td.confirm-add-on-price 
+{
     text-align: end;
 }
 
@@ -980,9 +986,6 @@ body {
         width: clamp(24rem, 96vw, 32rem);
         /* height: clamp(20rem, 40vh, 30rem); */
     }
-    /* .confirmation-modal-details p {
-        font-size: var(--font-size);
-    } */
 }
 
 
