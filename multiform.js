@@ -591,6 +591,57 @@ changePlanBtn.addEventListener('click', handleChangePlanClick);
 
 // ? Display the thank you section
 function showThankYouSection() {
+    // ? Display the confirmation modal
+    showConfirmationModal();
+
+    // ? Confirm button
+    const confirmationModal = document.querySelector('.confirmation-modal');
+    const confirmButton = confirmationModal.querySelector('.confirm-button');
+    confirmButton.addEventListener('click', () => {
+        // ? Hide the confirmation modal
+        confirmationModalContainer.classList.add('hidden');
+        confirmationModalContainer.style.display = '';
+
+        // ? Creating the spinner before displaying the thank you section
+        spinnerContainer.classList.remove('hidden');
+        const spinner = document.createElement('div');
+        spinner.classList.add('spinner');
+        spinnerContainer.style.display = 'flex';
+        spinnerContainer.appendChild(spinner);
+
+        // ? After 2 seconds, remove the spinner and display the thank you section
+        setTimeout(() => {
+            // ? Hide the summary section
+            summarySection.classList.add('hidden');
+            summarySection.classList.add('disabled-section');
+
+            // ? Display the thank you section
+            thankYouSection.classList.remove('hidden');
+            thankYouSection.classList.remove('disabled-section');
+
+            // ? Hide the spinner and clear its content
+            spinnerContainer.style.display = '';
+            spinnerContainer.classList.add('hidden');
+            spinnerContainer.innerHTML = '';
+
+            const sectionElements = `
+                <img src="images/icon-thank-you.svg" alt="Thank You Image">
+                <h2 class="thank-you-text">Thank you!</h2>
+                <p class="thank-you-paragraph">
+                    Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support,
+                    please feel free to email us at <a href="mailto:support@loremgaming.com">support@loremgaming.com</a>
+                </p>
+            `;
+            thankYouSection.innerHTML = sectionElements;
+            isSubmitted = true; //? Set flag to true after showing thank you section
+            resetForm(); //? Reset the form to its initial state
+        }, 2000);
+    });
+}
+
+
+// * Confirmation Modal
+function showConfirmationModal() {
     // ? Create & display a confirmation modal
     confirmationModalContainer.classList.remove('hidden');
     confirmationModalContainer.style.display = 'flex';
@@ -719,49 +770,6 @@ function showThankYouSection() {
     // ? Ensure the thank you section remains hidden until confirmation
     thankYouSection.classList.add('hidden');
     thankYouSection.classList.add('disabled-section');
-
-    // ? Confirm button
-    const confirmButton = confirmationModal.querySelector('.confirm-button');
-    confirmButton.addEventListener('click', () => {
-        // ? Hide the confirmation modal
-        confirmationModalContainer.classList.add('hidden');
-        confirmationModalContainer.style.display = '';
-
-        // ? Creating the spinner before displaying the thank you section
-        spinnerContainer.classList.remove('hidden');
-        const spinner = document.createElement('div');
-        spinner.classList.add('spinner');
-        spinnerContainer.style.display = 'flex';
-        spinnerContainer.appendChild(spinner);
-
-        // ? After 2 seconds, remove the spinner and display the thank you section
-        setTimeout(() => {
-            // ? Hide the summary section
-            summarySection.classList.add('hidden');
-            summarySection.classList.add('disabled-section');
-
-            // ? Display the thank you section
-            thankYouSection.classList.remove('hidden');
-            thankYouSection.classList.remove('disabled-section');
-
-            // ? Hide the spinner and clear its content
-            spinnerContainer.style.display = '';
-            spinnerContainer.classList.add('hidden');
-            spinnerContainer.innerHTML = '';
-
-            const sectionElements = `
-                <img src="images/icon-thank-you.svg" alt="Thank You Image">
-                <h2 class="thank-you-text">Thank you!</h2>
-                <p class="thank-you-paragraph">
-                    Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support,
-                    please feel free to email us at <a href="mailto:support@loremgaming.com">support@loremgaming.com</a>
-                </p>
-            `;
-            thankYouSection.innerHTML = sectionElements;
-            isSubmitted = true; //? Set flag to true after showing thank you section
-            resetForm(); //? Reset the form to its initial state
-        }, 2000);
-    });
 }
 
 
