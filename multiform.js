@@ -47,7 +47,6 @@ const thankYouSection = document.querySelector('.thank-you-section');
 
 // * Next Step Buttons
 const nextButtons = document.querySelectorAll('.next-button');
-console.log(nextButtons);
 
 // * Previous Step Buttons
 const previousButtons = document.querySelectorAll('.previous-button');
@@ -594,7 +593,7 @@ function showThankYouSection() {
     // ? Display the confirmation modal
     showConfirmationModal();
 
-    // ? Confirm button
+    // ? Confirm button on the confirmation modal
     const confirmationModal = document.querySelector('.confirmation-modal');
     const confirmButton = confirmationModal.querySelector('.confirm-button');
     confirmButton.addEventListener('click', () => {
@@ -731,6 +730,7 @@ function showConfirmationModal() {
                     <!-- * Confirm Selected Add-ons -->
                     <tr class="confirm-add-ons-header">
                         <th>Add-ons</th>
+                        <th>Price</th>
                     </tr>
                     <tr class="confirm-add-ons-body">
                         <td class="confirm-add-on-name">
