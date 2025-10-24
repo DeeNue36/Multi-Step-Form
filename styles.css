@@ -772,7 +772,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 90%;
+    /* width: 90%; */
     align-self: center;
     margin: 1.5rem auto;
     justify-items: center;
@@ -798,17 +798,28 @@ body {
 .modal-body {
     background-color: var(--transparent-blue);
     height: 100%;
-    width: 90%;
+    width: 100%;
     margin: 0 auto 1.5rem;
     border-radius: 0.625rem;
     padding: 1.5rem;
     display: flex;
 }
 
-aside.confirm-personal-info-container {
+.confirm-personal-info-container {
     border-right: 1px solid var(--transparent-purple);
     padding-right: 20px;
     margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-plan-header, .confirm-plan-body, .confirm-add-ons-header, .confirm-add-ons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .confirm-divider hr {
@@ -825,12 +836,12 @@ aside.confirm-personal-info-container {
     width: 100%;
 }
 
-.confirm-add-ons-body, .confirm-add-ons {
+.confirm-plan-and-addons-container {
     width: 100%;
 }
 
-main.confirm-plan-and-addons-container {
-    width: 100%;
+.confirm-add-ons-header, .confirm-add-ons {
+    margin-block-end: 1rem;
 }
 
 
