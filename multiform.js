@@ -1,4 +1,4 @@
-d// * Get DOM Elements
+// * Get DOM Elements
 
 // * Steps
 const steps = document.querySelectorAll('.step-number');
@@ -675,55 +675,51 @@ function showConfirmationModal() {
 
             <div class="modal-body">
                 <!--* Personal Info -->
-                <div class="confirm-personal-info-container">
-                    <div class="personal-info-inputs-header">
-                        <h4>Name</h4>
-                        <h4>Email</h4>
-                        <h4>Phone</h4>
-                    </div>
-
+                <aside class="confirm-personal-info-container">
+                    <h3>Personal Info</h3>
                     <div class="confirm-personal-info-body">
                         <div class="confirm-personal-info-name">
+                            <h4>Name</h4>
                             <span class="personal-info-name">${nameField.value}</span>
                         </div>
                         <div class="confirm-personal-info-email">
+                            <h4>Email</h4>
                             <span class="personal-info-email">${emailField.value}</span>
                         </div>
                         <div class="confirm-personal-info-phone">
+                            <h4>Phone</h4>
                             <span class="personal-info-phone">${phoneField.value}</span>
                         </div>
                     </div>
+                </aside>
                 
+                <main class="confirm-plan-and-addons-container">
+                    <!-- * Confirm Selected Plan -->
+                    <div class="confirm-plan-header">
+                        <h4>Plan</h4>
+                        <h4>Price</h4>
+                    </div>
+                    <div class="confirm-plan-body">
+                        <div class="confirm-plan-name">
+                            <span class="plan-name">${selectedPlanName}</span>
+                        </div>
+                        <div class="confirm-plan-price">
+                            <span class="plan-price">${selectedPlanPrice}</span>
+                            <span class="plan-billing-cycle">${billingRange.value === '0' ? '(Monthly)' : '(Yearly)'}</span>
+                        </div>
+                    </div>
+
                     <div class="confirm-divider">
                         <hr>
                     </div>
-                </div>
-                
-                <!-- * Confirm Selected Plan -->
-                <div class="confirm-plan-header">
-                    <h4>Plan</h4>
-                    <h4>Price</h4>
-                </div>
-                <div class="confirm-plan-body">
-                    <div class="confirm-plan-name">
-                        <span class="plan-name">${selectedPlanName}</span>
-                    </div>
-                    <div class="confirm-plan-price">
-                        <span class="plan-price">${selectedPlanPrice}</span>
-                        <span class="plan-billing-cycle">${billingRange.value === '0' ? '(Monthly)' : '(Yearly)'}</span>
-                    </div>
-                </div>
 
-                <div class="confirm-divider">
-                    <hr>
-                </div>
-
-                <!-- * Confirm Selected Add-ons -->
-                <div class="confirm-add-ons-header">
-                    <h4>Add-ons</h4>
-                    <h4>Price</h4>
-                </div>
-                <div class="confirm-add-ons-body"></div>
+                    <!-- * Confirm Selected Add-ons -->
+                    <div class="confirm-add-ons-header">
+                        <h4>Add-ons</h4>
+                        <h4>Price</h4>
+                    </div>
+                    <div class="confirm-add-ons-body"></div>
+                </main>
             </div>
 
         </div>
