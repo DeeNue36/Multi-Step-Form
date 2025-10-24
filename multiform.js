@@ -1,4 +1,4 @@
-// * Get DOM Elements
+d// * Get DOM Elements
 
 // * Steps
 const steps = document.querySelectorAll('.step-number');
@@ -657,15 +657,6 @@ function showConfirmationModal() {
         }
     });
 
-    // let selectedAddOn = '';
-    // let selectedAddOnPrice = '';
-    // addOns.forEach(addOn => {
-    //     if (addOn.querySelector('input').checked) {
-    //         selectedAddOn = addOn.querySelector('.addon-card-header').textContent;
-    //         selectedAddOnPrice = addOn.querySelector('.addon-price').textContent.trim();
-    //     }
-    // });
-
     confirmationModal.innerHTML = `
         <div class="close-modal"> 
             <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill-rule="evenodd" class="close-modal-icon">
@@ -684,26 +675,28 @@ function showConfirmationModal() {
 
             <div class="modal-body">
                 <!--* Personal Info -->
-                <div class="personal-info-inputs-header">
-                    <h4>Name</h4>
-                    <h4>Email</h4>
-                    <h4>Phone</h4>
-                </div>
+                <div class="confirm-personal-info-container">
+                    <div class="personal-info-inputs-header">
+                        <h4>Name</h4>
+                        <h4>Email</h4>
+                        <h4>Phone</h4>
+                    </div>
 
-                <div class="confirm-personal-info-body">
-                    <div class="confirm-personal-info-name">
-                        <span class="personal-info-name">${nameField.value}</span>
+                    <div class="confirm-personal-info-body">
+                        <div class="confirm-personal-info-name">
+                            <span class="personal-info-name">${nameField.value}</span>
+                        </div>
+                        <div class="confirm-personal-info-email">
+                            <span class="personal-info-email">${emailField.value}</span>
+                        </div>
+                        <div class="confirm-personal-info-phone">
+                            <span class="personal-info-phone">${phoneField.value}</span>
+                        </div>
                     </div>
-                    <div class="confirm-personal-info-email">
-                        <span class="personal-info-email">${emailField.value}</span>
-                    </div>
-                    <div class="confirm-personal-info-phone">
-                        <span class="personal-info-phone">${phoneField.value}</span>
-                    </div>
-                </div>
                 
-                <div class="confirm-divider">
-                    <hr>
+                    <div class="confirm-divider">
+                        <hr>
+                    </div>
                 </div>
                 
                 <!-- * Confirm Selected Plan -->
@@ -730,8 +723,7 @@ function showConfirmationModal() {
                     <h4>Add-ons</h4>
                     <h4>Price</h4>
                 </div>
-                <div class="confirm-add-ons-body">
-                </div>
+                <div class="confirm-add-ons-body"></div>
             </div>
 
         </div>
@@ -749,21 +741,21 @@ function showConfirmationModal() {
     addOns.forEach((selectedAddOn, index) => {
         const checkbox = defaultCheckboxes[index];
         if (checkbox.checked) {
-            const chosenAddOn = selectedAddOn.querySelector('.addon-card-header').textContent;
-            const chosenAddOnPrice = selectedAddOn.querySelector('.addon-price').textContent.trim();
+            const confirmedAddOns = selectedAddOn.querySelector('.addon-card-header').textContent;
+            const confirmedAddOnsPrice = selectedAddOn.querySelector('.addon-price').textContent.trim();
             const billingCycle = billingRange.value === '0' ? '/mo' : '/yr';
-            const addOnRow = document.createElement('tr');
-            addOnRow.classList.add('confirm-add-ons');
-            addOnRow.innerHTML = `
-                <td class="confirm-add-on-name">
-                    <span class="add-on-name">${chosenAddOn}</span>
-                </td>
-                <td class="confirm-add-on-price">
-                    <span class="add-on-price">${chosenAddOnPrice}</span>
+            const addOnDiv = document.createElement('div');
+            addOnDiv.classList.add('confirm-add-ons');
+            addOnDiv.innerHTML = `
+                <div class="confirm-add-on-name">
+                    <span class="add-on-name">${confirmedAddOns}</span>
+                </div>
+                <div class="confirm-add-on-price">
+                    <span class="add-on-price">${confirmedAddOnsPrice}</span>
                     <span class="add-on-billing-cycle">${billingCycle}</span>
-                </td>
+                </div>
             `;
-            confirmAddOnsBody.appendChild(addOnRow);
+            confirmAddOnsBody.appendChild(addOnDiv);
         }
     });
 
