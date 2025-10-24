@@ -657,15 +657,14 @@ function showConfirmationModal() {
         }
     });
 
-    let selectedAddOn = '';
-    let selectedAddOnPrice = '';
-    addOns.forEach(addOn => {
-        if (addOn.querySelector('input').checked) {
-            selectedAddOn = addOn.querySelector('.addon-card-header').textContent;
-            selectedAddOnPrice = addOn.querySelector('.addon-price').textContent.trim();
-
-        }
-    });
+    // let selectedAddOn = '';
+    // let selectedAddOnPrice = '';
+    // addOns.forEach(addOn => {
+    //     if (addOn.querySelector('input').checked) {
+    //         selectedAddOn = addOn.querySelector('.addon-card-header').textContent;
+    //         selectedAddOnPrice = addOn.querySelector('.addon-price').textContent.trim();
+    //     }
+    // });
 
     confirmationModal.innerHTML = `
         <div class="close-modal"> 
@@ -683,66 +682,58 @@ function showConfirmationModal() {
                 </p>
             </div>
 
-            <table class="modal-body">
-                <tbody>
-                    <!--* Personal Info -->
-                    <tr class="personal-info-inputs-header">
-                        <th>Email</th>
-                        <th>Phone</th>
-                    </tr>
+            <div class="modal-body">
+                <!--* Personal Info -->
+                <div class="personal-info-inputs-header">
+                    <h4>Name</h4>
+                    <h4>Email</h4>
+                    <h4>Phone</h4>
+                </div>
 
-                    <tr class="confirm-personal-info-body">
-                        <td class="confirm-personal-info-email">
-                            <span class="personal-info-email">${emailField.value}</span>
-                        </td>
-                        <td class="confirm-personal-info-phone">
-                            <span class="personal-info-phone">${phoneField.value}</span>
-                        </td>
-                    </tr>
-                    
-                    <tr class="confirm-divider">
-                        <td colspan="2">
-                            <hr>
-                        </td>
-                    </tr>
-                    
-                    <!-- * Confirm Selected Plan -->
-                    <tr class="confirm-plan-header">
-                        <th>Plan</th>
-                        <th>Price</th>
-                    </tr>
-                    <tr class="confirm-plan-body">
-                        <td class="confirm-plan-name">
-                            <span class="plan-name">${selectedPlanName}</span>
-                        </td>
-                        <td class="confirm-plan-price">
-                            <span class="plan-price">${selectedPlanPrice}</span>
-                            <span class="plan-billing-cycle">${billingRange.value === '0' ? '(Monthly)' : '(Yearly)'}</span>
-                        </td>
-                    </tr>
+                <div class="confirm-personal-info-body">
+                    <div class="confirm-personal-info-name">
+                        <span class="personal-info-name">${nameField.value}</span>
+                    </div>
+                    <div class="confirm-personal-info-email">
+                        <span class="personal-info-email">${emailField.value}</span>
+                    </div>
+                    <div class="confirm-personal-info-phone">
+                        <span class="personal-info-phone">${phoneField.value}</span>
+                    </div>
+                </div>
+                
+                <div class="confirm-divider">
+                    <hr>
+                </div>
+                
+                <!-- * Confirm Selected Plan -->
+                <div class="confirm-plan-header">
+                    <h4>Plan</h4>
+                    <h4>Price</h4>
+                </div>
+                <div class="confirm-plan-body">
+                    <div class="confirm-plan-name">
+                        <span class="plan-name">${selectedPlanName}</span>
+                    </div>
+                    <div class="confirm-plan-price">
+                        <span class="plan-price">${selectedPlanPrice}</span>
+                        <span class="plan-billing-cycle">${billingRange.value === '0' ? '(Monthly)' : '(Yearly)'}</span>
+                    </div>
+                </div>
 
-                    <tr class="confirm-divider">
-                        <td colspan=2">
-                            <hr>
-                        </td>
-                    </tr>
+                <div class="confirm-divider">
+                    <hr>
+                </div>
 
-                    <!-- * Confirm Selected Add-ons -->
-                    <tr class="confirm-add-ons-header">
-                        <th>Add-ons</th>
-                        <th>Price</th>
-                    </tr>
-                    <tr class="confirm-add-ons-body">
-                        <td class="confirm-add-on-name">
-                            <span class="add-on-name">${selectedAddOn}</span>
-                        </td>
-                        <td class="confirm-add-on-price">
-                            <span class="add-on-price">${selectedAddOnPrice}</span>
-                            <span class="add-on-billing-cycle">${billingRange.value === '0' ? '/mo' : '/yr'}</span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                <!-- * Confirm Selected Add-ons -->
+                <div class="confirm-add-ons-header">
+                    <h4>Add-ons</h4>
+                    <h4>Price</h4>
+                </div>
+                <div class="confirm-add-ons-body">
+                </div>
+            </div>
+
         </div>
         <div class="confirm-button-container">
             <button class="confirm-button">
@@ -752,6 +743,30 @@ function showConfirmationModal() {
     `;
     confirmationModalContainer.innerHTML = '';
     confirmationModalContainer.appendChild(confirmationModal);
+
+    const confirmAddOnsBody = confirmationModal.querySelector('.confirm-add-ons-body');
+    confirmAddOnsBody.innerHTML = ''; // Clear any existing content
+    addOns.forEach((selectedAddOn, index) => {
+        const checkbox = defaultCheckboxes[index];
+        if (checkbox.checked) {
+            const chosenAddOn = selectedAddOn.querySelector('.addon-card-header').textContent;
+            const chosenAddOnPrice = selectedAddOn.querySelector('.addon-price').textContent.trim();
+            const billingCycle = billingRange.value === '0' ? '/mo' : '/yr';
+            const addOnRow = document.createElement('tr');
+            addOnRow.classList.add('confirm-add-ons');
+            addOnRow.innerHTML = `
+                <td class="confirm-add-on-name">
+                    <span class="add-on-name">${chosenAddOn}</span>
+                </td>
+                <td class="confirm-add-on-price">
+                    <span class="add-on-price">${chosenAddOnPrice}</span>
+                    <span class="add-on-billing-cycle">${billingCycle}</span>
+                </td>
+            `;
+            confirmAddOnsBody.appendChild(addOnRow);
+        }
+    });
+
 
     // ? Close the confirmation modal
     const closeModal = confirmationModal.querySelector('.close-modal-icon');
@@ -833,3 +848,4 @@ function resetForm() {
         isSubmitted = false;
     }, 5000);
 }
+
