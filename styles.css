@@ -733,6 +733,9 @@ body {
     position: relative;
 }
 
+
+/** Close Modal Icon */
+
 .close-modal {
     display: flex;
     justify-content: center;
@@ -769,6 +772,9 @@ body {
     fill: var(--bright-red);
 }
 
+
+/** Modal Header & Paragraph */
+
 .modal-header {
     margin: 2rem 0;
     justify-items: center;
@@ -791,6 +797,9 @@ body {
     line-height: 1.25rem;
 }
 
+
+/** Modal Body */
+
 .modal-body {
     background-color: var(--transparent-blue);
     height: 100%;
@@ -807,6 +816,9 @@ body {
     font-size: 1.25rem;
 }
 
+
+/** Confirm Personal Information */
+
 .confirm-personal-info-container {
     border-right: 1px solid var(--transparent-purple);
     padding-inline-end: 20px;
@@ -821,10 +833,12 @@ body {
     margin-block-end: 1rem;
 }
 
+/** Shared styles for confirm personal information containers (name, email, phone) */
 .confirm-personal-info-name, .confirm-personal-info-email, .confirm-personal-info-phone {
     margin-block-end: 0.8rem;
 }
 
+/** Shared styles for confirm personal information headers (name, email, phone) */
 .confirm-personal-info-body * h5 {
     color: var(--dark-blue);
     font-weight: var(--font-weight-regular);
@@ -832,25 +846,35 @@ body {
     margin-block-end: 0.2rem;
 }
 
+/** Shared styles for users personal information data */
 .personal-info-name, .personal-info-email, .personal-info-phone {
     color: var(--dark-grey);
     font-weight: var(--font-weight-thin);
 }
 
+/** Confirm Plan & Add-ons Container */
+.confirm-plan-and-addons-container {
+    width: 100%;
+}
+
+/** Confirm Plan & Add-ons Headers & Body */
 .confirm-plan-header, 
 .confirm-plan-body, 
 .confirm-add-ons-header, 
-.confirm-add-ons {
+.confirm-add-ons,
+.confirm-total {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
 }
 
+/** Selected Plan Price to be confirmed */
 .plan-price {
     font-size: var(--font-size);
 }
 
+/** Horizontal Divider */
 .confirm-divider hr {
     margin-block-start: 1rem;
     margin-block-end: 1rem;
@@ -865,32 +889,42 @@ body {
     width: 100%;
 }
 
-.confirm-plan-and-addons-container {
-    width: 100%;
-}
-
+/** Shared styles for Plan & Add-ons Headers & Body Spacing */
 .confirm-plan-header, .confirm-add-ons-header, .confirm-add-ons {
     margin-block-end: 1rem;
 }
 
+/** Shared styles for Plan & Add-ons Names */
 .plan-name, .add-on-name {
     font-weight: var(--font-weight-thin);
     color: var(--dark-grey);
 }
 
+/** Confirm Add-on Name */
 .add-on-name {
     text-transform: capitalize;
 }
 
+/** Shared styles for Plan & Add-ons Prices */
 .plan-price, .add-on-price {
     color: var(--light-blue);
     font-weight: var(--font-weight-medium);
 }
 
+/** Confirm Add-on Price */
 .add-on-price {
     font-size: var(--small-font-size);
 }
 
+/** Confirm Total Cost */
+.total-amount {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--purple-medium);
+}
+
+
+/** Confirmation Modal Button */
 
 .confirm-button-container {
     width: 100%;
