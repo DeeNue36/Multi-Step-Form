@@ -802,18 +802,13 @@ body {
     margin: 0 auto 1.5rem;
     border-radius: 0.625rem;
     padding: 1.5rem;
+    display: flex;
 }
 
-.personal-info-inputs-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem
-}
-
-.confirm-personal-info-body {
-    display: flex;
-    justify-content: space-between;
+aside.confirm-personal-info-container {
+    border-right: 1px solid var(--transparent-purple);
+    padding-right: 20px;
+    margin-right: 20px;
 }
 
 .confirm-divider hr {
@@ -831,6 +826,10 @@ body {
 }
 
 .confirm-add-ons-body, .confirm-add-ons {
+    width: 100%;
+}
+
+main.confirm-plan-and-addons-container {
     width: 100%;
 }
 
