@@ -712,14 +712,16 @@ body {
 }
 
 .confirmation-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: clamp(25rem, 50vw, 50rem);
-    /* height: 30vh; */
     background-color: var(--transparent-light-blue);
-    border: 1px solid #d6d9e6;
+    border: 1px solid var(--transparent-purple);
     box-shadow: 0 8px 32px var(--dark-blue-transparent);
     border-radius: 0.75rem;
     padding: 2rem 1.5rem;
-    /* text-align: center; */
     position: relative;
 }
 
@@ -760,19 +762,13 @@ body {
 }
 
 .confirmation-modal-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    /* height: calc(100% - 2rem); */
-    height: 100%;
+
 }
 
 .modal-header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* width: 90%; */
     align-self: center;
     margin: 1.5rem auto;
     justify-items: center;
@@ -799,10 +795,16 @@ body {
     background-color: var(--transparent-blue);
     height: 100%;
     width: 100%;
-    margin: 0 auto 1.5rem;
+    /* margin: 0 auto 1.5rem; */
     border-radius: 0.625rem;
     padding: 1.5rem;
     display: flex;
+}
+
+.modal-body * h3, h4 {
+    color: var(--dark-blue);
+    font-weight: var(--font-weight-bold);
+    font-size: 1.25rem;
 }
 
 .confirm-personal-info-container {
@@ -815,11 +817,38 @@ body {
     align-items: center;
 }
 
-.confirm-plan-header, .confirm-plan-body, .confirm-add-ons-header, .confirm-add-ons {
+.confirm-personal-info-container h3 {
+    margin-block-end: 1rem;
+}
+
+.confirm-personal-info-name, .confirm-personal-info-email, .confirm-personal-info-phone {
+    margin-block-end: 0.8rem;
+}
+
+.confirm-personal-info-body * h5 {
+    color: var(--dark-blue);
+    font-weight: var(--font-weight-regular);
+    font-size: 1.125rem;
+    margin-block-end: 0.2rem;
+}
+
+.personal-info-name, .personal-info-email, .personal-info-phone {
+    color: var(--dark-grey);
+    font-weight: var(--font-weight-thin);
+}
+
+.confirm-plan-header, 
+.confirm-plan-body, 
+.confirm-add-ons-header, 
+.confirm-add-ons {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+}
+
+.plan-price {
+    font-size: var(--font-size);
 }
 
 .confirm-divider hr {
@@ -840,16 +869,34 @@ body {
     width: 100%;
 }
 
-.confirm-add-ons-header, .confirm-add-ons {
+.confirm-plan-header, .confirm-add-ons-header, .confirm-add-ons {
     margin-block-end: 1rem;
+}
+
+.plan-name, .add-on-name {
+    font-weight: var(--font-weight-thin);
+    color: var(--dark-grey);
+}
+
+.add-on-name {
+    text-transform: capitalize;
+}
+
+.plan-price, .add-on-price {
+    color: var(--light-blue);
+    font-weight: var(--font-weight-medium);
+}
+
+.add-on-price {
+    font-size: var(--small-font-size);
 }
 
 
 .confirm-button-container {
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: end;
-    margin: 1.5rem auto;
+    margin: 1.5rem 0 0;
 }
 
 .confirm-button {
@@ -861,7 +908,7 @@ body {
     font-family: inherit;
     font-size: var(--font-size);
     padding: 0.75rem 1.5rem;
-    border-radius: 0.625rem;
+    border-radius: 0.3125rem;
     cursor: pointer;
     transition: all 0.2s ease-in;
 }
