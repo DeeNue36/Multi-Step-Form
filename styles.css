@@ -59,7 +59,8 @@ body {
     align-items: center;
     background-color: var(--white);
     border-radius: 0.625rem;
-    padding: 1rem;
+    padding-block: 1rem;
+    padding-inline: 1rem;
     margin: 2rem auto;
     max-width: 75rem;
     min-height: 45rem;
@@ -85,7 +86,7 @@ body {
     display: flex;
     align-items: center;
     width: 11.5rem;
-    margin: 2.5rem 0 0;
+    margin-block-start: 2.5rem;
 }
 
 .step-number {
@@ -197,7 +198,7 @@ body {
     border-radius: 0.5rem;
     border: 1px solid var(--transparent-purple);
     outline: none;
-    padding: 0 0.75rem;
+    padding-inline: 0.75rem;
     font-size: var(--font-size);
     transition: border-color 0.2s ease;
 }
@@ -264,7 +265,8 @@ body {
     justify-content: space-between;
     width: 30.6%;
     height: 13.75rem;
-    padding: 1.5rem 1rem;
+    padding-block: 1.5rem; 
+    padding-inline: 1rem;
     border-radius: 0.5rem;
     border: 1px solid var(--transparent-purple);
     cursor: pointer;
@@ -272,7 +274,7 @@ body {
 }
 
 .plan-card-image img {
-    margin-bottom: 3rem;
+    margin-block-end: 3rem;
 }
 
 .plan-card.active {
@@ -290,7 +292,7 @@ body {
 }
 
 .plan-card-header {
-    margin-bottom: 0.5rem;
+    margin-block-end: 0.5rem;
 }
 
 .monthly-yearly-pricing {
@@ -304,7 +306,7 @@ body {
 
 .yearly-discount-duration {
     font-size: var(--small-font-size);
-    margin-top: 0.5rem;
+    margin-block-start: 0.5rem;
 }
 
 
@@ -316,7 +318,8 @@ body {
     justify-content: center;
     gap: 1.5rem;
     background: var(--transparent-blue);
-    padding: 0.8rem 1.5rem;
+    padding-block: 0.8rem; 
+    padding-inline: 1.5rem;
     border-radius: 0.5rem;
     width: 100%;
     margin: 1rem auto;
@@ -431,7 +434,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 1rem;
+    padding-block: 1.5rem; 
+    padding-inline: 1rem;
     border-radius: 0.5rem;
     border: 1px solid var(--transparent-purple);
     cursor: pointer;
@@ -535,27 +539,29 @@ body {
 .summary-card {
     background-color: var(--summary-bg);
     border-radius: 0.625rem;
-    padding: 2rem 1.5rem;
+    padding-block: 2rem; 
+    padding-inline: 1.5rem;
 }
 
 .selected-plan-and-price {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-block-end: 1.5rem;
 }
 
 .divider {
     width: 100%;
     border-bottom: 1px solid var(--transparent-purple);
-    margin: 1rem 0 1.5rem;
+    margin-block: 1rem 1.5rem;
+    margin-inline: 0;
 }
 
 .user-plan-selected {
     font-size: var(--font-size);
     font-weight: var(--font-weight-medium);
     color: var(--dark-blue);
-    margin-bottom: 0.25rem;
+    margin-block-end: 0.25rem;
 }
 
 .change-plan-btn {
@@ -567,7 +573,7 @@ body {
     font-family: inherit;
     font-size: var(--small-font-size);
     cursor: pointer;
-    transition: all 0.2s ease-in;
+    transition: color 0.2s ease-in;
 }
 
 .change-plan-btn:hover {
@@ -588,11 +594,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-block-end: 1.5rem;
 }
 
 .selected-addon-and-price:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
 }
 
 .selected-addon {
@@ -611,7 +617,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 2rem auto 1.64rem;
+    margin-block: 2rem 1.64rem;
+    margin-inline: auto;
 }
 
 .total-cost {
@@ -721,7 +728,8 @@ body {
     border: 1px solid var(--transparent-purple);
     box-shadow: 0 8px 32px var(--dark-blue-transparent);
     border-radius: 0.75rem;
-    padding: 2rem 1.5rem;
+    padding-block: 2rem;
+    padding-inline: 2rem;
     position: relative;
 }
 
@@ -761,16 +769,8 @@ body {
     fill: var(--bright-red);
 }
 
-.confirmation-modal-details {
-
-}
-
 .modal-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
-    margin: 1.5rem auto;
+    margin: 2rem 0;
     justify-items: center;
 }
 
@@ -795,9 +795,9 @@ body {
     background-color: var(--transparent-blue);
     height: 100%;
     width: 100%;
-    /* margin: 0 auto 1.5rem; */
     border-radius: 0.625rem;
-    padding: 1.5rem;
+    padding-block: 1.5rem;
+    padding-inline: 1.5rem;
     display: flex;
 }
 
@@ -809,8 +809,8 @@ body {
 
 .confirm-personal-info-container {
     border-right: 1px solid var(--transparent-purple);
-    padding-right: 20px;
-    margin-right: 20px;
+    padding-inline-end: 20px;
+    margin-inline-end: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -907,7 +907,8 @@ body {
     color: var(--white);
     font-family: inherit;
     font-size: var(--font-size);
-    padding: 0.75rem 1.5rem;
+    padding-block: 0.75rem; 
+    padding-inline: 1.5rem;
     border-radius: 0.3125rem;
     cursor: pointer;
     transition: all 0.2s ease-in;
@@ -1023,13 +1024,15 @@ body {
         border-radius: 0.5rem;
         background-color: var(--white);
         margin-top: -4.8rem;
-        padding: 1.25rem;
+        padding-block: 1.25rem;
+        padding-inline: 1.25rem;
         box-shadow: 0rem 0.5rem 0.5rem 0rem var(--transparent-purple);
     }
     .submit-form, .submit-plan, .submit-add-ons, .submit-summary {
         width: 100vw;
         background-color: var(--white);
-        padding: 1rem;
+        padding-block: 1rem;
+        padding-inline: 1.25rem;
         position: fixed;
         bottom: 0;
     }
