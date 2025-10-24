@@ -701,11 +701,10 @@ function showConfirmationModal() {
                     </div>
                     <div class="confirm-plan-body">
                         <div class="confirm-plan-name">
-                            <span class="plan-name">${selectedPlanName}</span>
+                            <span class="plan-name">${selectedPlanName + (billingRange.value === '0' ? '(Monthly)' : '(Yearly)')}</span>
                         </div>
                         <div class="confirm-plan-price">
-                            <span class="plan-price">${selectedPlanPrice}</span>
-                            <span class="plan-billing-cycle">${billingRange.value === '0' ? '(Monthly)' : '(Yearly)'}</span>
+                            <span class="plan-price">${selectedPlanPrice + (billingRange.value === '0' ? '/mo' : '/yr')}</span>
                         </div>
                     </div>
 
@@ -747,8 +746,7 @@ function showConfirmationModal() {
                     <span class="add-on-name">${confirmedAddOns}</span>
                 </div>
                 <div class="confirm-add-on-price">
-                    <span class="add-on-price">${confirmedAddOnsPrice}</span>
-                    <span class="add-on-billing-cycle">${billingCycle}</span>
+                    <span class="add-on-price">${confirmedAddOnsPrice + billingCycle}</span>
                 </div>
             `;
             confirmAddOnsBody.appendChild(addOnDiv);
