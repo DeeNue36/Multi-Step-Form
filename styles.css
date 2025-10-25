@@ -236,7 +236,7 @@ body {
 .next-button {
     width: 8rem;
     height: 3rem;
-    border-radius: 0.5rem;
+    border-radius: 0.3125rem;
     border: none;
     outline: none;
     background-color: var(--dark-blue);
@@ -723,7 +723,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: clamp(25rem, 50vw, 50rem);
+    width: min(92vw, 50rem);
     background-color: var(--transparent-light-blue);
     border: 1px solid var(--transparent-purple);
     box-shadow: 0 8px 32px var(--dark-blue-transparent);
@@ -770,6 +770,12 @@ body {
 
 .close-modal-icon:hover {
     fill: var(--bright-red);
+}
+
+
+/** Parent Container for all Confirmation Modal Details */
+.confirmation-modal-details {
+    width: 100%;
 }
 
 
@@ -821,12 +827,13 @@ body {
 
 .confirm-personal-info-container {
     border-right: 1px solid var(--transparent-purple);
-    padding-inline-end: 20px;
-    margin-inline-end: 20px;
+    padding-inline-end: 1.25rem;
+    margin-inline-end: 1.25rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 50%;
 }
 
 .confirm-personal-info-container h3 {
@@ -993,9 +1000,6 @@ body {
     .form-main-section {
         padding-inline: clamp(1rem, 1.5rem, 2rem);
     }
-    .confirmation-modal {
-        width: clamp(25rem, 64vw, 50rem)
-    }
 }
 
 
@@ -1075,10 +1079,6 @@ body {
         font-weight: var(--font-weight-regular);
         text-align: end;
     }
-    .confirmation-modal {
-        width: clamp(24rem, 96vw, 32rem);
-        /* height: clamp(20rem, 40vh, 30rem); */
-    }
 }
 
 
@@ -1100,6 +1100,41 @@ body {
     .plan-card:has(.yearly-discount-duration:not(.hidden)) {
         height: 8rem;
         transition: border 0.4s ease-in-out, height 0.8s ease-out;
+    }
+    .confirmation-modal {
+        height: clamp(90vh, 92vh, 96vh);
+    }
+    .confirmation-modal-details {
+        overflow-y: scroll;
+    }
+    .modal-body {
+        flex-direction: column;
+        height: unset;
+    }
+    .confirm-personal-info-container {
+        width: 100%;
+        border-right: none;
+        margin-inline-end: 0;
+        padding-inline-end: 0;
+        border-bottom: 1px solid var(--transparent-purple);
+        margin-block-end: 1rem;
+        padding-block-end: 0.2rem;
+    }
+    .confirm-personal-info-body {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        column-gap: 0.5rem;
+    }
+    .personal-info-email {
+        word-break: break-word;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .modal-body {
+        max-height: 64vh;
+        overflow-y: scroll;
     }
 }
 
