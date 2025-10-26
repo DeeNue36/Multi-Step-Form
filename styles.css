@@ -22,6 +22,7 @@
     /** hover */
     --dark-blue-hover: #174A8B;
     --purple-medium-hover: #938CFE;
+    --bright-red-hover: #F15A6C;
     /** others */
     --summary-bg: #F8F9FE;
     --spinner-container-color: #00000080;
@@ -953,6 +954,34 @@ body {
     border-radius: 0.3125rem;
     cursor: pointer;
     transition: all 0.2s ease-in;
+    position: relative;
+    overflow: hidden;
+}
+
+.confirm-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #ffffff48, transparent);
+    transform: skewX(-25deg);
+    animation: shine 4s infinite;
+}
+
+.confirm-button:hover {
+    background-color: var(--bright-red-hover);
+}
+
+/** Shine Animation */
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
 }
 
 
@@ -1137,4 +1166,3 @@ body {
         overflow-y: scroll;
     }
 }
-
