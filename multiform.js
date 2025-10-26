@@ -657,6 +657,8 @@ function showConfirmationModal() {
         }
     });
 
+    const totalPrice = totalCostValue.textContent;
+
     confirmationModal.innerHTML = `
         <div class="close-modal"> 
             <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill-rule="evenodd" class="close-modal-icon">
@@ -679,15 +681,15 @@ function showConfirmationModal() {
                     <h3>Personal Info</h3>
                     <div class="confirm-personal-info-body">
                         <div class="confirm-personal-info-name">
-                            <h4>Name</h4>
+                            <h5>Name</h5>
                             <span class="personal-info-name">${nameField.value}</span>
                         </div>
                         <div class="confirm-personal-info-email">
-                            <h4>Email</h4>
+                            <h5>Email</h5>
                             <span class="personal-info-email">${emailField.value}</span>
                         </div>
                         <div class="confirm-personal-info-phone">
-                            <h4>Phone</h4>
+                            <h5>Phone</h5>
                             <span class="personal-info-phone">${phoneField.value}</span>
                         </div>
                     </div>
@@ -715,17 +717,29 @@ function showConfirmationModal() {
                     <!-- * Confirm Selected Add-ons -->
                     <div class="confirm-add-ons-header">
                         <h4>Add-ons</h4>
-                        <h4>Price</h4>
                     </div>
                     <div class="confirm-add-ons-body"></div>
+
+                    <div class="confirm-divider">
+                        <hr>
+                    </div>
+
+                    <!-- * Confirm Total -->
+                    <div class="confirm-total">
+                        <h4>Total</h4>
+                        <div class="confirm-total-amount">
+                            <span class="total-amount">${totalPrice}</span>
+                        </div>
+                    </div>
                 </main>
+
             </div>
 
-        </div>
-        <div class="confirm-button-container">
-            <button class="confirm-button">
-                Confirm
-            </button>
+            <div class="confirm-button-container">
+                <button class="confirm-button">
+                    Confirm
+                </button>
+            </div>
         </div>
     `;
     confirmationModalContainer.innerHTML = '';
