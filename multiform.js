@@ -852,21 +852,25 @@ function resetForm() {
 
 // * JS Media Query
 const container = document.querySelector('.container');
-const mainContent = container.innerHTML;
+const childElements = Array.from(container.children);
 
+// * Create error message element once
+const screenErrorMessage = document.createElement('h1');
+screenErrorMessage.className = 'screen-error-message';
+screenErrorMessage.textContent = 'Please move to a larger screen to view this form';
+screenErrorMessage.style.display = 'none';
+container.insertBefore(screenErrorMessage, container.firstChild);
 
 //* Display a custom message when the screen size is less than 320px
 function handleSmallScreensResize() {
     if (window.matchMedia("(max-width: 319.9px)").matches) {
-        if (container.innerHTML !== '<h1 class="error-message">Please move to a larger screen to view this form</h1>') {
-            container.innerHTML = '<h1 class="error-message">Please move to a larger screen to view this form</h1>';
-        }
-    } 
-    else {
-        if (container.innerHTML === '<h1 class="error-message">Please move to a larger screen to view this form</h1>') {
-            container.innerHTML = mainContent;
-            // Re-initialize form if needed, but since content is restored, it should work
-        }
+        // ? Hide main content, show screen error message
+        childElements.forEach(element => element.style.display = 'none');
+        screenErrorMessage.style.display = 'block';
+    } else {
+        // ? Show main content, hide screen error message
+        childElements.forEach(element => element.style.display = 'flex');
+        screenErrorMessage.style.display = 'none';
     }
 }
 
