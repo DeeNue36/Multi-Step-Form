@@ -639,7 +639,7 @@ function showThankYouSection() {
 }
 
 
-// * Confirmation Modal
+// * Display Confirmation Modal
 function showConfirmationModal() {
     // ? Create & display a confirmation modal
     confirmationModalContainer.classList.remove('hidden');
@@ -848,4 +848,32 @@ function resetForm() {
         isSubmitted = false;
     }, 5000);
 }
+
+
+// * JS Media Query
+// Display a custom message when the screen size is less than 320px
+const container = document.querySelector('.container');
+const mainContent = container.innerHTML;
+
+
+function handleSmallScreensResize() {
+    if (window.matchMedia("(max-width: 319.9px)").matches) {
+        // clear the content of the container
+        container.innerHTML = '';
+        container.innerHTML = '<h1 class="error-message">Please move to a larger screen to view this form</h1>';
+    }
+    else {
+        // Restore the original form content
+        container.innerHTML = mainContent;
+    }
+}
+
+
+// * Check screen size on page load
+handleSmallScreensResize();
+
+
+// * Check screen size on window resize
+window.addEventListener('resize', handleSmallScreensResize);
+
 
