@@ -22,7 +22,7 @@
     /** hover */
     --dark-blue-hover: #174A8B;
     --purple-medium-hover: #938CFE;
-    --bright-red-hover: #F15A6C;
+    --bright-red-hover: #ed3548dd; /* #F15A6C */
     /** others */
     --summary-bg: #F8F9FE;
     --spinner-container-color: #00000080;
@@ -440,7 +440,7 @@ body {
     border-radius: 0.5rem;
     border: 1px solid var(--transparent-purple);
     cursor: pointer;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.4s ease;
     margin-bottom: 1rem;
 }
 
@@ -963,11 +963,11 @@ body {
     position: absolute;
     top: 0;
     left: -100%;
-    width: 50%;
+    width: 32%;
     height: 100%;
     background: linear-gradient(90deg, transparent, #ffffff48, transparent);
     transform: skewX(-25deg);
-    animation: shine 4s infinite;
+    animation: shine 3.2s ease-in-out infinite;
 }
 
 .confirm-button:hover {
@@ -1157,6 +1157,15 @@ body {
     }
     .personal-info-email {
         word-break: break-word;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 393px) {
+    .addon-card {
+        padding-inline: .6rem;
+    }
+    .addon-card-body {
+        gap: 0.8rem;
     }
 }
 
