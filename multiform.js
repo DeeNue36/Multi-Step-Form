@@ -851,20 +851,22 @@ function resetForm() {
 
 
 // * JS Media Query
-// Display a custom message when the screen size is less than 320px
 const container = document.querySelector('.container');
 const mainContent = container.innerHTML;
 
 
+//* Display a custom message when the screen size is less than 320px
 function handleSmallScreensResize() {
     if (window.matchMedia("(max-width: 319.9px)").matches) {
-        // clear the content of the container
-        container.innerHTML = '';
-        container.innerHTML = '<h1 class="error-message">Please move to a larger screen to view this form</h1>';
-    }
+        if (container.innerHTML !== '<h1 class="error-message">Please move to a larger screen to view this form</h1>') {
+            container.innerHTML = '<h1 class="error-message">Please move to a larger screen to view this form</h1>';
+        }
+    } 
     else {
-        // Restore the original form content
-        container.innerHTML = mainContent;
+        if (container.innerHTML === '<h1 class="error-message">Please move to a larger screen to view this form</h1>') {
+            container.innerHTML = mainContent;
+            // Re-initialize form if needed, but since content is restored, it should work
+        }
     }
 }
 
