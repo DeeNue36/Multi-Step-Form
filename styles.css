@@ -1167,7 +1167,7 @@ body {
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (width: 320px) {
     .modal-body {
         max-height: 64vh;
         overflow-y: scroll;
