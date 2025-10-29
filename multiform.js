@@ -33,7 +33,6 @@ const addOnPricingCycles = document.querySelectorAll('.addon-pricing-cycle');
 
 // * STEP 4: Summary Section
 const summarySection = document.querySelector('.summary-section');
-const summaryCard = document.querySelector('.summary-card');
 const changePlanBtn = document.querySelector('.change-plan-btn');
 const userPlanSelected = document.querySelector('.user-plan-selected');
 const selectedPlanPrice = document.querySelector('.selected-plan-price span');
@@ -494,9 +493,9 @@ function displaySummary() {
     // ? Billing cycle displays
     //? Ternary/conditional operator to display either 'year' or 'month' based on the value of billingRange
     //? "year" is the expression if the condition is true and "month" if it is false
-    let compactBillingCycle = billingRange.value === '1' ? '/yr' : '/mo';
-    let planBillingCycle = billingRange.value === '1' ? '(Yearly)' : '(Monthly)';
-    let totalPerBillingCycle = billingRange.value === '1' ? 'year' : 'month';
+    const compactBillingCycle = billingRange.value === '1' ? '/yr' : '/mo';
+    const planBillingCycle = billingRange.value === '1' ? '(Yearly)' : '(Monthly)';
+    const totalPerBillingCycle = billingRange.value === '1' ? 'year' : 'month';
 
     //? Get the plan the user has selected
     plans.forEach((selectedPlan) => {
@@ -890,3 +889,5 @@ handleSmallScreensResize();
 
 // * Check screen size on window resize
 window.addEventListener('resize', handleSmallScreensResize);
+
+
