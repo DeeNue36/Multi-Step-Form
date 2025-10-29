@@ -28,7 +28,6 @@ const yearly = document.getElementById('yearly');
 const addOnsSection = document.querySelector('.add-ons-section');
 const addOns = document.querySelectorAll('.addon-card');
 const defaultCheckboxes = document.querySelectorAll('.addon-card-body input[type="checkbox"]');
-const customCheckbox = document.querySelectorAll('.custom-checkbox');
 const addOnPrices = document.querySelectorAll('.addon-price');
 const addOnPricingCycles = document.querySelectorAll('.addon-pricing-cycle');
 
@@ -110,7 +109,7 @@ function showNextStep(nextStepIndex) {
 //* NEXT & PREVIOUS BUTTONS NAVIGATION FUNCTIONALITIES
 
 //? Tracks and stores the current billing range value, the default value is 0(monthly) as defined in the HTML
-let lastRangeValue = billingRange.value; 
+const lastRangeValue = billingRange.value; 
 
 //? Index of the summary section in the forms array to persist the active state when the thank you section is displayed
 const summarySectionIndex = forms.indexOf(summarySection);
@@ -143,7 +142,7 @@ nextButtons.forEach(button => {
             currentStep++;
             showNextStep(currentStep);
 
-            //! To use this remove the reset form function and the function calls from step 2 below
+            //! To use this remove the reset form function and the updateAddOnPrices function calls from step 2 below also change const lastRangeValue to "let lastRangeValue"
             // Reset the lastRangeValue to the current billing range value to update the add-on prices
             // if (currentStep === 1 && billingRange.value !== lastRangeValue) { 
             //     updateAddOnPrices();
@@ -328,11 +327,11 @@ phoneField.addEventListener('input', () => {
 
 //* STEP 2: Select Plan Section
 
-// * Plan Cards: Selecting a Plan Card and Adding Active Class
+// * Plan Cards: Selecting a plan, adding active state and removing the active state from previously selected plan
 plans.forEach(plan => {
     plan.addEventListener('click', () => {
-        plans.forEach(plan => {
-            plan.classList.remove('active');
+        plans.forEach(selectedPlan => {
+            selectedPlan.classList.remove('active');
         });
         plan.classList.add('active');
     });
@@ -891,5 +890,3 @@ handleSmallScreensResize();
 
 // * Check screen size on window resize
 window.addEventListener('resize', handleSmallScreensResize);
-
-
