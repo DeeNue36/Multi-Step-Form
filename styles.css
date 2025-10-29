@@ -429,7 +429,7 @@ body {
 /** STEP 3: Add-ons Section */
 
 .add-ons-container, .summary-card-container {
-    margin-top: 3rem;
+    margin-block-start: 3rem;
 }
 
 .addon-card {
@@ -1093,7 +1093,7 @@ body {
         width: clamp(18rem, 90vw, 36rem);
         border-radius: 0.5rem;
         background-color: var(--white);
-        margin-top: -4.8rem;
+        margin-block-start: -4.8rem;
         padding-block: 1.25rem;
         padding-inline: 1.25rem;
         box-shadow: 0rem 0.5rem 0.5rem 0rem var(--transparent-purple);
