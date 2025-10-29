@@ -66,7 +66,7 @@ body {
     max-width: 75rem;
     min-height: 45rem;
     box-shadow: 0 0.75rem 1rem var(--transparent-purple);
-    transition: all 0.2s ease-out;
+    transition: all 0.2s ease-in-out;
 }
 
 
@@ -1171,5 +1171,55 @@ body {
     .modal-body {
         max-height: 64vh;
         overflow-y: scroll;
+    }
+}
+
+@media screen and (max-width: 319px) {
+    :root {
+        --transparent-black: #0000;
+        --off-white: #f1f1f1;
+    }
+    body {
+        --s: 1.125rem; /* control the size*/
+        --c1: var(--lighter-blue);
+        --c2: var(--light-blue);
+        --c3: azure;
+
+        --g1: conic-gradient(at calc(250%/3) calc(50%/3),var(--c2) 60deg,var(--transparent-black) 0 300deg,var(--c1) 0);
+        --g2: conic-gradient(at calc(50%/3) 50%,var(--transparent-black) 75%,var(--c1) 0);
+        --g3: conic-gradient(at calc(100%/3) 50%,var(--transparent-black) 75%,var(--c2) 0);
+        --g4: conic-gradient(from 59deg at calc(200%/3) calc(249%/9),var(--c3) 61deg,var(--transparent-black) 62deg);
+        --g5: conic-gradient(from 60deg at 50% calc(250%/3),var(--off-white) /*4th color*/ 60deg,var(--c1) 0 120deg,var(--transparent-black) 0);
+        --_p: calc(9*tan(30deg)*var(--s));
+        background:
+        var(--g1) calc(-1*var(--s)) 0,var(--g1) calc(2*var(--s)) var(--_p),
+        var(--g2),var(--g2) calc(3*var(--s)) var(--_p),
+        var(--g3),var(--g3) calc(3*var(--s)) var(--_p),
+        var(--g4),var(--g4) calc(3*var(--s)) var(--_p),
+        var(--g5) calc(3*var(--s)) 0,var(--g5) 0 var(--_p) var(--c3);
+        background-size: calc(6*var(--s)) calc(2*var(--_p));
+        transition: background 0.8s ease-in;
+    }
+    .container {
+        width: 100vw;
+        height: 100vh;
+        border-radius: unset;
+        margin: unset;
+        padding-block: unset;
+        padding-inline: unset;
+        box-shadow: unset;
+        max-width: unset;
+        min-height: unset;
+        background-color: unset;
+        /* background-color: var(--dark-grey);
+        background-image: repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 0.6rem,
+            rgba(255, 255, 255, 0.1) 0.5rem,
+            rgba(255, 255, 255, 0.1) 2rem
+        );
+        opacity: 0.8; */
+        transition: all 0.4s ease-in;
     }
 }
