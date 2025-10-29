@@ -523,6 +523,10 @@ body {
     margin-bottom: 0.25rem;
 }
 
+.addon-details, .addon-details label {
+    cursor: pointer;
+}
+
 .addon-details p {
     font-size: var(--small-font-size);
     color: var(--dark-grey);
@@ -1159,8 +1163,8 @@ body {
         -moz-hyphens: auto; 
         -ms-hyphens: auto; 
         hyphens: auto;
-        -webkit-hyphenate-character: "— ";
-        hyphenate-character: "— ";
+        -webkit-hyphenate-character: "—";
+        hyphenate-character: "—";
     }
 }
 
