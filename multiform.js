@@ -705,7 +705,7 @@ function showConfirmationModal() {
                             <span class="plan-name">${selectedPlanName + (billingRange.value === '0' ? '(Monthly)' : '(Yearly)')}</span>
                         </div>
                         <div class="confirm-plan-price">
-                            <span class="plan-price">${selectedPlanPrice + (billingRange.value === '0' ? '/mo' : '/yr')}</span>
+                            <span class="plan-price">${selectedPlanPriceCost + (billingRange.value === '0' ? '/mo' : '/yr')}</span>
                         </div>
                     </div>
 
@@ -890,3 +890,5 @@ handleSmallScreensResize();
 
 // * Check screen size on window resize
 window.addEventListener('resize', handleSmallScreensResize);
+
+
