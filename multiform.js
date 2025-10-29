@@ -107,8 +107,8 @@ function showNextStep(nextStepIndex) {
 
 //* NEXT & PREVIOUS BUTTONS NAVIGATION FUNCTIONALITIES
 
-//? Tracks and stores the current billing range value, the default value is 0(monthly) as defined in the HTML
-const lastRangeValue = billingRange.value; 
+// // Tracks and stores the current billing range value, the default value is 0(monthly) as defined in the HTML
+// let lastRangeValue = billingRange.value; 
 
 //? Index of the summary section in the forms array to persist the active state when the thank you section is displayed
 const summarySectionIndex = forms.indexOf(summarySection);
@@ -141,7 +141,7 @@ nextButtons.forEach(button => {
             currentStep++;
             showNextStep(currentStep);
 
-            //! To use this remove the reset form function and the updateAddOnPrices function calls from step 2 below also change const lastRangeValue to "let lastRangeValue"
+            //! To use this remove the reset form function and the updateAddOnPrices function calls from step 2 below also uncomment "let lastRangeValue" above
             // Reset the lastRangeValue to the current billing range value to update the add-on prices
             // if (currentStep === 1 && billingRange.value !== lastRangeValue) { 
             //     updateAddOnPrices();
@@ -178,12 +178,13 @@ previousButtons.forEach(button => {
 //* Validation for each step
 function validateStep(stepIndex) {
     switch(stepIndex) {
-        case 0:
+        case 0: {
             //? Explicitly call all validations to show all errors, then check combined validity
             const isNameValid = validateName();
             const isEmailValid = validateEmail();
             const isPhoneValid = validatePhoneNo();
             return isNameValid && isEmailValid && isPhoneValid;
+        }
         case 1:
             return Array.from(plans).some(plan => plan.classList.contains('active')); //? Returns true if at least one plan is selected
         case 2:
@@ -647,11 +648,11 @@ function showConfirmationModal() {
     confirmationModal.classList.add('confirmation-modal');
 
     let selectedPlanName = '';
-    let selectedPlanPrice = '';
+    let selectedPlanPriceCost = '';
     plans.forEach(plan => {
         if (plan.classList.contains('active')) {
             selectedPlanName = plan.querySelector('.plan-card-header').textContent;
-            selectedPlanPrice = plan.querySelector('.price').textContent.trim();
+            selectedPlanPriceCost = plan.querySelector('.price').textContent.trim();
         }
     });
 
@@ -889,5 +890,3 @@ handleSmallScreensResize();
 
 // * Check screen size on window resize
 window.addEventListener('resize', handleSmallScreensResize);
-
-
