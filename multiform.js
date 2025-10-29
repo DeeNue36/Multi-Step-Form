@@ -867,7 +867,17 @@ function handleSmallScreensResize() {
         // ? Hide main content, show screen error message
         childElements.forEach(element => element.style.display = 'none');
         screenErrorMessage.style.display = 'block';
-    } else {
+
+        // ? Close confirmation modal if open (simulate clicking close icon)
+        if (!confirmationModalContainer.classList.contains('hidden')) {
+            confirmationModalContainer.classList.add('hidden');
+            confirmationModalContainer.style.display = '';
+            // Reset to summary step to allow showing modal again on next attempt
+            currentStep = 3;
+            showNextStep(currentStep);
+        }
+    } 
+    else {
         // ? Show main content, hide screen error message
         childElements.forEach(element => element.style.display = 'flex');
         screenErrorMessage.style.display = 'none';
