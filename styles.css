@@ -1155,6 +1155,12 @@ body {
     }
     .personal-info-email {
         word-break: break-word;
+        -webkit-hyphens: auto; 
+        -moz-hyphens: auto; 
+        -ms-hyphens: auto; 
+        hyphens: auto;
+        -webkit-hyphenate-character: "— ";
+        hyphenate-character: "— ";
     }
 }
 
@@ -1222,5 +1228,20 @@ body {
         );
         opacity: 0.8; */
         transition: all 0.4s ease-in;
+    }
+    .screen-error-message {
+        text-align: center;
+        width: 96%;
+        font-size: 3.6rem;
+        font-weight: 700;
+        color: var(--dark-blue);
+        text-transform: uppercase;
+        word-break: break-word;
+        -webkit-hyphens: auto; 
+        -moz-hyphens: auto; 
+        -ms-hyphens: auto; 
+        hyphens: auto;
+        -webkit-hyphenate-character: "— ";
+        hyphenate-character: "— ";
     }
 }
