@@ -1180,7 +1180,7 @@ body {
         --off-white: #f1f1f1;
     }
     body {
-        --s: 1.125rem; /* control the size*/
+        --s: 1.125rem; /* control the size */
         --c1: var(--lighter-blue);
         --c2: var(--light-blue);
         --c3: azure;
@@ -1211,6 +1211,7 @@ body {
         max-width: unset;
         min-height: unset;
         background-color: unset;
+        /*? Alternative Background method -- delete the above and uncomment the below to use */
         /* background-color: var(--dark-grey);
         background-image: repeating-linear-gradient(
             -45deg,
