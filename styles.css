@@ -747,8 +747,8 @@ body {
     top: -0.75rem;
     right: -0.75rem;
     background-color: var(--white);
-    width: 48px;
-    height: 48px;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
     z-index: 4;
     border: 2px solid var(--transparent-purple);
@@ -765,8 +765,8 @@ body {
 }
 
 .close-modal-icon {
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
     fill: var(--dark-grey);
     transition: color 0.2s ease;
 }
