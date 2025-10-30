@@ -67,7 +67,10 @@ body {
     max-width: 75rem;
     min-height: 45rem;
     box-shadow: 0 0.75rem 1rem var(--transparent-purple);
-    transition: all 0.2s ease-in-out;
+    /** Animation Preference */
+    @media (prefers-reduced-motion: no-preference) {
+        transition: all 0.4s ease-in-out;
+    }
 }
 
 
@@ -202,7 +205,10 @@ body {
     outline: none;
     padding-inline: 0.75rem;
     font-size: var(--font-size);
-    transition: border-color 0.2s ease;
+    /** Animation Preference */
+    @media (prefers-reduced-motion: no-preference) {
+        transition: border-color 0.2s ease;
+    }
 }
 
 
@@ -272,7 +278,10 @@ body {
     border-radius: 0.5rem;
     border: 1px solid var(--transparent-purple);
     cursor: pointer;
-    transition: border 0.4s ease-in;
+    /** Animation Preference */
+    @media (prefers-reduced-motion: no-preference) {
+        transition: border 0.4s ease-in;
+    }
 }
 
 .plan-card-image img {
@@ -332,7 +341,10 @@ body {
     font-size: var(--small-font-size);
     color: var(--dark-grey);
     cursor: pointer;
-    transition: color 0.3s ease, font-weight 0.3s ease;
+    /** Animation Preference */
+    @media (prefers-reduced-motion: no-preference) {
+        transition: color 0.3s ease, font-weight 0.3s ease;
+    }
 }
 
 .billing-option-container input[type="radio"] {
@@ -354,7 +366,10 @@ body {
     background: var(--dark-blue);
     border-radius: 1rem;
     cursor: pointer;
-    transition: background 0.3s ease;
+    /** Animation Preference */
+    @media (prefers-reduced-motion: no-preference) {
+        transition: background 0.3s ease;
+    }
 }
 
 .toggle-container label {
@@ -384,8 +399,11 @@ body {
     height: 1rem;
     background: var(--white);
     border-radius: 50%;
-    transition: left 0.3s ease;
     pointer-events: none;
+    /** Animation Preference */
+    @media (prefers-reduced-motion: no-preference) {
+        transition: left 0.3s ease;
+    }
 }
 
 /** When yearly is selected, move thumb right */
@@ -396,7 +414,10 @@ body {
 /** Bounce animation on click/toggle */
 .toggle-thumb.clicked {
     transform: scale(0.64);
-    transition: all 0.4s ease;
+    /** Animation Preference */
+    @media (prefers-reduced-motion: no-preference) {
+        transition: all 0.4s ease;
+    }
 }
 
 
@@ -441,8 +462,11 @@ body {
     border-radius: 0.5rem;
     border: 1px solid var(--transparent-purple);
     cursor: pointer;
-    transition: border-color 0.4s ease;
     margin-block-end: 1rem;
+    /** Animation Preference */
+    @media (prefers-reduced-motion: no-preference) {
+        transition: border-color 0.4s ease;
+    }
 }
 
 .addon-card:hover,
@@ -498,8 +522,11 @@ body {
     display: inline-block;
     cursor: pointer;
     background-color: transparent;
-    transition: all 0.2s ease-in;
     flex-shrink: 0;
+    /** Animation Preference */
+    @media (prefers-reduced-motion: no-preference) {
+        transition: all 0.2s ease-in;
+    }
 }
 
 /** Trigger the custom checkbox when the native checkbox is checked */
@@ -577,7 +604,10 @@ body {
     font-family: inherit;
     font-size: var(--small-font-size);
     cursor: pointer;
-    transition: color 0.2s ease-in;
+    /** Animation Preference */
+    @media (prefers-reduced-motion: no-preference) {
+        transition: color 0.2s ease-in;
+    }
 }
 
 .change-plan-btn:hover {
@@ -754,8 +784,11 @@ body {
     z-index: 4;
     border: 2px solid var(--transparent-purple);
     box-shadow: 0 4px 12px var(--dark-blue-transparent-light);
-    transition: all 0.2s ease;
     cursor: pointer;
+    /** Animation Preference */
+    @media (prefers-reduced-motion: no-preference) {
+        transition: all 0.2s ease;
+    }
 }
 
 .close-modal:hover {
@@ -769,7 +802,10 @@ body {
     width: 1.5rem;
     height: 1.5rem;
     fill: var(--dark-grey);
-    transition: color 0.2s ease;
+    /** Animation Preference */
+    @media (prefers-reduced-motion: no-preference) {
+        transition: color 0.2s ease;    
+    }
 }
 
 .close-modal-icon:hover {
@@ -956,9 +992,12 @@ body {
     padding-inline: 1.5rem;
     border-radius: 0.3125rem;
     cursor: pointer;
-    transition: all 0.2s ease-in;
     position: relative;
     overflow: hidden;
+    /** Animation Preference */
+    @media (prefers-reduced-motion: no-preference) {
+        transition: all 0.2s ease-in;
+    }
 }
 
 .confirm-button::before {
@@ -1127,11 +1166,17 @@ body {
         height: 6rem;
         justify-content: flex-start;
         column-gap: 1.5rem;
-        transition: border 0.4s ease-in, height 0.4s ease-in;
+        /** Animation Preference */
+        @media (prefers-reduced-motion: no-preference) {
+            transition: border 0.4s ease-in, height 0.4s ease-in;
+        }
     }
     .plan-card:has(.yearly-discount-duration:not(.hidden)) {
         height: 8rem;
-        transition: border 0.4s ease-in-out, height 0.8s ease-out;
+        /** Animation Preference  */
+        @media (prefers-reduced-motion: no-preference) {
+            transition: border 0.4s ease-in-out, height 0.8s ease-out;
+        }
     }
     .confirmation-modal {
         height: clamp(90vh, 92vh, 96vh);
@@ -1211,7 +1256,10 @@ body {
         var(--g4),var(--g4) calc(3*var(--s)) var(--_p),
         var(--g5) calc(3*var(--s)) 0,var(--g5) 0 var(--_p) var(--c3);
         background-size: calc(6*var(--s)) calc(2*var(--_p));
-        transition: background 0.8s ease-in;
+        /** Animation Preference  */
+        @media (prefers-reduced-motion: no-preference) {
+            transition: background 0.8s ease-in;
+        }
     }
     .container {
         width: 100vw;
@@ -1234,7 +1282,10 @@ body {
             rgba(255, 255, 255, 0.1) 2rem
         );
         opacity: 0.8; */
-        transition: all 0.4s ease-in;
+        /** Animation Preference */
+        @media (prefers-reduced-motion: no-preference) {
+            transition: all 0.4s ease-in;
+        }
     }
     .screen-error-message {
         text-align: center;
