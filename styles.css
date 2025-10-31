@@ -1184,6 +1184,11 @@ body {
     .confirmation-modal-container {
         position: fixed;
     }
+    /** Target both html and body to disable scrolling */
+    html:has(.confirmation-modal-container:not(.hidden)),
+    body:has(.confirmation-modal-container:not(.hidden)) {
+        overflow: hidden;
+    }
     .confirmation-modal {
         height: clamp(90vh, 92vh, 96vh);
     }
