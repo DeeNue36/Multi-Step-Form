@@ -1181,6 +1181,9 @@ body {
             transition: border 0.4s ease-in-out, height 0.8s ease-out;
         }
     }
+    .confirmation-modal-container {
+        position: fixed;
+    }
     .confirmation-modal {
         height: clamp(90vh, 92vh, 96vh);
     }
