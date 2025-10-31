@@ -1137,6 +1137,9 @@ body {
         padding-inline: 1.25rem;
         box-shadow: 0rem 0.5rem 0.5rem 0rem var(--transparent-purple);
     }
+    .thank-you-section {
+        margin-block-start: -9.6rem;
+    }
     .submit-form, .submit-plan, .submit-add-ons, .submit-summary {
         width: 100vw;
         background-color: var(--white);
