@@ -1190,7 +1190,7 @@ body {
         overflow: hidden;
     }
     .confirmation-modal {
-        height: clamp(90vh, 92vh, 96vh);
+        height: clamp(80vh, 49.168rem, 90vh);
     }
     .confirmation-modal-details {
         overflow-y: scroll;
