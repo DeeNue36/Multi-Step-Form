@@ -73,12 +73,12 @@ showNextStep(0);
 let isSubmitted = false; 
 
 
+
 // * SHOWING FORM STEPS/SECTIONS DYNAMICALLY
 
-/*
-    *Displays and highlights the form/section & step number based on the user's current step index.
-    *@param {number} nextStepIndex - The index of the form/section and step number the user is on.
-*/
+
+// * Displays and highlights the form/section & step number based on the user's current step index.
+// * @param {number} nextStepIndex - The index of the form/section and step number the user is on.
 function showNextStep(nextStepIndex) {
     //? Display the form/section by removing or add the hidden class to the it
     forms.forEach((form, index) => {
@@ -102,6 +102,23 @@ function showNextStep(nextStepIndex) {
         }
     });
 }
+
+
+
+// * Clicking  the step number to smoothly move to that step/section
+steps.forEach((step, stepIndex) => {
+    step.addEventListener('click', () => {
+        // ? Only allow progression if the current step is valid
+        if (!validateStep(currentStep)) {
+            return;
+        }
+        showNextStep(stepIndex);
+        currentStep = stepIndex;
+        updateStepCompletion(currentStep);
+        displaySummary();
+        // ? Scroll to the form/section with an animation
+    })
+});
 
 
 
@@ -199,6 +216,7 @@ function validateStep(stepIndex) {
 //? Track completion status, each step is false by default
 const stepCompletion = [false, false, false, false];
 
+// * Update the step completion status
 function updateStepCompletion(stepIndex) {
     stepCompletion[stepIndex] = validateStep(stepIndex);
 }
