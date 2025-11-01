@@ -112,6 +112,10 @@ body {
     color: var(--dark-blue);
 }
 
+.step-number:hover {
+    cursor: pointer;
+}
+
 .user-info-step {
     display: flex;
     flex-direction: column;
