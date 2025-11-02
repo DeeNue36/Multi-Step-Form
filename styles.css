@@ -264,6 +264,12 @@ body {
 }
 
 /** STEP 2: Select Plan Form Section */
+.plan-error {
+    display: none;
+    color: var(--bright-red);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-medium);
+}
 
 .plan-container {
     display: flex;
