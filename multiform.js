@@ -370,7 +370,7 @@ plans.forEach(plan => {
         plan.classList.add('active');
 
         // ? If the error message is displayed, hide it once the user selects a plan
-        if (planError.style.display === 'block' || plan.classList.contains('active')) {
+        if (planError.style.display === 'block') {
             planError.style.display = 'none';
             planError.textContent = '';
         }
@@ -478,7 +478,7 @@ function updatePlanPrices() {
 
 
 
-//* STEP 3: Add-ons Section
+//* STEP 3: ADD-ONS SECTION
 
 // * Add-ons Cards: Selecting an Add-on Card, checking the checkbox and Adding Active Class
 addOns.forEach((addOn, index) => {
@@ -525,7 +525,7 @@ function updateAddOnPrices() {
 
 
 
-// * STEP 4: Summary Section
+// * STEP 4: SUMMARY SECTION
 
 //* Dynamically Create and Populate the Summary Section
 function displaySummary() {
@@ -611,7 +611,7 @@ function displaySummary() {
 }
 
 
-// * Change Plan Button
+// * STEP 4: Change Plan Button
 
 //? Navigates back to step two (plan selection) by updating currentStep to 1.
 function handleChangePlanClick() {
@@ -625,7 +625,7 @@ changePlanBtn.addEventListener('click', handleChangePlanClick);
 
 
 
-// * STEP 5: Thank You Section
+// * STEP 5: THANK YOU SECTION
 
 // ? Display the thank you section
 function showThankYouSection() {
@@ -911,7 +911,8 @@ function handleSmallScreensResize() {
         if (!confirmationModalContainer.classList.contains('hidden')) {
             confirmationModalContainer.classList.add('hidden');
             confirmationModalContainer.style.display = '';
-            // Reset to summary step to allow showing modal again on next attempt
+
+            //? Reset to summary step to allow showing modal again on next attempt
             currentStep = 3;
             showNextStep(currentStep);
         }
@@ -930,5 +931,6 @@ handleSmallScreensResize();
 
 // * Check screen size on window resize
 window.addEventListener('resize', handleSmallScreensResize);
+
 
 
