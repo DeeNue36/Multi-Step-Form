@@ -118,12 +118,6 @@ steps.forEach((step, stepIndex) => {
         currentStep = stepIndex;
         updateStepCompletion(currentStep);
         displaySummary();
-        // ? Ease/Fade into view the form/section with an animation
-        // forms.forEach((form, index) => {
-        //     if (index === stepIndex) {
-        //         form.style.transition = 'display 0.8s ease-in';
-        //     }
-        // });
     })
 });
 
@@ -376,6 +370,7 @@ plans.forEach(plan => {
         }
     });
 });
+
 
 // * Billing Options: Monthly and Yearly
 
