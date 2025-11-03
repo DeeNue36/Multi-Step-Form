@@ -359,7 +359,7 @@ phoneField.addEventListener('input', () => {
 
 
 
-//* STEP 2: Select Plan Section
+//* STEP 2: SELECT PLAN SECTION
 
 // * Plan Cards: Selecting a plan, adding active state and removing the active state from previously selected plan
 plans.forEach(plan => {
@@ -368,6 +368,12 @@ plans.forEach(plan => {
             selectedPlan.classList.remove('active');
         });
         plan.classList.add('active');
+
+        // ? If the error message is displayed, hide it once the user selects a plan
+        if (plan.classList.contains('active')) {
+            planError.style.display = 'none';
+            planError.textContent = '';
+        }
     });
 });
 
