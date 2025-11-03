@@ -370,7 +370,7 @@ plans.forEach(plan => {
         plan.classList.add('active');
 
         // ? If the error message is displayed, hide it once the user selects a plan
-        if (plan.classList.contains('active')) {
+        if (planError.style.display === 'block' || plan.classList.contains('active')) {
             planError.style.display = 'none';
             planError.textContent = '';
         }
@@ -930,6 +930,5 @@ handleSmallScreensResize();
 
 // * Check screen size on window resize
 window.addEventListener('resize', handleSmallScreensResize);
-
 
 
