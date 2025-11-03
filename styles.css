@@ -263,7 +263,10 @@ body {
     background-color: var(--dark-blue-hover);
 }
 
+
+
 /** STEP 2: Select Plan Form Section */
+
 .plan-error {
     color: var(--bright-red);
     font-size: var(--font-size);
@@ -461,6 +464,7 @@ body {
 }
 
 
+
 /** STEP 3: Add-ons Section */
 
 .add-ons-container, .summary-card-container {
@@ -577,6 +581,7 @@ body {
 .addon-price, .addon-pricing-cycle {
     color: var(--purple-medium);
 }
+
 
 
 /** STEP 4: Summary Section */
