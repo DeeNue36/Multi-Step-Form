@@ -140,8 +140,9 @@ nextButtons.forEach(button => {
         e.preventDefault();
 
         if (!validateStep(currentStep)) {
-            // //? If on step 2 and trying to advance without selecting a plan, show error and shake
+            //? If on step 2 and trying to advance without selecting a plan, show error and shake
             if (currentStep === 1) {
+                planError.classList.remove('hidden');
                 planError.style.display = 'block';
                 planError.textContent = 'Please select a plan to continue';
                 planCardContainer.classList.add('error-vibrate');
@@ -365,7 +366,8 @@ plans.forEach(plan => {
 
         // ? If the error message is displayed, hide it once the user selects a plan
         if (planError.style.display === 'block') {
-            planError.style.display = 'none';
+            planError.classList.add('hidden');
+            planError.style.display = '';
             planError.textContent = '';
         }
     });
