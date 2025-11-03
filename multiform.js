@@ -14,6 +14,8 @@ const errorMessage = document.querySelectorAll('.error-message');
 
 // * STEP 2: Select Plan Section
 const selectPlanSection = document.querySelector('.select-plan-section');
+const planError = document.querySelector('.plan-error');
+const planCardContainer = document.querySelector('.plan-container');
 const plans = document.querySelectorAll('.plan-card');
 const planPrices = document.querySelectorAll('.price');
 const pricingCycles = document.querySelectorAll('.pricing-cycle');
@@ -85,7 +87,7 @@ function showNextStep(nextStepIndex) {
         if (index === nextStepIndex) {
             form.classList.remove('hidden');
             form.classList.remove('disabled-section');
-        } 
+        }
         else {
             form.classList.add('hidden');
             form.classList.add('disabled-section');
@@ -96,7 +98,7 @@ function showNextStep(nextStepIndex) {
     steps.forEach((step, index) => {
         if (index === nextStepIndex) {
             step.classList.add('active');
-        } 
+        }
         else {
             step.classList.remove('active');
         }
@@ -116,7 +118,12 @@ steps.forEach((step, stepIndex) => {
         currentStep = stepIndex;
         updateStepCompletion(currentStep);
         displaySummary();
-        // ? Scroll to the form/section with an animation
+        // ? Ease/Fade into view the form/section with an animation
+        // forms.forEach((form, index) => {
+        //     if (index === stepIndex) {
+        //         form.style.transition = 'display 0.8s ease-in';
+        //     }
+        // });
     })
 });
 
@@ -139,6 +146,15 @@ nextButtons.forEach(button => {
         e.preventDefault();
 
         if (!validateStep(currentStep)) {
+            // //? If on step 2 and trying to advance without selecting a plan, show error and shake
+            if (currentStep === 1) {
+                planError.style.display = 'block';
+                planError.textContent = 'Please select a plan to continue';
+                planCardContainer.classList.add('error-vibrate');
+                setTimeout(() => {
+                    planCardContainer.classList.remove('error-vibrate');
+                }, 500);
+            }
             return; //? Prevent progression if current step invalid
         }
 
@@ -295,7 +311,7 @@ function validatePhoneNo() {
 
 
 
-//! STEP 1: ERROR MESSAGES => Display Error Messages in Real Time
+//* STEP 1: ERROR MESSAGES => Display Error Messages in Real Time
 
 // * Name Field Error Message
 nameField.addEventListener('input', () => {
@@ -908,5 +924,6 @@ handleSmallScreensResize();
 
 // * Check screen size on window resize
 window.addEventListener('resize', handleSmallScreensResize);
+
 
 
