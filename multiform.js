@@ -61,11 +61,11 @@ const spinnerContainer = document.querySelector('.spinner-container');
 // * TRACKING USER'S CURRENT STEP & FORMS ARRAY FOR DYNAMICALLY SHOWING FORM STEPS
 let currentStep = 0; //? Variable to keep track of the current step the user is on
 const forms = [ //? Array of all the form/sections steps
-    personalInfoForm, 
-    selectPlanSection, 
-    addOnsSection, 
-    summarySection, 
-    thankYouSection
+    personalInfoForm, // index: 0, Step 1: Personal Info Form
+    selectPlanSection, // index: 1, Step 2: Select Plan Section
+    addOnsSection, // index: 2, Step 3: Add-ons Section
+    summarySection, // index: 3, Step 4: Summary Section
+    thankYouSection // index: 4, Step 5: Thank You Section
 ]; 
 
 //* Initialize with first step 0 active, all other sections hidden/disabled
@@ -107,6 +107,8 @@ function showNextStep(nextStepIndex) {
 
 
 
+// * STEP NUMBER NAVIGATION
+
 // * Clicking  the step number to smoothly move to that step/section
 steps.forEach((step, stepIndex) => {
     step.addEventListener('click', () => {
@@ -117,6 +119,14 @@ steps.forEach((step, stepIndex) => {
         showNextStep(stepIndex);
         currentStep = stepIndex;
         updateStepCompletion(currentStep);
+
+        // ? If step 4(summary section) is chosen but an addon has not been selected take the user to step 3
+        if (stepIndex === 3 && !Array.from(addOns).some(addOn => addOn.classList.contains('active'))) {
+            // ? Go back to Add-ons section(step 3)
+            showNextStep(stepIndex - 1); // other ways to do this: (stepIndex = 2); showNextStep(2);
+        }
+
+        // ? When step 4 is chosen and an addon has been selected, display the order summary in the step 4(summary section)
         displaySummary();
     })
 });
