@@ -463,24 +463,6 @@ function updatePlanPrices() {
             });
         }
     });
-
-    //! Populating the Plans Prices, Pricing Cycles and Yearly Discount Durations Sequentially
-    // 1. Arcade Plan
-    // let arcadePlan = planPrices[0].innerHTML;
-    // const arcadePlanWithoutDollarSign = arcadePlan.replace('$', '');
-    // if (billingRange.value === '1') {
-    //     console.log(arcadePlanWithoutDollarSign);
-    //     planPrices[0].innerHTML = '$' + parseInt(arcadePlanWithoutDollarSign * 10);
-    //     pricingCycles[0].innerHTML = '/yr';
-    //     yearlyDiscountDurations[0].classList.remove('hidden');
-    //     yearlyDiscountDurations[0].innerHTML = '2 months free';
-    // } 
-    // else {
-    //     planPrices[0].innerHTML = '$' + parseInt(arcadePlanWithoutDollarSign / 10);
-    //     pricingCycles[0].innerHTML = '/mo';
-    //     yearlyDiscountDurations[0].classList.add('hidden');
-    //     yearlyDiscountDurations[0].innerHTML = '';
-    // }
 }
 
 
