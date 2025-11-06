@@ -114,8 +114,11 @@ steps.forEach((step, stepIndex) => {
     step.addEventListener('click', () => {
         // ? Only allow progression if the current step is valid
         if (!validateStep(currentStep)) {
+            //? Show Plan Error if the user tries skipping the plan selection step to another step
+            showPlanError();
             return;
         }
+
         showNextStep(stepIndex);
         currentStep = stepIndex;
         updateStepCompletion(currentStep);
@@ -158,15 +161,7 @@ nextButtons.forEach(button => {
 
         if (!validateStep(currentStep)) {
             //? If on step 2 and trying to advance without selecting a plan, show error and shake
-            if (currentStep === 1) {
-                planError.classList.remove('hidden');
-                planError.style.display = 'block';
-                planError.textContent = 'Please select a plan to continue';
-                planCardContainer.classList.add('error-vibrate');
-                setTimeout(() => {
-                    planCardContainer.classList.remove('error-vibrate');
-                }, 500);
-            }
+            showPlanError();
             return; //? Prevent progression if current step invalid
         }
 
@@ -470,6 +465,20 @@ function updatePlanPrices() {
             });
         }
     });
+}
+
+
+// * STEP 2: PLAN SELECTION ERROR MESSAGE
+function showPlanError() {
+    if (currentStep === 1) {
+        planError.classList.remove('hidden');
+        planError.style.display = 'block';
+        planError.textContent = 'Please select a plan to continue';
+        planCardContainer.classList.add('error-vibrate');
+        setTimeout(() => {
+            planCardContainer.classList.remove('error-vibrate');
+        }, 500);
+    }
 }
 
 
