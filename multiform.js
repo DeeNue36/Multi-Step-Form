@@ -124,12 +124,19 @@ steps.forEach((step, stepIndex) => {
         if (stepIndex === 3 && !Array.from(addOns).some(addOn => addOn.classList.contains('active'))) {
             // ? Go back to Add-ons section(step 3)
             showNextStep(stepIndex - 1); // other ways to do this: (stepIndex = 2); showNextStep(2);
+            currentStep = stepIndex - 1;
+
+            // This is done here so as to mark the steps as completed when using the step numbers to navigate. There is a similar functionality in the nextButtons code block below but that only marks the steps as completed if the user clicks the next step buttons hence the need for this to mark the steps as completed when the step numbers are clicked
+            for (let i = 0; i <= 2; i++) {
+                updateStepCompletion(i); // Mark steps 1-3 as completed to allow advancement
+            }
         }
 
-        // ? When step 4 is chosen and an addon has been selected, display the order summary in the step 4(summary section)
+        // ? Display step 4(summary section) whether an addon has been selected or not
         displaySummary();
-    })
+    });
 });
+
 
 
 
