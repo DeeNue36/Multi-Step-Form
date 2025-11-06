@@ -1076,6 +1076,27 @@ body {
 }
 
 
+/** Testing Timer  styling*/
+.timer-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background-color: var(--spinner-container-color);
+    color: var(--white);
+}
+
+.timer-countdown {
+    font-size: 3rem;
+    font-weight: var(--font-weight-bold);
+    font-style: italic;
+}
+
+
 /** Media Queries */
 
 /** Tablet to Desktop */
