@@ -647,8 +647,8 @@ function showThankYouSection() {
             thankYouSection.classList.remove('disabled-section');
 
             // ? Hide the spinner and clear its content
-            spinnerContainer.style.display = '';
             spinnerContainer.classList.add('hidden');
+            spinnerContainer.style.display = '';
             spinnerContainer.innerHTML = '';
 
             const sectionElements = `
@@ -661,8 +661,14 @@ function showThankYouSection() {
             `;
             thankYouSection.innerHTML = sectionElements;
             isSubmitted = true; //? Set flag to true after showing thank you section
-            resetForm(); //? Reset the form to its initial state
+
+            // ? After 5 seconds, reset the form
+            setTimeout(() => {
+                resetForm(); //? Reset the form to its initial state
+            }, 5000);
+
         }, 2000);
+
     });
 }
 
@@ -825,6 +831,11 @@ function resetForm() {
     const timer = document.createElement('div');
     timer.classList.add('timer');
     timerContainer.appendChild(timer);
+
+    const timerMessage = document.createElement('h4');
+    timerMessage.classList.add('timer-message');
+    timerMessage.innerHTML = 'This Form Will Reset In:';
+    timer.appendChild(timerMessage);
 
     const countDown = document.createElement('span');
     countDown.classList.add('timer-countdown');
