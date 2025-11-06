@@ -875,7 +875,7 @@ body {
     display: flex;
 }
 
-.modal-body * h3, h4 {
+.modal-body :is(h3, h4) {
     color: var(--dark-blue);
     font-weight: var(--font-weight-bold);
     font-size: 1.25rem;
