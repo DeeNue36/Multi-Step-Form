@@ -818,63 +818,88 @@ function showConfirmationModal() {
 
 // * Reset the form to its initial state after 5 seconds
 function resetForm() {
-    setTimeout(() => {
-        //? Reset current step to 0
-        currentStep = 0;
-        showNextStep(currentStep);
+    //? Display a visual  timer to let the user know the form will reset 
+    const timerContainer = document.querySelector('.timer-container');
+    timerContainer.style.display = 'flex';
 
-        //? Clear form fields
-        nameField.value = '';
-        emailField.value = '';
-        phoneField.value = '';
+    const timer = document.createElement('div');
+    timer.classList.add('timer');
+    timerContainer.appendChild(timer);
 
-        //? Remove active class from plans
-        plans.forEach(plan => plan.classList.remove('active'));
+    const countDown = document.createElement('span');
+    countDown.classList.add('timer-countdown');
+    countDown.innerHTML = '5';
+    timer.appendChild(countDown);
 
-        //? Uncheck all add-ons and remove active class
-        defaultCheckboxes.forEach(checkbox => checkbox.checked = false);
-        addOns.forEach(addOn => addOn.classList.remove('active'));
+    //? Countdown display
+    let count = 5;
+    const countInterval = setInterval(() => {
+        count--;
+        countDown.innerHTML = count;
+        if (count === 0) {
 
-        //? Reset billing to monthly
-        billingRange.value = '0';
-        monthly.checked = true;
-        yearly.checked = false;
-        toggleContainer.classList.remove('active');
+            //? Reset current step to 0
+            currentStep = 0;
+            showNextStep(currentStep);
 
-        //? Set original monthly plan prices
-        planPrices[0].innerHTML = '$9'; // Arcade
-        planPrices[1].innerHTML = '$12'; // Advanced
-        planPrices[2].innerHTML = '$15'; // Pro
-        pricingCycles.forEach(cycle => cycle.innerHTML = '/mo');
-        yearlyDiscountDurations.forEach(duration => {
-            duration.classList.add('hidden');
-            duration.innerHTML = '';
-        });
+            //? Clear form fields
+            nameField.value = '';
+            emailField.value = '';
+            phoneField.value = '';
 
-        //? Set original monthly add-on prices
-        addOnPrices[0].innerHTML = '+$1'; // Online service
-        addOnPrices[1].innerHTML = '+$2'; // Larger storage
-        addOnPrices[2].innerHTML = '+$2'; // Customizable profile
-        addOnPricingCycles.forEach(cycle => cycle.innerHTML = '/mo');
+            //? Remove active class from plans
+            plans.forEach(plan => plan.classList.remove('active'));
 
-        //? Clear error messages
-        errorMessage.forEach(msg => msg.innerText = '');
-        nameField.classList.remove('error');
-        emailField.classList.remove('error');
-        phoneField.classList.remove('error');
+            //? Uncheck all add-ons and remove active class
+            defaultCheckboxes.forEach(checkbox => checkbox.checked = false);
+            addOns.forEach(addOn => addOn.classList.remove('active'));
 
-        //? Reset step completion
-        stepCompletion.fill(false);
+            //? Reset billing to monthly
+            billingRange.value = '0';
+            monthly.checked = true;
+            yearly.checked = false;
+            toggleContainer.classList.remove('active');
 
-        //? Hide modal and thank you section
-        confirmationModalContainer.classList.add('hidden');
-        confirmationModalContainer.style.display = '';
-        thankYouSection.classList.add('hidden');
-        thankYouSection.classList.add('disabled-section');
+            //? Set original monthly plan prices
+            planPrices[0].innerHTML = '$9'; // Arcade
+            planPrices[1].innerHTML = '$12'; // Advanced
+            planPrices[2].innerHTML = '$15'; // Pro
+            pricingCycles.forEach(cycle => cycle.innerHTML = '/mo');
+            yearlyDiscountDurations.forEach(duration => {
+                duration.classList.add('hidden');
+                duration.innerHTML = '';
+            });
 
-        //? Reset submission flag
-        isSubmitted = false;
-    }, 5000);
+            //? Set original monthly add-on prices
+            addOnPrices[0].innerHTML = '+$1'; // Online service
+            addOnPrices[1].innerHTML = '+$2'; // Larger storage
+            addOnPrices[2].innerHTML = '+$2'; // Customizable profile
+            addOnPricingCycles.forEach(cycle => cycle.innerHTML = '/mo');
+
+            //? Clear error messages
+            errorMessage.forEach(msg => msg.innerText = '');
+            nameField.classList.remove('error');
+            emailField.classList.remove('error');
+            phoneField.classList.remove('error');
+
+            //? Reset step completion
+            stepCompletion.fill(false);
+
+            //? Hide modal and thank you section
+            confirmationModalContainer.classList.add('hidden');
+            confirmationModalContainer.style.display = '';
+            thankYouSection.classList.add('hidden');
+            thankYouSection.classList.add('disabled-section');
+
+            //? Reset submission flag
+            isSubmitted = false;
+
+            clearInterval(countInterval);
+            timer.remove();
+            timerContainer.style.display = 'none';
+            // resetForm();
+        }
+    }, 1000); //Add 1 second delay interval
 }
 
 
@@ -920,6 +945,3 @@ handleSmallScreensResize();
 
 // * Check screen size on window resize
 window.addEventListener('resize', handleSmallScreensResize);
-
-
-
