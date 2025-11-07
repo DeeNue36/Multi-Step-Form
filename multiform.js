@@ -109,36 +109,95 @@ function showNextStep(nextStepIndex) {
 
 // * STEP NUMBER NAVIGATION
 
-// * Clicking  the step number to smoothly move to that step/section
+// * Clicking  the step numbers to navigate to that step/section
 steps.forEach((step, stepIndex) => {
     step.addEventListener('click', () => {
-        // ? Only allow progression if the current step is valid
-        if (!validateStep(currentStep)) {
-            //? Show Plan Error if the user tries skipping the plan selection step to another step
-            showPlanError();
-            return;
+        // ? Allow navigation back to the default step(Step 1, Personal Info Form, index: 0) regardless of the validation of the current step
+        if (stepIndex === 0) {
+            showNextStep(0);
+            currentStep = 0;
+            updateStepCompletion(currentStep);
+            return; //Exit the function to prevent further execution & disrupt the progression
         }
 
-        showNextStep(stepIndex);
-        currentStep = stepIndex;
-        updateStepCompletion(currentStep);
-
-        // ? If step 4(summary section) is chosen but an addon has not been selected take the user to step 3
-        if (stepIndex === 3 && !Array.from(addOns).some(addOn => addOn.classList.contains('active'))) {
-            // ? Go back to Add-ons section(step 3)
-            showNextStep(stepIndex - 1); // other ways to do this: (stepIndex = 2); showNextStep(2);
-            currentStep = stepIndex - 1;
-
-            // This is done here so as to mark the steps as completed when using the step numbers to navigate. There is a similar functionality in the nextButtons code block below but that only marks the steps as completed if the user clicks the next step buttons hence the need for this to mark the steps as completed when the step numbers are clicked
-            for (let i = 0; i <= 2; i++) {
-                updateStepCompletion(i); // Mark steps 1-3 as completed to allow advancement
+        // * Special handling for step 4 (summary section, index: 3): only allow if user is currently on step 3 (addons section, index: 2)
+        if (stepIndex === 3) { //summary section
+            if (currentStep === 2) { // addons section
+                //? Allow navigation to step 4 since user is on step 3 which is optional
+                showNextStep(3);
+                currentStep = 3;
+                displaySummary();
+                updateStepsUpToCurrentStep(currentStep);
+                return; //Exit the function to prevent further execution & disrupt the progression
+            } 
+            else if (!Array.from(plans).some(plan => plan.classList.contains('active'))) {
+                //? No plan selected, navigate user to step 2 (plan selection section, index: 1)
+                showNextStep(stepIndex - 2); // other ways to do this: (stepIndex = 1); showNextStep(1);
+                currentStep = stepIndex - 2;
+                updateStepsUpToCurrentStep(currentStep);
+                return; //Exit the function to prevent further execution & disrupt the progression
+            }
+            else {
+                //? Redirect users back to step 3 (addons section, index: 2) if trying to skip to step 4(summary section, index: 3)
+                showNextStep(2);
+                currentStep = 2;
+                updateStepsUpToCurrentStep(currentStep);
+                return; //Exit the function to prevent further execution & disrupt the progression
             }
         }
 
-        // ? Display step 4(summary section) whether an addon has been selected or not
-        displaySummary();
+        // * Only allow progression if the current step is valid
+        if (!validateStep(currentStep)) {
+            if (stepIndex > 0) {
+                //? Show Plan Error if the user tries skipping the plan selection step to another step
+                showPlanError();
+            }
+            return; //Exit the function to prevent further execution
+        }
+
+        // * If step 4(summary section, index: 3) is selected and a plan has not been chosen take the user to step 2(plan section, index: 1)
+        if (stepIndex === 3 && !Array.from(plans).some(plan => plan.classList.contains('active'))) {
+            // ? Go back to Select Plan section(step 2)
+            showNextStep(stepIndex - 2); // other ways to do this: (stepIndex = 1); showNextStep(1);
+            currentStep = stepIndex - 2;
+            updateStepsUpToCurrentStep(currentStep);
+        } 
+        // * else if  step 3(add-ons section, index: 2) is selected and a plan has not been chosen take the user to step 2(plan section, index: 1)
+        else if (stepIndex === 2 && !Array.from(plans).some(plan => plan.classList.contains('active'))) {
+            // ? Go back to Select Plan section(step 2)
+            showNextStep(stepIndex - 1); // other ways to do this: (stepIndex = 1); showNextStep(1);
+            currentStep = stepIndex - 1;
+            updateStepsUpToCurrentStep(currentStep);
+        }
+        // * else if  step 4(summary section, index: 3) is selected and an addon has not been checked take the user to step 3(add-ons section, index: 2)
+        else if (stepIndex === 3 && !Array.from(addOns).some(addOn => addOn.classList.contains('active'))) {
+            // ? Go back to Add-ons section(step 3)
+            showNextStep(stepIndex - 1); // other ways to do this: (stepIndex = 2); showNextStep(2);
+            currentStep = stepIndex - 1;
+            updateStepsUpToCurrentStep(currentStep);
+        }
+        else {
+            showNextStep(stepIndex);
+            currentStep = stepIndex;
+
+            // ? Display step 4(summary section) whether an addon has been selected or not
+            if (stepIndex === 3) {
+                displaySummary();
+            }
+        }
+        
+        // ? Update the step completion status
+        updateStepsUpToCurrentStep(currentStep);
     });
 });
+
+
+// * Update the step completion status up to the current step for dynamic navigation in the progress section
+function updateStepsUpToCurrentStep(currentStep) {
+    for (let i = 0; i <= currentStep; i++) {
+        updateStepCompletion(i);
+    }
+}
 
 
 
