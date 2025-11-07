@@ -849,6 +849,7 @@ body {
     font-weight: var(--font-weight-bold);
     color: var(--dark-blue);
     text-transform: capitalize;
+    margin-block-end: 0.8rem;
 }
 
 .modal-header h3 > span {
