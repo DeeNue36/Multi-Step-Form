@@ -158,21 +158,21 @@ steps.forEach((step, stepIndex) => {
         // * If step 4(summary section, index: 3) is selected and a plan has not been chosen take the user to step 2(plan section, index: 1)
         if (stepIndex === 3 && !Array.from(plans).some(plan => plan.classList.contains('active'))) {
             // ? Go back to Select Plan section(step 2)
-            showNextStep(stepIndex - 2); // other ways to do this: (stepIndex = 1); showNextStep(1);
+            showNextStep(stepIndex - 2); // OR (stepIndex = 1); showNextStep(1);
             currentStep = stepIndex - 2;
             updateStepsUpToCurrentStep(currentStep);
         } 
         // * else if  step 3(add-ons section, index: 2) is selected and a plan has not been chosen take the user to step 2(plan section, index: 1)
         else if (stepIndex === 2 && !Array.from(plans).some(plan => plan.classList.contains('active'))) {
             // ? Go back to Select Plan section(step 2)
-            showNextStep(stepIndex - 1); // other ways to do this: (stepIndex = 1); showNextStep(1);
+            showNextStep(stepIndex - 1); // OR (stepIndex = 1); showNextStep(1);
             currentStep = stepIndex - 1;
             updateStepsUpToCurrentStep(currentStep);
         }
         // * else if  step 4(summary section, index: 3) is selected and an addon has not been checked take the user to step 3(add-ons section, index: 2)
         else if (stepIndex === 3 && !Array.from(addOns).some(addOn => addOn.classList.contains('active'))) {
             // ? Go back to Add-ons section(step 3)
-            showNextStep(stepIndex - 1); // other ways to do this: (stepIndex = 2); showNextStep(2);
+            showNextStep(stepIndex - 1); // OR (stepIndex = 2); showNextStep(2);
             currentStep = stepIndex - 1;
             updateStepsUpToCurrentStep(currentStep);
         }
