@@ -1076,7 +1076,9 @@ body {
 }
 
 
-/** Testing Timer  styling*/
+/** Timer Countdown Display */
+
+/** Main Timer Parent Container */
 .timer-container {
     display: none;
     justify-content: center;
@@ -1088,25 +1090,29 @@ body {
     z-index: 3;
     background-color: var(--container-color);
     /** blur effect */
-    -webkit-backdrop-filter: blur(3.2px);
-    backdrop-filter: blur(3.2px);
+    -webkit-backdrop-filter: blur(6.4px);
+    backdrop-filter: blur(6.4px);
     transition: all 0.8s ease-in;
 }
 
+/** Timer Body Container */
 .timer {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/** Timer Header Message */
 .timer-message {
     font-size: var(--small-font-size);
-    text-align: center;
+    font-weight: var(--font-weight-medium);
+    font-style: italic;
     text-transform: uppercase;
     color: var(--white);
     margin-block-end: 1.5rem;
 }
 
+/** Timer Countdown */
 .timer-countdown {
     font-size: 16rem;
     font-weight: var(--font-weight-bold);
