@@ -120,29 +120,47 @@ steps.forEach((step, stepIndex) => {
             return; //Exit the function to prevent further execution & disrupt the progression
         }
 
-        // * Special handling for step 4 (summary section, index: 3): only allow if user is currently on step 3 (addons section, index: 2)
+        // * Special navigation handlings for step 4 (summary section, index: 3)
         if (stepIndex === 3) { //summary section
-            if (currentStep === 2) { // addons section
+
+            // * Validation for step 1 (personal info form, index: 0)
+            if (currentStep === 0) {
+                //? Prevent navigation and show form errors
+                validateStep(0);
+                return;
+            }
+
+            // * When on step 2 (plan section, index: 1) and no plan is selected but the user attempts to navigate to step 4(summary section, index: 3) display the error state
+            else if (currentStep === 1 && !Array.from(plans).some(plan => plan.classList.contains('active'))) {
+                showPlanError(); //? Show Plan Error
+                return; //Exit the function to prevent further execution
+            }
+
+            // * When no plan is selected redirect user back to step 2 (plan section, index: 1)
+            else if (!Array.from(plans).some(plan => plan.classList.contains('active'))) {
+                //? No plan selected, navigate user to step 2 (plan section, index: 1)
+                showNextStep(stepIndex - 2); // OR (stepIndex = 1); showNextStep(1);
+                currentStep = stepIndex - 2;
+                updateStepsUpToCurrentStep(currentStep);
+                return; //Exit the function to prevent further execution
+            }
+
+            // * When on step 3 (addons section, index: 2) allow navigation to step 4 (summary section, index: 3) regardless of if an addon is selected
+            else if (currentStep === 2) { // addons section
                 //? Allow navigation to step 4 since user is on step 3 which is optional
                 showNextStep(3);
                 currentStep = 3;
                 displaySummary();
                 updateStepsUpToCurrentStep(currentStep);
-                return; //Exit the function to prevent further execution & disrupt the progression
+                return; //Exit the function to prevent further execution
             } 
-            else if (!Array.from(plans).some(plan => plan.classList.contains('active'))) {
-                //? No plan selected, navigate user to step 2 (plan selection section, index: 1)
-                showNextStep(stepIndex - 2); // other ways to do this: (stepIndex = 1); showNextStep(1);
-                currentStep = stepIndex - 2;
-                updateStepsUpToCurrentStep(currentStep);
-                return; //Exit the function to prevent further execution & disrupt the progression
-            }
+
             else {
                 //? Redirect users back to step 3 (addons section, index: 2) if trying to skip to step 4(summary section, index: 3)
                 showNextStep(2);
                 currentStep = 2;
                 updateStepsUpToCurrentStep(currentStep);
-                return; //Exit the function to prevent further execution & disrupt the progression
+                return; //Exit the function to prevent further execution
             }
         }
 
@@ -780,7 +798,7 @@ function showConfirmationModal() {
                     <span>${nameField.value.split(' ')[0]}</span>
                 </h3>
                 <p>
-                    Please make sure you have selected your preferred plan and add-ons. Are you sure you want to confirm your subscription?
+                    One last check! Please  ensure your personal details entered are all correct and confirm that you have selected your preferred gaming plan and add-ons(if any). If everything looks good please go ahead and confirm your subscription below. Thank you for choosing Lorem Gaming!
                 </p>
             </div>
 
@@ -914,11 +932,11 @@ function resetForm() {
 
     const countDown = document.createElement('span');
     countDown.classList.add('timer-countdown');
-    countDown.innerHTML = '5';
+    countDown.innerHTML = '2560';
     timer.appendChild(countDown);
 
     //? Countdown display
-    let count = 5;
+    let count = 2560;
     const countInterval = setInterval(() => {
         count--;
         countDown.innerHTML = count;
