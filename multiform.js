@@ -786,7 +786,7 @@ function showThankYouSection() {
             thankYouSection.innerHTML = sectionElements;
             isSubmitted = true; //? Set flag to true after showing thank you section
 
-            // ? After 5 seconds, reset the form
+            // * Delay for 5 seconds before resetting the form
             setTimeout(() => {
                 resetForm(); //? Reset the form to its initial state
             }, 5000);
@@ -946,7 +946,7 @@ function showConfirmationModal() {
 }
 
 
-// * Reset the form to its initial state after 5 seconds
+// * Reset the form to its initial state after 10 seconds
 function resetForm() {
     //? Display a visual  timer to let the user know the form will reset 
     const timerContainer = document.querySelector('.timer-container');
@@ -963,11 +963,11 @@ function resetForm() {
 
     const countDown = document.createElement('span');
     countDown.classList.add('timer-countdown');
-    countDown.innerHTML = '2560';
+    countDown.innerHTML = '10';
     timer.appendChild(countDown);
 
     //? Countdown display
-    let count = 2560;
+    let count = 10;
     const countInterval = setInterval(() => {
         count--;
         countDown.innerHTML = count;
