@@ -149,18 +149,18 @@ steps.forEach((step, stepIndex) => {
                 }
             }
 
-            // * When on step 2 (plan section, index: 1) and no plan is selected but the user attempts to navigate to step 4(summary section, index: 3) display the error state
-            else if (currentStep === 1 && !Array.from(plans).some(plan => plan.classList.contains('active'))) {
-                showPlanError(); //? Show Plan Error
-                return; //Exit the function to prevent further execution
-            }
-
             // * When no plan is selected redirect user back to step 2 (plan section, index: 1)
             else if (!Array.from(plans).some(plan => plan.classList.contains('active'))) {
                 //? No plan selected, navigate user to step 2 (plan section, index: 1)
                 showNextStep(stepIndex - 2); // OR (stepIndex = 1); showNextStep(1);
                 currentStep = stepIndex - 2;
                 updateStepsUpToCurrentStep(currentStep);
+                return; //Exit the function to prevent further execution
+            }
+
+            // * When on step 2 (plan section, index: 1) and no plan is selected but the user attempts to navigate to step 4(summary section, index: 3) display the error state
+            else if (currentStep === 1 && !Array.from(plans).some(plan => plan.classList.contains('active'))) {
+                showPlanError(); //? Show Plan Error
                 return; //Exit the function to prevent further execution
             }
 
@@ -174,8 +174,8 @@ steps.forEach((step, stepIndex) => {
                 return; //Exit the function to prevent further execution
             } 
 
+            //* When other steps are completed and the user tries to skip to step 4(summary section, index: 3) redirect user to step 3 (addons section, index: 2) first
             else {
-                //? Redirect users back to step 3 (addons section, index: 2) if trying to skip to step 4(summary section, index: 3)
                 showNextStep(2);
                 currentStep = 2;
                 updateStepsUpToCurrentStep(currentStep);
