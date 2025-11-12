@@ -123,8 +123,17 @@ steps.forEach((step, stepIndex) => {
         // * Special navigation handlings for step 4 (summary section, index: 3)
         if (stepIndex === 3) { //summary section
 
+            // * When step 4(summary section, index: 3) is selected and an addon has been checked display step 4
+            if (Array.from(addOns).some(addOn => addOn.classList.contains('active'))) {
+                showNextStep(stepIndex);
+                currentStep = stepIndex;
+                updateStepsUpToCurrentStep(currentStep);
+                displaySummary();
+                return; //Exit the function to prevent further execution
+            }
+
             // * Validation for step 1 (personal info form, index: 0)
-            if (currentStep === 0) {
+            else if (currentStep === 0) {
                 //? If step 1 (personal info form, index: 0) is valid/completed continue progression based on plan selection
                 if (validateStep(0)) {
                     if (!Array.from(plans).some(plan => plan.classList.contains('active'))) {
@@ -174,7 +183,7 @@ steps.forEach((step, stepIndex) => {
                 return; //Exit the function to prevent further execution
             } 
 
-            //* When other steps are completed and the user tries to skip to step 4(summary section, index: 3) redirect user to step 3 (addons section, index: 2) first
+            //* When steps 1 & 2 are completed and the user tries to skip to step 4(summary section, index: 3) redirect user to step 3 (addons section, index: 2) if an addon has not been selected (i.e not completed)
             else {
                 showNextStep(2);
                 currentStep = 2;
@@ -183,7 +192,7 @@ steps.forEach((step, stepIndex) => {
             }
         }
 
-        // * Only allow progression if the current step is valid
+        // * Only allow progression to the next step if the current step is valid
         if (!validateStep(currentStep)) {
             if (stepIndex > 0) {
                 //? Show Plan Error if the user tries skipping the plan selection step to another step
@@ -192,27 +201,30 @@ steps.forEach((step, stepIndex) => {
             return; //Exit the function to prevent further execution
         }
 
-        // * If step 4(summary section, index: 3) is selected and a plan has not been chosen take the user to step 2(plan section, index: 1)
+        // * If step 4(summary section, index: 3) is selected and a plan has not been chosen redirect the user to step 2(plan section, index: 1)
         if (stepIndex === 3 && !Array.from(plans).some(plan => plan.classList.contains('active'))) {
             // ? Go back to Select Plan section(step 2)
             showNextStep(stepIndex - 2); // OR (stepIndex = 1); showNextStep(1);
             currentStep = stepIndex - 2;
             updateStepsUpToCurrentStep(currentStep);
         } 
-        // * else if  step 3(add-ons section, index: 2) is selected and a plan has not been chosen take the user to step 2(plan section, index: 1)
+
+        // * else if  step 3(add-ons section, index: 2) is selected and a plan has not been chosen redirect the user to step 2(plan section, index: 1)
         else if (stepIndex === 2 && !Array.from(plans).some(plan => plan.classList.contains('active'))) {
             // ? Go back to Select Plan section(step 2)
             showNextStep(stepIndex - 1); // OR (stepIndex = 1); showNextStep(1);
             currentStep = stepIndex - 1;
             updateStepsUpToCurrentStep(currentStep);
         }
-        // * else if  step 4(summary section, index: 3) is selected and an addon has not been checked take the user to step 3(add-ons section, index: 2)
+
+        // * else if  step 4(summary section, index: 3) is selected and an addon has not been checked redirect the user to step 3(add-ons section, index: 2)
         else if (stepIndex === 3 && !Array.from(addOns).some(addOn => addOn.classList.contains('active'))) {
             // ? Go back to Add-ons section(step 3)
             showNextStep(stepIndex - 1); // OR (stepIndex = 2); showNextStep(2);
             currentStep = stepIndex - 1;
             updateStepsUpToCurrentStep(currentStep);
         }
+
         else {
             showNextStep(stepIndex);
             currentStep = stepIndex;
