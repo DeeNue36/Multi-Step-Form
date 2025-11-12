@@ -125,9 +125,28 @@ steps.forEach((step, stepIndex) => {
 
             // * Validation for step 1 (personal info form, index: 0)
             if (currentStep === 0) {
-                //? Prevent navigation and show form errors
-                validateStep(0);
-                return;
+                //? If step 1 (personal info form, index: 0) is valid/completed continue progression based on plan selection
+                if (validateStep(0)) {
+                    if (!Array.from(plans).some(plan => plan.classList.contains('active'))) {
+                        //? No plan selected redirect user to step 2 (plan section, index: 1)
+                        showNextStep(stepIndex - 2); // OR (stepIndex = 1); showNextStep(1);
+                        currentStep = stepIndex - 2;
+                        updateStepsUpToCurrentStep(currentStep);
+                        return; //Exit the function to prevent further execution
+                    }
+                    else {
+                        //? A plan has been selected continue to step 3 (addons section, index: 2)
+                        showNextStep(stepIndex - 1); // OR (stepIndex = 2); showNextStep(2);
+                        currentStep = stepIndex - 1;
+                        updateStepsUpToCurrentStep(currentStep);
+                        return; //Exit the function to prevent further execution
+                    }
+                }
+                else {
+                    //? Prevent navigation and show form error states
+                    validateStep(0);
+                    return;
+                }
             }
 
             // * When on step 2 (plan section, index: 1) and no plan is selected but the user attempts to navigate to step 4(summary section, index: 3) display the error state
