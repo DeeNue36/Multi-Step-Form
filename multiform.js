@@ -799,13 +799,14 @@ function showThankYouSection() {
 
 // * Display Confirmation Modal
 function showConfirmationModal() {
-    // ? Create & display a confirmation modal
     confirmationModalContainer.classList.remove('hidden');
     confirmationModalContainer.style.display = 'flex';
-
+    
+    // ? Create & display a confirmation modal
     const confirmationModal = document.createElement('div');
     confirmationModal.classList.add('confirmation-modal');
 
+    // ? Get the selected plan name and price
     let selectedPlanName = '';
     let selectedPlanPriceCost = '';
     plans.forEach(plan => {
@@ -815,21 +816,24 @@ function showConfirmationModal() {
         }
     });
 
+    // ? Get the total cost value as displayed in the Summary Section
     const totalPrice = totalCostValue.textContent;
 
+    // ? Create and display the modal content
     confirmationModal.innerHTML = `
         <div class="close-modal"> 
             <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill-rule="evenodd" class="close-modal-icon">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"/>
             </svg>
         </div>
+
         <div class="confirmation-modal-details">
             <div class="modal-header">
                 <h3>Confirm Your Subscription 
                     <span>${nameField.value.split(' ')[0]}</span>
                 </h3>
                 <p>
-                    One last check! Please  ensure your personal details entered are all correct and confirm that you have selected your preferred gaming plan and add-ons(if any). If everything looks good please go ahead and confirm your subscription below. Thank you for choosing Lorem Gaming!
+                    One last check! Please  ensure your personal details entered are all correct and confirm that you have selected your preferred gaming plan and add-ons (if any). If everything looks good please go ahead and confirm your subscription below. Thank you for choosing Lorem Gaming!
                 </p>
             </div>
 
@@ -859,10 +863,12 @@ function showConfirmationModal() {
                         <h4>Plan</h4>
                         <h4>Price</h4>
                     </div>
+
                     <div class="confirm-plan-body">
                         <div class="confirm-plan-name">
                             <span class="plan-name">${selectedPlanName + (billingRange.value === '0' ? '(Monthly)' : '(Yearly)')}</span>
                         </div>
+
                         <div class="confirm-plan-price">
                             <span class="plan-price">${selectedPlanPriceCost + (billingRange.value === '0' ? '/mo' : '/yr')}</span>
                         </div>
@@ -872,10 +878,12 @@ function showConfirmationModal() {
                         <hr>
                     </div>
 
-                    <!-- * Confirm Selected Add-ons -->
+                    <!-- * Confirm Selected Add-ons Header -->
                     <div class="confirm-add-ons-header">
                         <h4>Add-ons</h4>
                     </div>
+
+                    <!-- * Confirm Selected Add-ons Body -->
                     <div class="confirm-add-ons-body"></div>
 
                     <div class="confirm-divider">
@@ -889,6 +897,7 @@ function showConfirmationModal() {
                             <span class="total-amount">${totalPrice}</span>
                         </div>
                     </div>
+
                 </main>
 
             </div>
@@ -898,21 +907,30 @@ function showConfirmationModal() {
                     Confirm
                 </button>
             </div>
+
         </div>
     `;
     confirmationModalContainer.innerHTML = '';
     confirmationModalContainer.appendChild(confirmationModal);
 
+    // ? Display the selected add-ons
     const confirmAddOnsBody = confirmationModal.querySelector('.confirm-add-ons-body');
     confirmAddOnsBody.innerHTML = ''; // Clear any existing content
+
     addOns.forEach((selectedAddOn, index) => {
         const checkbox = defaultCheckboxes[index];
+
         if (checkbox.checked) {
+            // ? Get the add-on name and price from the selected add-on card
             const confirmedAddOns = selectedAddOn.querySelector('.addon-card-header').textContent;
             const confirmedAddOnsPrice = selectedAddOn.querySelector('.addon-price').textContent.trim();
             const billingCycle = billingRange.value === '0' ? '/mo' : '/yr';
+
+            // ? Create the add-on div
             const addOnDiv = document.createElement('div');
             addOnDiv.classList.add('confirm-add-ons');
+
+            // ? Populate the add-on div
             addOnDiv.innerHTML = `
                 <div class="confirm-add-on-name">
                     <span class="add-on-name">${confirmedAddOns}</span>
